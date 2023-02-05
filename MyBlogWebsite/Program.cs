@@ -1,15 +1,20 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyBlogWebsite.Areas.Identity.Data;
-var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
+//using MyBlogWebsite.Data_Access_Layer;
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("BlogWebsiteDbContextConnection") ?? throw new InvalidOperationException("Connection string 'BlogWebsiteDbContextConnection' not found.");
+
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(connectionString));
+
+builder.Services.AddDbContext<BlogWebsiteDbContext>(options =>
+options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false) //test'e kadar false yapýlabilir.
 	.AddRoles<IdentityRole>()								// roller etkinleþtirilir.
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<BlogWebsiteDbContext>();
 
 
 builder.Services.Configure<IdentityOptions>(options => {
