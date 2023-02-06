@@ -1,10 +1,12 @@
 ﻿
 
+using MyBlogWebsite.Models.Entities;
+
 namespace MyBlogWebsite.Models.Concrete
 {
-    public class Author 
+    public class Author : BaseEntity
     {
-        public int Id { get; set; } //string?
+        //public int Id { get; set; } //string?
 
 		public string AuthorName { get; set; }
         public Author()

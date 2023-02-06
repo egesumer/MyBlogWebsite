@@ -1,9 +1,11 @@
 ﻿
+using MyBlogWebsite.Models.Entities;
+
 namespace MyBlogWebsite.Models.Concrete
 {
-    public class Article 
+    public class Article : BaseEntity
     {
-		public int Id { get; set; } // string?
+		//public int Id { get; set; } // string?
 		public string ArticleTitle { get; set; }
 		public int? TotalReadCount { get; set; } // En çok okunan makaleler kısmı gösterilmeli, bazı makalelerin değerini yüksek ver.
 		public int? RequiredMinuteToReadEntireArticle { get; set; }

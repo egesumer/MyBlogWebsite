@@ -1,10 +1,17 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyBlogWebsite.Areas.Identity.Data;
+using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete;
+using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories;
+using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract;
 //using MyBlogWebsite.Data_Access_Layer;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("BlogWebsiteDbContextConnection") ?? throw new InvalidOperationException("Connection string 'BlogWebsiteDbContextConnection' not found.");
+
+builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
+builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
+builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(connectionString));
