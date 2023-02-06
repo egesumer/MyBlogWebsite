@@ -181,7 +181,8 @@ namespace MyBlogWebsite.Migrations
                 name: "Articles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ArticleTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TotalReadCount = table.Column<int>(type: "int", nullable: true),
                     RequiredMinuteToReadEntireArticle = table.Column<int>(type: "int", nullable: true),
@@ -193,8 +194,8 @@ namespace MyBlogWebsite.Migrations
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Articles_Authors_Id",
-                        column: x => x.Id,
+                        name: "FK_Articles_Authors_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -205,8 +206,8 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "41cd8f9c-3b0d-4994-809a-575a54c7501e", "53445a83-95a1-4224-a0d6-cba7de9e56f1", "admin", "ADMIN" },
-                    { "421d0785-5e43-4538-940f-bf1ce011f86c", "9b879237-4d8b-4154-9de0-58a071e7d225", "standard", "STANDARD" }
+                    { "bb2816cf-6f67-4bcb-b27f-d926ff41d7bb", "7c19bee5-9077-4547-ac3a-0e06b5137663", "admin", "ADMIN" },
+                    { "f738c041-f6e8-42d1-b630-abd69345d1f5", "2854161a-8e21-45b3-89cc-fe616052f795", "standard", "STANDARD" }
                 });
 
             migrationBuilder.InsertData(
@@ -214,24 +215,29 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "9387eba3-87f5-4aa4-92c6-fb6c867754f0", 0, "fd572027-4eb4-4768-9738-7344f86bd44c", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAED75iVuZ6sdhgAJO5t0mhASL6J7FO8lEMIvBVZqyzVDq5kKdvQOqhhK9/VuIY1KdfA==", null, false, "2994d765-7e78-4d7b-bbe2-14841d5014c6", false, "admin" },
-                    { "b8966187-4341-483d-833a-7d6b9438f90f", 0, "7c80c36a-9e7d-4b65-85cb-2930cb2c680c", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAEHDmPMsJ30NPfuxwTid2skYUmnpAbYGVDgO4B8CNyZrDehbx/ZLOOdgIyfpjSGfANw==", null, false, "932b76ea-c227-47fa-8ca1-adddd422cc1a", false, "test" }
+                    { "94d6f6c6-9674-4a23-8c75-730a9a444335", 0, "487ce34c-3cc3-4fd4-93c9-7eade34f5a82", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEB3pD4NSQKrzyr643FXOBs7ht0Dwg7cNYqGqfE3Cfas5jvXOx9yQEYosp/P7Kvft7g==", null, false, "8df54303-9e5d-4fcb-a4ef-30bbebda67e9", false, "admin" },
+                    { "e9eb6fe0-6c30-4117-a249-6a4963d950ff", 0, "31d8167e-a7ec-4b76-bd35-0fd17742c0c1", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAELd7bLuEZGVI1uUgFlMDXfACL5EwrSJYEiuZUm+pCv7pfDkW/p/9eRwM0x94KTtBzA==", null, false, "9dd7c274-f3c3-4844-bc55-eddb646e7835", false, "test" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
-                values: new object[] { 1, "IsAdmin", "true", "9387eba3-87f5-4aa4-92c6-fb6c867754f0" });
+                values: new object[] { 1, "IsAdmin", "true", "94d6f6c6-9674-4a23-8c75-730a9a444335" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "41cd8f9c-3b0d-4994-809a-575a54c7501e", "9387eba3-87f5-4aa4-92c6-fb6c867754f0" });
+                values: new object[] { "bb2816cf-6f67-4bcb-b27f-d926ff41d7bb", "94d6f6c6-9674-4a23-8c75-730a9a444335" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "421d0785-5e43-4538-940f-bf1ce011f86c", "b8966187-4341-483d-833a-7d6b9438f90f" });
+                values: new object[] { "f738c041-f6e8-42d1-b630-abd69345d1f5", "e9eb6fe0-6c30-4117-a249-6a4963d950ff" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_AuthorId",
+                table: "Articles",
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -273,10 +279,9 @@ namespace MyBlogWebsite.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Authors_ApplicationUserId",
+                name: "AlternateKey_ApplicationUserId",
                 table: "Authors",
-                column: "ApplicationUserId",
-                unique: true);
+                column: "ApplicationUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

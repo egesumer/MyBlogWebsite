@@ -51,15 +51,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2092aef4-0ce9-4680-83ea-f7bff65f68e6",
-                            ConcurrencyStamp = "39f33d74-ebe9-48bc-95fd-186c2e38b321",
+                            Id = "bb2816cf-6f67-4bcb-b27f-d926ff41d7bb",
+                            ConcurrencyStamp = "7c19bee5-9077-4547-ac3a-0e06b5137663",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "664f76e8-d64c-4afc-a128-ede063d53a64",
-                            ConcurrencyStamp = "a4183a57-e3b6-4150-9b13-b63bfd8c4669",
+                            Id = "f738c041-f6e8-42d1-b630-abd69345d1f5",
+                            ConcurrencyStamp = "2854161a-8e21-45b3-89cc-fe616052f795",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -191,7 +191,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7"
+                            UserId = "94d6f6c6-9674-4a23-8c75-730a9a444335"
                         });
                 });
 
@@ -236,13 +236,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7",
-                            RoleId = "2092aef4-0ce9-4680-83ea-f7bff65f68e6"
+                            UserId = "94d6f6c6-9674-4a23-8c75-730a9a444335",
+                            RoleId = "bb2816cf-6f67-4bcb-b27f-d926ff41d7bb"
                         },
                         new
                         {
-                            UserId = "d5af36cd-4630-454a-a9c4-b710639a180c",
-                            RoleId = "664f76e8-d64c-4afc-a128-ede063d53a64"
+                            UserId = "e9eb6fe0-6c30-4117-a249-6a4963d950ff",
+                            RoleId = "f738c041-f6e8-42d1-b630-abd69345d1f5"
                         });
                 });
 
@@ -270,7 +270,10 @@ namespace MyBlogWebsite.Migrations
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.Article", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ArticleLength")
                         .HasColumnType("nvarchar(max)");
@@ -292,6 +295,8 @@ namespace MyBlogWebsite.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Articles");
                 });
@@ -340,17 +345,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7",
+                            Id = "94d6f6c6-9674-4a23-8c75-730a9a444335",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d7333b77-bd07-4c18-b149-e9dcd22e40a7",
+                            ConcurrencyStamp = "487ce34c-3cc3-4fd4-93c9-7eade34f5a82",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBQfPonIlL54HpQPVOz5Kzr553JlPdufAyk+EDMQs1Fh1zowwr78V7ldph7jSS9ZSA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB3pD4NSQKrzyr643FXOBs7ht0Dwg7cNYqGqfE3Cfas5jvXOx9yQEYosp/P7Kvft7g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "622a4c00-2e64-41fb-a9e2-cf071e103232",
+                            SecurityStamp = "8df54303-9e5d-4fcb-a4ef-30bbebda67e9",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -358,17 +363,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "d5af36cd-4630-454a-a9c4-b710639a180c",
+                            Id = "e9eb6fe0-6c30-4117-a249-6a4963d950ff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4969f3e3-b247-4d0f-afee-26e22bcf1034",
+                            ConcurrencyStamp = "31d8167e-a7ec-4b76-bd35-0fd17742c0c1",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOWZEyaLcISA/YvwpBOCi44hrpiO7rOESzCaJ07Eg0aaXcV41Rt9DuSouWXqiFjGtw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELd7bLuEZGVI1uUgFlMDXfACL5EwrSJYEiuZUm+pCv7pfDkW/p/9eRwM0x94KTtBzA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f525d28-6376-4db1-8c98-7af0577416c6",
+                            SecurityStamp = "9dd7c274-f3c3-4844-bc55-eddb646e7835",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",
@@ -431,7 +436,7 @@ namespace MyBlogWebsite.Migrations
                 {
                     b.HasOne("MyBlogWebsite.Models.Concrete.Author", "Author")
                         .WithMany("Articles")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -8,7 +8,7 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.EntityConfigurations
 	{
 		public void Configure(EntityTypeBuilder<Article> builder)
 		{
-			builder.HasOne(x => x.Author).WithMany(x => x.Articles).HasForeignKey(k => k.Id);
+			builder.HasOne(x => x.Author).WithMany(x => x.Articles).HasForeignKey(x => x.AuthorId);
 		}
 	}
 }
