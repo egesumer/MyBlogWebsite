@@ -206,8 +206,8 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "bb2816cf-6f67-4bcb-b27f-d926ff41d7bb", "7c19bee5-9077-4547-ac3a-0e06b5137663", "admin", "ADMIN" },
-                    { "f738c041-f6e8-42d1-b630-abd69345d1f5", "2854161a-8e21-45b3-89cc-fe616052f795", "standard", "STANDARD" }
+                    { "032773c3-f4aa-48b4-9521-6593d5c073a1", "978273fb-ba1e-4470-8ad4-2d0bbe336138", "admin", "ADMIN" },
+                    { "7f897904-6145-4830-a1f2-2eb3ea25320c", "2faf4124-0505-401b-a2e4-9636d9e58188", "standard", "STANDARD" }
                 });
 
             migrationBuilder.InsertData(
@@ -215,24 +215,24 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "94d6f6c6-9674-4a23-8c75-730a9a444335", 0, "487ce34c-3cc3-4fd4-93c9-7eade34f5a82", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEB3pD4NSQKrzyr643FXOBs7ht0Dwg7cNYqGqfE3Cfas5jvXOx9yQEYosp/P7Kvft7g==", null, false, "8df54303-9e5d-4fcb-a4ef-30bbebda67e9", false, "admin" },
-                    { "e9eb6fe0-6c30-4117-a249-6a4963d950ff", 0, "31d8167e-a7ec-4b76-bd35-0fd17742c0c1", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAELd7bLuEZGVI1uUgFlMDXfACL5EwrSJYEiuZUm+pCv7pfDkW/p/9eRwM0x94KTtBzA==", null, false, "9dd7c274-f3c3-4844-bc55-eddb646e7835", false, "test" }
+                    { "0413b858-d456-46fa-a391-b7a20f4c415e", 0, "089bdf08-de6d-48cf-bb75-1c52fab3593f", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEMIVhOjOB7Sbzru2Ywe+gpNg5Bs1c9mGyY2/JTFduWavWimAF/gILYfbeowU5dDwmg==", null, false, "08fdd84f-ceb3-4301-8243-e700bde1f7e5", false, "admin" },
+                    { "c066dc4d-d07e-4d09-bf09-2c51656e8144", 0, "19e9f09c-bfa0-45fa-8522-aae3026679f5", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAEKpQh8XdIMZBdhrNWOZw0LXiZGFt9GAMKcfnuBAja7BX+gb/ndAH3rn3hbKclbr9hg==", null, false, "e23bfab5-3c17-4c76-8674-5974b70d9b38", false, "test" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
-                values: new object[] { 1, "IsAdmin", "true", "94d6f6c6-9674-4a23-8c75-730a9a444335" });
+                values: new object[] { 1, "IsAdmin", "true", "0413b858-d456-46fa-a391-b7a20f4c415e" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "bb2816cf-6f67-4bcb-b27f-d926ff41d7bb", "94d6f6c6-9674-4a23-8c75-730a9a444335" });
+                values: new object[] { "032773c3-f4aa-48b4-9521-6593d5c073a1", "0413b858-d456-46fa-a391-b7a20f4c415e" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "f738c041-f6e8-42d1-b630-abd69345d1f5", "e9eb6fe0-6c30-4117-a249-6a4963d950ff" });
+                values: new object[] { "7f897904-6145-4830-a1f2-2eb3ea25320c", "c066dc4d-d07e-4d09-bf09-2c51656e8144" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_AuthorId",
@@ -279,9 +279,10 @@ namespace MyBlogWebsite.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "AlternateKey_ApplicationUserId",
+                name: "IX_Authors_ApplicationUserId",
                 table: "Authors",
-                column: "ApplicationUserId");
+                column: "ApplicationUserId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

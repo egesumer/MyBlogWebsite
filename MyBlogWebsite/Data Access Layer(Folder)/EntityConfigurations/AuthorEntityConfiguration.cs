@@ -10,7 +10,7 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.EntityConfigurations
 		{
 			builder.Property(x => x.AuthorName).IsRequired().HasMaxLength(50);
 			//builder.HasMany(x => x.Articles).WithOne(x => x.Author).HasForeignKey(x => x.Id);
-			builder.HasIndex(x => x.ApplicationUserId).HasName("AlternateKey_ApplicationUserId").IsUnique(false); // UniqueKey zorunluluğunu kaldırma.
+			//builder.HasIndex(x => x.ApplicationUserId).HasName("AlternateKey_ApplicationUserId").IsUnique(false); // UniqueKey zorunluluğunu kaldırma.
 
 		}
 	}
