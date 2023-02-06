@@ -1,0 +1,33 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model AuthorVM
+@{
+	ViewData["Title"] = "Yazar Ol!";
+}
+@if (TempData["Message"]!=null)
+{
+	<div class="alert alert-success">
+		@TempData["Message"]
+	</div>
+}
+
+									
+
+<form asp-action="AuthorActivation" asp-controller="Author">
+	<br />
+	<div class="form-group">
+		<figure>
+			<blockquote class="blockquote">
+				<p>Makalelerinizle popüler olun, yazarlarımız arasına katılın.</p>
+			</blockquote>
+			<figcaption class="blockquote-footer">
+				Yazarlarımızdan biri olmak için <cite title="Source Title">ilgili butona tıklayınız.</cite>
+			</figcaption>
+		</figure>
+	</div>
+	<br />
+	<button type="submit" class="btn btn-outline-warning">Yazar Ol</button>
+</form>
+
+
+
+

@@ -1,0 +1,15 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model AuthorVM
+
+
+<form asp-action="AuthorActivation" asp-controller="Author">
+    <div class="form-group">
+        <label asp-for="AuthorName">Author Name:</label>
+        <input asp-for="AuthorName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AuthorConfirmed">Author Confirmed:</label>
+        <input asp-for="AuthorConfirmed" type="checkbox" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

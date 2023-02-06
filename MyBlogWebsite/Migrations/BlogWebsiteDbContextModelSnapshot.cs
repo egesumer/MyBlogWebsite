@@ -51,15 +51,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "032773c3-f4aa-48b4-9521-6593d5c073a1",
-                            ConcurrencyStamp = "978273fb-ba1e-4470-8ad4-2d0bbe336138",
+                            Id = "fe2dc6fa-a8e3-4562-af79-f4dd32f27cc5",
+                            ConcurrencyStamp = "9c71f3f7-6787-4302-a60e-a4d54a913ed5",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "7f897904-6145-4830-a1f2-2eb3ea25320c",
-                            ConcurrencyStamp = "2faf4124-0505-401b-a2e4-9636d9e58188",
+                            Id = "714c93d8-54dd-4980-9019-11e3db018908",
+                            ConcurrencyStamp = "d3ea70fd-d676-4490-979e-1df3c027b039",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -191,7 +191,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "0413b858-d456-46fa-a391-b7a20f4c415e"
+                            UserId = "5571d93c-0a26-432e-9457-60103862bad8"
                         });
                 });
 
@@ -236,13 +236,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "0413b858-d456-46fa-a391-b7a20f4c415e",
-                            RoleId = "032773c3-f4aa-48b4-9521-6593d5c073a1"
+                            UserId = "5571d93c-0a26-432e-9457-60103862bad8",
+                            RoleId = "fe2dc6fa-a8e3-4562-af79-f4dd32f27cc5"
                         },
                         new
                         {
-                            UserId = "c066dc4d-d07e-4d09-bf09-2c51656e8144",
-                            RoleId = "7f897904-6145-4830-a1f2-2eb3ea25320c"
+                            UserId = "d8dbc8ed-5f4a-4eb2-9bcf-de3f4231b8ba",
+                            RoleId = "714c93d8-54dd-4980-9019-11e3db018908"
                         });
                 });
 
@@ -313,6 +313,9 @@ namespace MyBlogWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("AuthorConfirmed")
+                        .HasColumnType("bit");
+
                     b.Property<string>("AuthorName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -345,17 +348,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0413b858-d456-46fa-a391-b7a20f4c415e",
+                            Id = "5571d93c-0a26-432e-9457-60103862bad8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "089bdf08-de6d-48cf-bb75-1c52fab3593f",
+                            ConcurrencyStamp = "6ab8c9bb-4502-4f49-9a9a-cdaf4f6e4d75",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMIVhOjOB7Sbzru2Ywe+gpNg5Bs1c9mGyY2/JTFduWavWimAF/gILYfbeowU5dDwmg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKB758eoCGD/8J9xC+gs1N5kEagMZIVgyuYg2JwpGiSTXbOdDvSqj62JpWKbM22D8Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "08fdd84f-ceb3-4301-8243-e700bde1f7e5",
+                            SecurityStamp = "aecfe801-af7a-40e4-9942-7f03e4acfb3b",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -363,17 +366,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "c066dc4d-d07e-4d09-bf09-2c51656e8144",
+                            Id = "d8dbc8ed-5f4a-4eb2-9bcf-de3f4231b8ba",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "19e9f09c-bfa0-45fa-8522-aae3026679f5",
+                            ConcurrencyStamp = "0fa1f9e5-e02e-4c6d-aa32-178768369a86",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKpQh8XdIMZBdhrNWOZw0LXiZGFt9GAMKcfnuBAja7BX+gb/ndAH3rn3hbKclbr9hg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELDpX/OhHLZ0I6gGylHFeVpLcvVbd/8IIiTaqJTaS8Uzlys/Y17NIU1ytRehGw/BNA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e23bfab5-3c17-4c76-8674-5974b70d9b38",
+                            SecurityStamp = "92ff3ee2-074a-42d2-9825-826d1e76b9ba",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",

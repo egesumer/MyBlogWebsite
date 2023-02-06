@@ -9,6 +9,7 @@ namespace MyBlogWebsite.Models.Concrete
         //public int Id { get; set; } //string?
 
 		public string AuthorName { get; set; }
+        public bool AuthorConfirmed { get; set; } = false;
         public Author()
         {
             Articles = new HashSet<Article>();

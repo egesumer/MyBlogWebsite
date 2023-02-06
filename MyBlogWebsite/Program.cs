@@ -9,6 +9,7 @@ using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("BlogWebsiteDbContextConnection") ?? throw new InvalidOperationException("Connection string 'BlogWebsiteDbContextConnection' not found.");
 
+
 builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
 builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
@@ -41,6 +42,11 @@ builder.Services.Configure<IdentityOptions>(options => {
 builder.Services.AddControllersWithViews();
 
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AuthorConfirmed", policy => policy.RequireClaim("AuthorConfirmed", "false"));
+});
 
 
 //builder.Services.AddAuthorization(options =>
