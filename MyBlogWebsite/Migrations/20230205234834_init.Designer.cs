@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlogWebsite.Areas.Identity.Data;
 
@@ -11,9 +12,10 @@ using MyBlogWebsite.Areas.Identity.Data;
 namespace MyBlogWebsite.Migrations
 {
     [DbContext(typeof(BlogWebsiteDbContext))]
-    partial class BlogWebsiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230205234834_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2092aef4-0ce9-4680-83ea-f7bff65f68e6",
-                            ConcurrencyStamp = "39f33d74-ebe9-48bc-95fd-186c2e38b321",
+                            Id = "41cd8f9c-3b0d-4994-809a-575a54c7501e",
+                            ConcurrencyStamp = "53445a83-95a1-4224-a0d6-cba7de9e56f1",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "664f76e8-d64c-4afc-a128-ede063d53a64",
-                            ConcurrencyStamp = "a4183a57-e3b6-4150-9b13-b63bfd8c4669",
+                            Id = "421d0785-5e43-4538-940f-bf1ce011f86c",
+                            ConcurrencyStamp = "9b879237-4d8b-4154-9de0-58a071e7d225",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -191,7 +193,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7"
+                            UserId = "9387eba3-87f5-4aa4-92c6-fb6c867754f0"
                         });
                 });
 
@@ -236,13 +238,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7",
-                            RoleId = "2092aef4-0ce9-4680-83ea-f7bff65f68e6"
+                            UserId = "9387eba3-87f5-4aa4-92c6-fb6c867754f0",
+                            RoleId = "41cd8f9c-3b0d-4994-809a-575a54c7501e"
                         },
                         new
                         {
-                            UserId = "d5af36cd-4630-454a-a9c4-b710639a180c",
-                            RoleId = "664f76e8-d64c-4afc-a128-ede063d53a64"
+                            UserId = "b8966187-4341-483d-833a-7d6b9438f90f",
+                            RoleId = "421d0785-5e43-4538-940f-bf1ce011f86c"
                         });
                 });
 
@@ -279,7 +281,8 @@ namespace MyBlogWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("PublishDate")
@@ -316,7 +319,7 @@ namespace MyBlogWebsite.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId")
-                        .HasDatabaseName("AlternateKey_ApplicationUserId");
+                        .IsUnique();
 
                     b.ToTable("Authors");
                 });
@@ -340,17 +343,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7",
+                            Id = "9387eba3-87f5-4aa4-92c6-fb6c867754f0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d7333b77-bd07-4c18-b149-e9dcd22e40a7",
+                            ConcurrencyStamp = "fd572027-4eb4-4768-9738-7344f86bd44c",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBQfPonIlL54HpQPVOz5Kzr553JlPdufAyk+EDMQs1Fh1zowwr78V7ldph7jSS9ZSA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED75iVuZ6sdhgAJO5t0mhASL6J7FO8lEMIvBVZqyzVDq5kKdvQOqhhK9/VuIY1KdfA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "622a4c00-2e64-41fb-a9e2-cf071e103232",
+                            SecurityStamp = "2994d765-7e78-4d7b-bbe2-14841d5014c6",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -358,17 +361,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "d5af36cd-4630-454a-a9c4-b710639a180c",
+                            Id = "b8966187-4341-483d-833a-7d6b9438f90f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4969f3e3-b247-4d0f-afee-26e22bcf1034",
+                            ConcurrencyStamp = "7c80c36a-9e7d-4b65-85cb-2930cb2c680c",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOWZEyaLcISA/YvwpBOCi44hrpiO7rOESzCaJ07Eg0aaXcV41Rt9DuSouWXqiFjGtw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHDmPMsJ30NPfuxwTid2skYUmnpAbYGVDgO4B8CNyZrDehbx/ZLOOdgIyfpjSGfANw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f525d28-6376-4db1-8c98-7af0577416c6",
+                            SecurityStamp = "932b76ea-c227-47fa-8ca1-adddd422cc1a",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",

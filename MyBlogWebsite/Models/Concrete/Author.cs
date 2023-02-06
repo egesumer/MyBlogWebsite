@@ -4,7 +4,7 @@ namespace MyBlogWebsite.Models.Concrete
 {
     public class Author 
     {
-        public string Id { get; set; }
+        public int Id { get; set; } //string?
 
 		public string AuthorName { get; set; }
         public Author()

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlogWebsite.Areas.Identity.Data;
 
@@ -11,9 +12,10 @@ using MyBlogWebsite.Areas.Identity.Data;
 namespace MyBlogWebsite.Migrations
 {
     [DbContext(typeof(BlogWebsiteDbContext))]
-    partial class BlogWebsiteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230205235244_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2092aef4-0ce9-4680-83ea-f7bff65f68e6",
-                            ConcurrencyStamp = "39f33d74-ebe9-48bc-95fd-186c2e38b321",
+                            Id = "39bd9c43-435e-49f7-9bc3-87b42753713b",
+                            ConcurrencyStamp = "b9243e6e-9937-4705-8c51-2fb852fb2830",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "664f76e8-d64c-4afc-a128-ede063d53a64",
-                            ConcurrencyStamp = "a4183a57-e3b6-4150-9b13-b63bfd8c4669",
+                            Id = "750f2ed2-6050-4c8e-a57e-0ec8b567f076",
+                            ConcurrencyStamp = "d07ba8cf-fe58-4a1e-8b27-2305ee5bc2ae",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -191,7 +193,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7"
+                            UserId = "551fcb48-1799-431d-b43e-30a12f386bae"
                         });
                 });
 
@@ -236,13 +238,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7",
-                            RoleId = "2092aef4-0ce9-4680-83ea-f7bff65f68e6"
+                            UserId = "551fcb48-1799-431d-b43e-30a12f386bae",
+                            RoleId = "39bd9c43-435e-49f7-9bc3-87b42753713b"
                         },
                         new
                         {
-                            UserId = "d5af36cd-4630-454a-a9c4-b710639a180c",
-                            RoleId = "664f76e8-d64c-4afc-a128-ede063d53a64"
+                            UserId = "6dbdca6b-7b42-4225-99e2-2ddbe8158195",
+                            RoleId = "750f2ed2-6050-4c8e-a57e-0ec8b567f076"
                         });
                 });
 
@@ -316,7 +318,7 @@ namespace MyBlogWebsite.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId")
-                        .HasDatabaseName("AlternateKey_ApplicationUserId");
+                        .IsUnique();
 
                     b.ToTable("Authors");
                 });
@@ -340,17 +342,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2c8f61ae-4020-4faf-8be5-63e7bdfa98d7",
+                            Id = "551fcb48-1799-431d-b43e-30a12f386bae",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d7333b77-bd07-4c18-b149-e9dcd22e40a7",
+                            ConcurrencyStamp = "5b746602-0fe7-485e-8b67-d1fdd2461327",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBQfPonIlL54HpQPVOz5Kzr553JlPdufAyk+EDMQs1Fh1zowwr78V7ldph7jSS9ZSA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH5N2qrXIn08pTHuF6MeHFZUUXwpZRz3Vz5o4alZCa62ByMMf5dBarTrPO1rI4EELA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "622a4c00-2e64-41fb-a9e2-cf071e103232",
+                            SecurityStamp = "f76a93a6-9dc3-468e-a2c4-7072232ed5be",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -358,17 +360,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "d5af36cd-4630-454a-a9c4-b710639a180c",
+                            Id = "6dbdca6b-7b42-4225-99e2-2ddbe8158195",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4969f3e3-b247-4d0f-afee-26e22bcf1034",
+                            ConcurrencyStamp = "f36da922-37d3-427a-890f-b7c8e15058b2",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOWZEyaLcISA/YvwpBOCi44hrpiO7rOESzCaJ07Eg0aaXcV41Rt9DuSouWXqiFjGtw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAMt1kZoor+02h3ej6xWADS+RNY76GIV8x0VG+YB9UdsdjZcBYqVVpTcXpf419ofxA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f525d28-6376-4db1-8c98-7af0577416c6",
+                            SecurityStamp = "f775dc92-17af-4b96-9af5-bab140639a71",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",

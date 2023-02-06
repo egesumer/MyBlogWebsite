@@ -13,8 +13,8 @@ namespace MyBlogWebsite.Areas.Identity.Data
             builder.Property(x=>x.LastName).HasMaxLength(50).IsRequired();
             //builder.Property(x => x.Image);
 
-            builder.HasOne(x => x.Author).WithOne(x => x.ApplicationUser).HasForeignKey<Author>(k => k.ApplicationUserId); //AuthorID?
-
+            builder.HasOne(x => x.Author).WithOne(x => x.ApplicationUser).HasForeignKey<Author>(k => k.ApplicationUserId); 
+            
         }
     }
 }

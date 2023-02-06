@@ -12,8 +12,8 @@ using MyBlogWebsite.Areas.Identity.Data;
 namespace MyBlogWebsite.Migrations
 {
     [DbContext(typeof(BlogWebsiteDbContext))]
-    [Migration("20230205213138_init")]
-    partial class init
+    [Migration("20230206000843_init4")]
+    partial class init4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,15 +53,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0644590d-26ba-409c-8dd9-cd2c3968f4a1",
-                            ConcurrencyStamp = "032763cb-e7de-4d8f-95a7-04180b02261b",
+                            Id = "ebed7a7f-c6c2-4af2-887e-4f4cfead9fc7",
+                            ConcurrencyStamp = "a7acf69a-f97b-46fd-9a97-0d17229ad873",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "fbf5102a-b511-44fb-af21-e0932abb59db",
-                            ConcurrencyStamp = "fcac3d19-c04b-4f57-84a0-df9c22958735",
+                            Id = "1f457983-347c-4473-8914-c1bfac6449a6",
+                            ConcurrencyStamp = "d751f966-38df-436a-b149-acea04151ffa",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -193,7 +193,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "4712ffd7-f448-4892-b3c9-76a69690e047"
+                            UserId = "afeaa625-04e4-4542-b790-6e667523dd93"
                         });
                 });
 
@@ -238,13 +238,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "4712ffd7-f448-4892-b3c9-76a69690e047",
-                            RoleId = "0644590d-26ba-409c-8dd9-cd2c3968f4a1"
+                            UserId = "afeaa625-04e4-4542-b790-6e667523dd93",
+                            RoleId = "ebed7a7f-c6c2-4af2-887e-4f4cfead9fc7"
                         },
                         new
                         {
-                            UserId = "10905687-444f-4c86-94c3-389ae6915799",
-                            RoleId = "fbf5102a-b511-44fb-af21-e0932abb59db"
+                            UserId = "5686d1ee-c63c-4034-bce2-cbf6cef1d28c",
+                            RoleId = "1f457983-347c-4473-8914-c1bfac6449a6"
                         });
                 });
 
@@ -271,8 +271,8 @@ namespace MyBlogWebsite.Migrations
 
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.Article", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("ArticleLength")
                         .HasColumnType("nvarchar(max)");
@@ -281,9 +281,8 @@ namespace MyBlogWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("PublishDate")
                         .HasColumnType("datetime2");
@@ -301,8 +300,11 @@ namespace MyBlogWebsite.Migrations
 
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.Author", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
@@ -315,8 +317,8 @@ namespace MyBlogWebsite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId")
-                        .IsUnique();
+                    b.HasAlternateKey("ApplicationUserId")
+                        .HasName("AlternateKey_ApplicationUserId");
 
                     b.ToTable("Authors");
                 });
@@ -340,17 +342,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4712ffd7-f448-4892-b3c9-76a69690e047",
+                            Id = "afeaa625-04e4-4542-b790-6e667523dd93",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c231b414-4856-4ea2-816f-bbad51c99a72",
+                            ConcurrencyStamp = "053f3c97-074a-480e-b635-0d0dd64e14ab",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGKvUVZRxLdbD5a2TaY0O06ePJt7mCM0tebrPJsLj+b6/Yt26aViYGw1tSpmAlpJcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENf8fSZELwsXnYjVhE8K2o0AV6/T/BadD+hcmOk/IZ2zJWg8qVIR3aRbLCnwJNrztg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "44fa9d85-2968-4ec6-b615-7124f0a1d971",
+                            SecurityStamp = "7b6c54c3-40b5-4feb-9c41-ad96085ff410",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -358,17 +360,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "10905687-444f-4c86-94c3-389ae6915799",
+                            Id = "5686d1ee-c63c-4034-bce2-cbf6cef1d28c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2555f38e-d5fc-4b08-8a03-cb16d92cd86a",
+                            ConcurrencyStamp = "ae34911c-98b6-4af5-a311-0330284aa907",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFy3dYFbC9vAefxo5vZPBriMQbi8I7NavwsirmYaHdd72vBMOB100dlFi0XOWiySqw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENYmppgZUzQgWdElvsJOffH1/J1128VEb0iC6LUPehxXaKpYfY0LdejNO+vxRhn+pw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "969f4240-9769-4f5c-94ea-38f604983e70",
+                            SecurityStamp = "2af8d8d1-187d-4cc5-a94a-8a164c5bfa63",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",

@@ -16,7 +16,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Author> Authors { get; set; }
     public DbSet<Article> Articles { get; set; }
 
-    //public DbSet<ApplicationUser> Users { get; set; }
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
 
