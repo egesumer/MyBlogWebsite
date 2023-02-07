@@ -24,7 +24,10 @@ namespace MyBlogWebsite.Controllers
 		}
 
 
-
+		public IActionResult AuthorActivation()
+		{
+			return View();
+		}
 		// [Authorize(Policy = "AuthorConfirmation")]
 
 		[HttpPost]
@@ -38,7 +41,7 @@ namespace MyBlogWebsite.Controllers
 			authorRepository.Add(author);
 
 			TempData["Message"] = "Yazar kimliğiniz başarıyla oluşturuldu.";
-			return View();
+			return View(nameof(Index));
 
 		}
 

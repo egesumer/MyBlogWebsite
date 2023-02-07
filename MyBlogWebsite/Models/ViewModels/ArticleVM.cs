@@ -1,4 +1,6 @@
-﻿namespace MyBlogWebsite.Models.ViewModels
+﻿using Microsoft.Build.Framework;
+
+namespace MyBlogWebsite.Models.ViewModels
 {
     public class ArticleVM
     {

@@ -21,7 +21,7 @@
 <h1>Henüz makalen yok mu? Sorun değil.</h1>
 
     <div>
-    <form asp-action="Create" asp-controller="Article">
+    <form asp-action="Create" asp-controller="Article" method="get">
         <button type="submit" class="btn btn-success">Yeni Makale Oluştur</button>
     </form>
     </div>
@@ -41,7 +41,7 @@
         {
                 <tr>
                     <td>@article.ArticleTitle</td>
-                    <td>@article.ArticleLength</td>
+                    <td>@article.Content</td>
                     <td>@article.PublishDate</td>
                 </tr>
         }

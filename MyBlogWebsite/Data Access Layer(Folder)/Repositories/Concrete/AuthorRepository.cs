@@ -11,5 +11,10 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete
 		{
 			this.db = db;
 		}
-	}
+
+        public Author AuthorGetByStringId(string id)
+        {
+			return db.Authors.Where(x => x.ApplicationUserId == id).FirstOrDefault();
+        }
+    }
 }

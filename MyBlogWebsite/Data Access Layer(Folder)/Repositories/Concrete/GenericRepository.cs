@@ -50,6 +50,7 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete
 			return db.Set<T>().FirstOrDefault(x=> x.Id == id);	
 		}
 
+
 		public IEnumerable<T> GetWhere(Expression<Func<T, bool>> predicate)
 		{
 			return db.Set<T>().Where(predicate);

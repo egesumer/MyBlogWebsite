@@ -1,0 +1,29 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model ArticleVM
+@{
+	ViewData["Title"] = "Makale Oluştur";
+}
+
+<h2>Burası sizin yeni makale oluşturma sayfanız.</h2>
+<label>Yeni bir başlangıç yapın.</label>
+
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="ArticleTitle" class="control-label"></label>
+        <input type="text" class="form-control" name="ArticleTitle" >
+        <span asp-validation-for="ArticleTitle"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea class="form-control" name="ArticleDescription"></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary">
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Makalelerine dön</a>
+</div>
