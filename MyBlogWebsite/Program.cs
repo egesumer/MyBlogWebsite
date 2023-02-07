@@ -25,6 +25,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<BlogWebsiteDbContext>();
 
 
+
+
 builder.Services.Configure<IdentityOptions>(options => {
 	options.Password.RequireNonAlphanumeric = false;
 	options.Password.RequireUppercase = false;
