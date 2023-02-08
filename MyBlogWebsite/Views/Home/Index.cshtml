@@ -49,8 +49,8 @@
 			width: calc(100% - 300px);
 		}
 
-		.fakeimg {
-			background-color: #aaa;
+		.topics {
+			background-color: white;
 			width: 100%;
 			padding: 20px;
 		}
@@ -76,8 +76,8 @@
 			background: #f1f1f1;
 			margin-top: 20px;
 		}
-		
-		#renk{
+
+		#renk {
 			color: #fcc200;
 		}
 	</style>
@@ -85,38 +85,43 @@
 <body>
 
 	<div class="header">
-		<h2 style="text-shadow: 2px 2px gold;"><i>Racoes News Turkey</i></h2>
+		<h2 style="text-shadow: 2px 2px gold;"><i>Raco's Bilgi Evi</i></h2>
 	</div>
 	<section>
-	@foreach (var article in Model)
-	{
-		<div class="leftcolumn">
-			<div class="card">
-				<div class="title">
-					<h2 class="text-center" id="renk">@article.ArticleTitle</h2>
+		@foreach (var article in Model)
+		{
+			<div class="leftcolumn">
+				<div class="card">
+					<div class="title">
+						<h2 class="text-center" id="renk">@article.ArticleTitle</h2>
+					</div>
+
+					<p>@article.Content</p>
+
 				</div>
-
-				<p>@article.Content</p>
-
 			</div>
-		</div>
 
-	}
+		}
 	</section>
 	<div class="rightcolumn">
 		<div class="card">
-			<h2>Hakkımızda</h2>
-			<p>MVC Blog Projesi için yapılmıştır.</p>
+			<h2 class="text-center">Hakkımda</h2>
+			<br />
+			<p>Bu internet sayfası BilgeAdam Boost sürecinde final projesi öncesinde tasarlayıp kodladığım "Kişisel Blog" konulu bir MVC projesidir.</p>
 		</div>
 		<div class="card">
-			<h3>Trend olan Makaleler</h3>
-			<div class="fakeimg">Image</div><br>
-			<div class="fakeimg">Image</div><br>
-			<div class="fakeimg">Image</div>
+			<h3 class="text-center">Trend Konular</h3>
+			<br />
+			<div <a href="#" class="text-center btn-outline-warning"><strong>Bilim</strong></a></div><br>
+			<div <a href="#" class="text-center btn-outline-warning"><strong>Sanat</strong></a></div><br>
+			<div <a href="#" class="text-center btn-outline-warning"><strong>Tartışma</strong></a></div><br>
 		</div>
 		<div class="card">
-			<h3>Popüler Kullanıcılar</h3>
-			<p>kim var ki..</p>
+			<h3 class="text-center">Popüler Kullanıcılar</h3>
+			<br />
+			<div <a href="#" class="text-center btn-outline-secondary">Ege</a></div><br>
+			<div <a href="#" class="text-center btn-outline-secondary">Racos</a></div><br>
+			<div <a href="#" class="text-center btn-outline-secondary">Admin</a></div><br>
 		</div>
 	</div>
 	</div>
