@@ -207,8 +207,8 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "79cb6a8f-22ee-4a10-9944-943c5d12fde5", "f7c1ae41-7448-4a06-89df-f6a0ab55efc8", "standard", "STANDARD" },
-                    { "e659d139-840c-479a-bb17-8e9957c6358e", "322fe4f0-b007-4ebc-b746-140aab38748e", "admin", "ADMIN" }
+                    { "702d117c-88f5-46d5-9d61-c5b5db3ac108", "2e07863d-17bd-4324-a707-617e4758cece", "admin", "ADMIN" },
+                    { "c98aa1ab-13aa-4117-a0a2-7fd83053c91b", "20ac5fcf-5dc6-4672-921a-ffb7dcfc70f8", "standard", "STANDARD" }
                 });
 
             migrationBuilder.InsertData(
@@ -216,43 +216,43 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "54628772-765d-449b-9b94-7911f6e00c4e", 0, "654a2acc-8ca1-44e7-88b0-f6267d544885", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEIIvJ55U7ylYaZkUttFGZGwAzsNAT95CDBiQPZ9QxqJqS2g9pfQNz2Qku8dkNfevfg==", null, false, "6c077989-7091-4857-b964-2f2f5986b2ff", false, "admin" },
-                    { "5c74ba5d-9ae9-4eb5-9092-11178134c69d", 0, "6c2fe104-b582-45a1-b266-e8cd12517155", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAEPaBlJWqpkelHUtqXB3TC1RPFF7QwJdN1CJR7Gz5u2c3vL3bPU5iw499lS1Kob0i/Q==", null, false, "9da76ccf-898f-426d-aaed-0cb5a6893190", false, "test" }
+                    { "4010f570-3cb1-46db-b95a-97374d6f0aec", 0, "244502aa-7c33-4655-a9f1-9efa6319f1c6", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEBJLUx17XFH/sWu71KyNi74ffLNBxB0lx2AG177KVOPUeRoA6cldCPRNz3C49bemgQ==", null, false, "100ca499-854a-4ec5-bf57-07a2e6ffb808", false, "admin" },
+                    { "64ddc365-2ea5-4077-9845-acbb91058fd2", 0, "962d56bb-73db-45bc-ad0b-38f2bb195cd8", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAEGNVpZt695qdfG15FGgqD1puWRQ+qrkSI7V5Zs2rav6rK54BWK7VfK2QrMCzp6uQxQ==", null, false, "d0c06fd3-7bb6-4868-bc5f-91a06adc38bd", false, "test" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
-                values: new object[] { 1, "IsAdmin", "true", "54628772-765d-449b-9b94-7911f6e00c4e" });
+                values: new object[] { 1, "IsAdmin", "true", "4010f570-3cb1-46db-b95a-97374d6f0aec" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "e659d139-840c-479a-bb17-8e9957c6358e", "54628772-765d-449b-9b94-7911f6e00c4e" },
-                    { "79cb6a8f-22ee-4a10-9944-943c5d12fde5", "5c74ba5d-9ae9-4eb5-9092-11178134c69d" }
+                    { "702d117c-88f5-46d5-9d61-c5b5db3ac108", "4010f570-3cb1-46db-b95a-97374d6f0aec" },
+                    { "c98aa1ab-13aa-4117-a0a2-7fd83053c91b", "64ddc365-2ea5-4077-9845-acbb91058fd2" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "Id", "ApplicationUserId", "AuthorConfirmed", "AuthorName" },
-                values: new object[] { 1, "54628772-765d-449b-9b94-7911f6e00c4e", true, "Anasayfa Yazarı" });
+                values: new object[] { 1, "4010f570-3cb1-46db-b95a-97374d6f0aec", true, "Anasayfa Yazarı" });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleTitle", "AuthorId", "Content", "PublishDate", "RequiredMinuteToReadEntireArticle", "TotalReadCount" },
-                values: new object[] { 1, "Küresel İsınma: Neden ve Sonuçları", 1, "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.", new DateTime(2023, 2, 8, 23, 32, 20, 820, DateTimeKind.Local).AddTicks(4164), 2, 5 });
+                values: new object[] { 1, "Küresel Isınma - Nedenler ve Sonuçları", 1, "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.", new DateTime(2023, 2, 8, 23, 39, 13, 736, DateTimeKind.Local).AddTicks(431), 2, 5 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleTitle", "AuthorId", "Content", "PublishDate", "RequiredMinuteToReadEntireArticle", "TotalReadCount" },
-                values: new object[] { 2, "İstanbul Sanayi: Türkiye ve Dünya Ekonomisi İçin Önemli Bir Merkez", 1, "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.", new DateTime(2023, 2, 8, 23, 32, 20, 820, DateTimeKind.Local).AddTicks(4167), 2, 5 });
+                values: new object[] { 2, "İstanbul Sanayi - Türkiye ve Dünya Ekonomisi İçin Önemli Bir Merkez", 1, "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.", new DateTime(2023, 2, 8, 23, 39, 13, 736, DateTimeKind.Local).AddTicks(433), 2, 5 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleTitle", "AuthorId", "Content", "PublishDate", "RequiredMinuteToReadEntireArticle", "TotalReadCount" },
-                values: new object[] { 3, "Geridönüşüm: Hayatımız ve Dünyamız İçin Önemli Bir Adım", 1, "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.", new DateTime(2023, 2, 8, 23, 32, 20, 820, DateTimeKind.Local).AddTicks(4168), 2, 5 });
+                values: new object[] { 3, "Geridönüşüm - Hayatımız ve Dünyamız İçin Önemli Bir Adım", 1, "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.", new DateTime(2023, 2, 8, 23, 39, 13, 736, DateTimeKind.Local).AddTicks(435), 2, 5 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_AuthorId",

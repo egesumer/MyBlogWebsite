@@ -33,10 +33,20 @@ namespace MyBlogWebsite.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var user = await userManager.GetUserAsync(User);
-            var author = authorRepository.AuthorGetByStringId(user.Id);
-            var articles = articleRepository.GetAll().Where(x => x.AuthorId == author.Id);
-            return View(articles);
+
+            try
+            {
+                var user = await userManager.GetUserAsync(User);
+                var author = authorRepository.AuthorGetByStringId(user.Id);
+                var articles = articleRepository.GetAll().Where(x => x.AuthorId == author.Id);
+                return View(articles);
+            }
+            catch 
+            {
+
+                return View();
+            }
+        
         }
 
 
