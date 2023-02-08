@@ -11,5 +11,10 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete
 		{
 			this.db = db;
 		}
-	}
+
+        public List<Article> MostPopularArticles()
+        {
+			return db.Articles.OrderByDescending(x => x.TotalReadCount).Take(3).ToList();
+        }
+    }
 }

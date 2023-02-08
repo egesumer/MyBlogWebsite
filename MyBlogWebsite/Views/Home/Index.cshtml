@@ -1,123 +1,128 @@
-﻿@{
-    ViewData["Title"] = "Anasayfa";
+﻿@using MyBlogWebsite.Models.Concrete;
+@model List<Article>
+@{
+	ViewData["Title"] = "Anasayfa";
 }
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
 
-/* Add a gray background color with some padding */
-body {
-  font-family: Arial;
-  padding: 20px;
-  background: #f1f1f1;
-}
+		body {
+			font-family: Arial;
+			background: #f1f1f1;
+		}
 
-/* Header/Blog Title */
-.header {
-  padding: 30px;
-  font-size: 40px;
-  text-align: center;
-  background: white;
-}
+		.header {
+			padding: 30px;
+			font-size: 40px;
+			text-align: center;
+			background: white;
+		}
 
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {   
-  float: left;
-  width: 75%;
-}
+		.leftcolumn {
+			float: left;
+			width: 75%;
+			max-width: 1000px;
+		}
 
-/* Right column */
-.rightcolumn {
-  float: left;
-  width: 25%;
-  padding-left: 20px;
-}
+		.rightcolumn {
+			float: left;
+			width: 25%;
+			padding: 0px;
+			margin-top: -600px;
+		}
 
-/* Fake image */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
+		.title {
+			border-bottom: 1px solid black;
+			padding-bottom: 10px;
+			margin-bottom: 20px;
+		}
 
-/* Add a card effect for articles */
-.card {
-   background-color: white;
-   padding: 20px;
-   margin-top: 20px;
-}
+		.article-content {
+			width: calc(100% - 300px);
+		}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+		.fakeimg {
+			background-color: #aaa;
+			width: 100%;
+			padding: 20px;
+		}
 
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-  margin-top: 20px;
-}
+		.card {
+			background-color: whitesmoke;
+			padding: 20px;
+			margin-top: 20px;
+			max-width: 800px;
+			max-height: 350px;
+			overflow-y: auto;
+		}
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-</style>
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.footer {
+			padding: 20px;
+			text-align: center;
+			background: #f1f1f1;
+			margin-top: 20px;
+		}
+		
+		#renk{
+			color: #fcc200;
+		}
+	</style>
 </head>
 <body>
 
-<div class="header">
-  <h2>Racoes News Turkey</h2>
-</div>
+	<div class="header">
+		<h2 style="text-shadow: 2px 2px gold;"><i>Racoes News Turkey</i></h2>
+	</div>
+	<section>
+	@foreach (var article in Model)
+	{
+		<div class="leftcolumn">
+			<div class="card">
+				<div class="title">
+					<h2 class="text-center" id="renk">@article.ArticleTitle</h2>
+				</div>
 
-<div class="row">
-  <div class="leftcolumn">
-    <div class="card">
-      <h2>Makale - Küresel Isınma</h2>
-      <h5>Tarih, 07 Ocak 2023</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Açıklama</p>
-                <p>Yaygın kullanımda iklim değişikliği, küresel ısınmayı (küresel ortalama sıcaklıkta süregelen artış) ve bunun Dünya'nın iklim sistemi üzerindeki etkilerini tanımlamaktadır. Daha geniş anlamda iklim değişikliği, Dünya'nın iklimindeki önceki uzun vadeli değişiklikleri de içerir. Küresel ortalama sıcaklıktaki mevcut artış, önceki değişikliklerden daha hızlıdır ve esas olarak insanların fosil yakıtları yakmasından kaynaklanmaktadır.[2][3] Fosil yakıt kullanımı, ormansızlaşma ve bazı tarımsal ve endüstriyel uygulamalar, başta karbondioksit ve metan olmak üzere sera gazlarını artırmaktadır.[4] Sera gazları, Dünya'nın güneş ışığından ısındıktan sonra yaydığı ısının bir kısmını emer. Bu gazların daha büyük miktarları Dünya'nın alt atmosferinde daha fazla ısı tutarak küresel ısınmaya neden olur.</p>
-    </div>
-    <div class="card">
-      <h2>Makale - İklim Değişikliği</h2>
-      <h5>Tarih, 03 Eylül 2022</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Açıklama.</p>
-                <p>İklim değişikliği nedeniyle çöller genişlerken, sıcak hava dalgaları ve orman yangınları daha yaygın hale gelmektedir.[5] Kuzey Kutbu'nda artan ısınma donmuş toprakların erimesine, buzulların geri çekilmesine ve deniz buzu kaybına katkıda bulundu.[6] Daha yüksek sıcaklıklar aynı zamanda daha yoğun fırtınalara, kuraklıklara ve diğer aşırı hava koşullarına neden olmaktadır.[7] Dağlarda, mercan resiflerinde ve Kuzey Kutbu'nda yaşanan hızlı çevresel değişim, birçok canlı türünün yer değiştirmesine ya da neslinin tükenmesine neden olmaktadır.[8] Gelecekteki ısınmayı en aza indirme çabaları başarılı olsa bile, bazı etkiler yüzyıllar boyunca devam edecektir. Bunlar arasında okyanus ısınması, okyanus asitlenmesi ve deniz seviyesinin yükselmesi yer almaktadır.[9]</p>
-    </div>
-  </div>
-  <div class="rightcolumn">
-    <div class="card">
-      <h2>Hakkımızda</h2>
-      <div class="fakeimg" style="height:100px;">Image</div>
-      <p>MVC Blog Projesi için yapılmıştır.</p>
-    </div>
-    <div class="card">
-      <h3>Trend olan Makaleler</h3>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div>
-    </div>
-    <div class="card">
-      <h3>Popüler Kullanıcılar</h3>
-      <p>kim var ki..</p>
-    </div>
-  </div>
-</div>
+				<p>@article.Content</p>
 
-<div class="footer">
+			</div>
+		</div>
 
-</div>
+	}
+	</section>
+	<div class="rightcolumn">
+		<div class="card">
+			<h2>Hakkımızda</h2>
+			<p>MVC Blog Projesi için yapılmıştır.</p>
+		</div>
+		<div class="card">
+			<h3>Trend olan Makaleler</h3>
+			<div class="fakeimg">Image</div><br>
+			<div class="fakeimg">Image</div><br>
+			<div class="fakeimg">Image</div>
+		</div>
+		<div class="card">
+			<h3>Popüler Kullanıcılar</h3>
+			<p>kim var ki..</p>
+		</div>
+	</div>
+	</div>
+
+	<div class="footer">
+	</div>
 
 </body>
 </html>
