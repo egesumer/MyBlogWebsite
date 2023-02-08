@@ -22,18 +22,28 @@ namespace MyBlogWebsite.Controllers
             this.authorRepository= authorRepository;
         }
 
+        //public async Task<IActionResult> Index()
+        //{
+        //    var user = await userManager.GetUserAsync(User);
+        //    var articles = articleRepository.GetAll(); //düzenle ve sadece ilgili kullanıcının makalelerini getir.
+        //    return View(articles);
+
+        //    // Selectlist ile başka bir sayfaya veri göndermek ve makaleleri göstermek?
+        //}
+
         public async Task<IActionResult> Index()
         {
             var user = await userManager.GetUserAsync(User);
-            var articles = articleRepository.GetWhere(x => x.AuthorId == x.Id);
+            var author = authorRepository.AuthorGetByStringId(user.Id);
+            var articles = articleRepository.GetAll().Where(x => x.AuthorId == author.Id);
             return View(articles);
-
-            // Selectlist ile başka bir sayfaya veri göndermek ve makaleleri göstermek?
         }
+
 
         [HttpGet]
         public IActionResult Create()
         {
+            ArticleVM vm = new ArticleVM();
             return View();
         }
 
@@ -52,7 +62,7 @@ namespace MyBlogWebsite.Controllers
             article.Content = model.Content;
             article.PublishDate= DateTime.Now;
             article.RequiredMinuteToReadEntireArticle = 1;
-            article.RequiredMinuteToReadEntireArticle = 1;
+            article.TotalReadCount = 1;
             articleRepository.Add(article);
             return View(nameof(Index));
         }

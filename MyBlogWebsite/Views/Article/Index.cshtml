@@ -2,8 +2,7 @@
 
 @model IEnumerable<Article>
 
-
-<style>
+    <style>
 .rightcolumn {
   float: left;
   width: 25%;
@@ -16,24 +15,17 @@
 }
 </style>
 
-<h2>Makalelerim</h2>
 
-<h1>Henüz makalen yok mu? Sorun değil.</h1>
-
-    <div>
-    <form asp-action="Create" asp-controller="Article" method="get">
-        <button type="submit" class="btn btn-success">Yeni Makale Oluştur</button>
-    </form>
-    </div>
-
-
-<div class="card">
+@if (Model != null)
+{
+    <h2>Makalelerim</h2>
+  <div class="card">
 <table>
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Date</th>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>Oluşturma Tarihi</th>
         </tr>
     </thead>
     <tbody>
@@ -48,3 +40,27 @@
     </tbody>
 </table>
 </div>
+    <div>
+        <form asp-action="Create" asp-controller="Article" method="get">
+            <button type="submit" class="btn btn-success">Yeni Makale Oluştur</button>
+        </form>
+    </div>
+}
+else
+{
+    <h1>Henüz makalen yok mu? Sorun değil.</h1>
+            <div>
+        <form asp-action="Create" asp-controller="Article" method="get">
+            <button type="submit" class="btn btn-success">İlk Makaleni Oluştur</button>
+        </form>
+            </div>
+}
+
+
+
+
+
+
+
+
+
