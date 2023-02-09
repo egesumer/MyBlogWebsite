@@ -20,6 +20,7 @@
 			background: #f1f1f1;
 			height: 100%;
 			overflow: scroll;
+
 		}
 
 		.header {
@@ -82,7 +83,7 @@
 		}
 
 		#renk {
-			color: #fcc200;
+			color: #001f3f;
 		}
 
 		#trends{
@@ -90,7 +91,7 @@
 			
 			color: red;
 		}
-
+		
 	</style>
 </head>
 <body>
@@ -148,7 +149,7 @@
 			<div class="card">
 				<h2 class="text-center">Hakkımda</h2>
 				<br />
-				<p>Bu internet sayfası BilgeAdam Boost sürecinde final projesi öncesinde tasarlayıp kodladığım "Kişisel Blog" konulu bir MVC projesidir.</p>
+				<p><i>Bu internet sayfası BilgeAdam Boost sürecinde final projesi öncesinde tasarlayıp kodladığım "Kişisel Blog" konulu bir MVC projesidir.</i></p>
 			</div>
 
 			<div class="card">
@@ -158,7 +159,7 @@
 
 				@foreach (var topic in Model.Categories)
 				{
-					<div id="trends"> <button href="#" id="trends"class="text-center btn-outline-warning">@topic.CategoryName</button></div>
+					<div id="trends"> <a id="trends" class="text-center btn btn-outline-warning"asp-route-id="@topic.Id" asp-controller="Category" asp-action="Index">@topic.CategoryName</a></div>
 					<br>
 				}
 			</div>
