@@ -12,7 +12,7 @@ using MyBlogWebsite.Areas.Identity.Data;
 namespace MyBlogWebsite.Migrations
 {
     [DbContext(typeof(BlogWebsiteDbContext))]
-    [Migration("20230208203913_init")]
+    [Migration("20230209164339_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,15 +53,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "702d117c-88f5-46d5-9d61-c5b5db3ac108",
-                            ConcurrencyStamp = "2e07863d-17bd-4324-a707-617e4758cece",
+                            Id = "bfc08255-5e04-4693-bcd2-2033a3839055",
+                            ConcurrencyStamp = "6dbb19f3-d9f4-4a0b-9687-a806ffb88f74",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c98aa1ab-13aa-4117-a0a2-7fd83053c91b",
-                            ConcurrencyStamp = "20ac5fcf-5dc6-4672-921a-ffb7dcfc70f8",
+                            Id = "234fdb83-95d6-4b0c-9295-c233c46b1f46",
+                            ConcurrencyStamp = "22e2e335-ba56-4fb5-baf4-2c06074a1191",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -193,7 +193,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "4010f570-3cb1-46db-b95a-97374d6f0aec"
+                            UserId = "80eff7c0-0381-45a5-90bb-e3abe7ef1685"
                         });
                 });
 
@@ -238,13 +238,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "4010f570-3cb1-46db-b95a-97374d6f0aec",
-                            RoleId = "702d117c-88f5-46d5-9d61-c5b5db3ac108"
+                            UserId = "80eff7c0-0381-45a5-90bb-e3abe7ef1685",
+                            RoleId = "bfc08255-5e04-4693-bcd2-2033a3839055"
                         },
                         new
                         {
-                            UserId = "64ddc365-2ea5-4077-9845-acbb91058fd2",
-                            RoleId = "c98aa1ab-13aa-4117-a0a2-7fd83053c91b"
+                            UserId = "c8defcb2-c29c-4723-b9d4-61c2cb7b4b22",
+                            RoleId = "234fdb83-95d6-4b0c-9295-c233c46b1f46"
                         });
                 });
 
@@ -284,6 +284,9 @@ namespace MyBlogWebsite.Migrations
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -301,6 +304,8 @@ namespace MyBlogWebsite.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Articles");
 
                     b.HasData(
@@ -309,8 +314,9 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ArticleTitle = "Küresel Isınma - Nedenler ve Sonuçları",
                             AuthorId = 1,
+                            CategoryId = 4,
                             Content = "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.",
-                            PublishDate = new DateTime(2023, 2, 8, 23, 39, 13, 736, DateTimeKind.Local).AddTicks(431),
+                            PublishDate = new DateTime(2023, 2, 9, 19, 43, 39, 135, DateTimeKind.Local).AddTicks(4782),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -319,8 +325,9 @@ namespace MyBlogWebsite.Migrations
                             Id = 2,
                             ArticleTitle = "İstanbul Sanayi - Türkiye ve Dünya Ekonomisi İçin Önemli Bir Merkez",
                             AuthorId = 1,
+                            CategoryId = 5,
                             Content = "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.",
-                            PublishDate = new DateTime(2023, 2, 8, 23, 39, 13, 736, DateTimeKind.Local).AddTicks(433),
+                            PublishDate = new DateTime(2023, 2, 9, 19, 43, 39, 135, DateTimeKind.Local).AddTicks(4786),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -329,8 +336,9 @@ namespace MyBlogWebsite.Migrations
                             Id = 3,
                             ArticleTitle = "Geridönüşüm - Hayatımız ve Dünyamız İçin Önemli Bir Adım",
                             AuthorId = 1,
+                            CategoryId = 3,
                             Content = "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.",
-                            PublishDate = new DateTime(2023, 2, 8, 23, 39, 13, 736, DateTimeKind.Local).AddTicks(435),
+                            PublishDate = new DateTime(2023, 2, 9, 19, 43, 39, 135, DateTimeKind.Local).AddTicks(4788),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         });
@@ -367,9 +375,99 @@ namespace MyBlogWebsite.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "4010f570-3cb1-46db-b95a-97374d6f0aec",
+                            ApplicationUserId = "80eff7c0-0381-45a5-90bb-e3abe7ef1685",
                             AuthorConfirmed = true,
                             AuthorName = "Anasayfa Yazarı"
+                        });
+                });
+
+            modelBuilder.Entity("MyBlogWebsite.Models.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Adalet"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Bilim"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryName = "Çevre"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryName = "Dünya"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryName = "Ekonomi"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryName = "Enerji"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryName = "Finans"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryName = "Genetik"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryName = "Haberleşme"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryName = "İnsanlar"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryName = "Kültür"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryName = "Sanat"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryName = "Sağlık"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryName = "Teknoloji"
                         });
                 });
 
@@ -392,17 +490,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4010f570-3cb1-46db-b95a-97374d6f0aec",
+                            Id = "80eff7c0-0381-45a5-90bb-e3abe7ef1685",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "244502aa-7c33-4655-a9f1-9efa6319f1c6",
+                            ConcurrencyStamp = "30aca112-3457-4108-8f25-f67e849cfaea",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBJLUx17XFH/sWu71KyNi74ffLNBxB0lx2AG177KVOPUeRoA6cldCPRNz3C49bemgQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDrrqawjDSXgPuY0kZDJ9POrwNv+cejCW3dCOVAShovjLPHEF9v0vqOnIvDkf49ygA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "100ca499-854a-4ec5-bf57-07a2e6ffb808",
+                            SecurityStamp = "5bc7b78f-24e2-42b4-9f40-de0be7fd073f",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -410,17 +508,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "64ddc365-2ea5-4077-9845-acbb91058fd2",
+                            Id = "c8defcb2-c29c-4723-b9d4-61c2cb7b4b22",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "962d56bb-73db-45bc-ad0b-38f2bb195cd8",
+                            ConcurrencyStamp = "19da9941-ef89-43ea-bd79-7efa8e4e0ea9",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGNVpZt695qdfG15FGgqD1puWRQ+qrkSI7V5Zs2rav6rK54BWK7VfK2QrMCzp6uQxQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI/6mNkXdFmPHQ75HjaUer3yd6EqXhlyWG69gqHeUU2+C2ooJvrz/vEpdX16r8ikqA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d0c06fd3-7bb6-4868-bc5f-91a06adc38bd",
+                            SecurityStamp = "e4700549-8d7f-40f5-9f67-7e4024576c9c",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",
@@ -487,7 +585,15 @@ namespace MyBlogWebsite.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MyBlogWebsite.Models.Entities.Category", "Category")
+                        .WithMany("Articles")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Author");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.Author", b =>
@@ -502,6 +608,11 @@ namespace MyBlogWebsite.Migrations
                 });
 
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.Author", b =>
+                {
+                    b.Navigation("Articles");
+                });
+
+            modelBuilder.Entity("MyBlogWebsite.Models.Entities.Category", b =>
                 {
                     b.Navigation("Articles");
                 });

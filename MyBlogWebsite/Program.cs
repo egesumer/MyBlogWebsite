@@ -4,6 +4,8 @@ using MyBlogWebsite.Areas.Identity.Data;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract;
+using MyBlogWebsite.Data_Access_Folder.Repositories.Abstract;
+using MyBlogWebsite.Data_Access_Folder.Repositories.Concrete;
 //using MyBlogWebsite.Data_Access_Layer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ var connectionString = builder.Configuration.GetConnectionString("BlogWebsiteDbC
 builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
 builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(connectionString));

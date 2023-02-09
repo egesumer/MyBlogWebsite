@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MyBlogWebsite.Data_Access_Folder.EntityConfigurations;
 using MyBlogWebsite.Data_Access_Layer_Folder_.EntityConfigurations;
 using MyBlogWebsite.Models.Concrete;
+using MyBlogWebsite.Models.Entities;
 
 namespace MyBlogWebsite.Areas.Identity.Data;
 
@@ -27,6 +29,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
         builder.ApplyConfiguration(new AuthorEntityConfiguration());
         builder.ApplyConfiguration(new ArticleEntityConfiguration());
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
+        builder.ApplyConfiguration(new CategoryEntityConfiguration());
 
 
 
@@ -133,7 +136,56 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
             ClaimValue = "true",
         });
 
-
+        #region Kategori Oluşturma
+        builder.Entity<Category>().HasData(new Category { 
+        Id = 1, CategoryName = "Adalet"
+        },
+        new Category { Id = 2, CategoryName = "Bilim"
+        },new Category
+        {
+            Id = 3, CategoryName = "Çevre"
+        }, new Category {
+        Id = 4, CategoryName = "Dünya"
+        }, new Category
+        {
+            Id = 5,
+            CategoryName = "Ekonomi"
+        }, new Category
+        {
+            Id = 6, CategoryName = "Enerji"
+        }, new Category
+        {
+            Id = 7,
+            CategoryName = "Finans"
+        }, new Category
+        {
+            Id = 8,
+            CategoryName = "Genetik"
+        }, new Category
+        {
+            Id = 9,
+            CategoryName = "Haberleşme"
+        }, new Category
+        {
+            Id = 10,
+            CategoryName = "İnsanlar"
+        }, new Category
+        {
+            Id = 11,
+            CategoryName = "Kültür"
+        }, new Category
+        {
+            Id = 12,
+            CategoryName = "Sanat"
+        }, new Category
+        {
+            Id = 13, CategoryName ="Sağlık"
+        },
+        new Category
+        {
+            Id = 14, CategoryName="Teknoloji"
+        });
+        #endregion
 
         builder.Entity<Author>().HasData(new Author
         {
@@ -148,6 +200,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
         {
             Id= 1,
             AuthorId = 1,
+            CategoryId = 4,
             PublishDate= DateTime.Now,
             RequiredMinuteToReadEntireArticle =2,
             TotalReadCount = 5,
@@ -158,6 +211,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
         {
 			Id = 2,
 			AuthorId = 1,
+            CategoryId = 5,
 			PublishDate = DateTime.Now,
 			RequiredMinuteToReadEntireArticle = 2,
 			TotalReadCount = 5,
@@ -168,6 +222,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
         {
 			Id = 3,
 			AuthorId = 1,
+            CategoryId = 3,
 			PublishDate = DateTime.Now,
 			RequiredMinuteToReadEntireArticle = 2,
 			TotalReadCount = 5,
