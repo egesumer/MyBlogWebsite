@@ -20,10 +20,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="btn btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="btn btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-warning" asp-area="" asp-controller="Home" asp-action="Privacy">İletişim</a>
+                            <a class="btn btn-outline-light" asp-area="" asp-controller="Home" asp-action="Privacy">İletişim</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -32,7 +32,7 @@
                                </li>
                              
                             <li class="nav-item">
-                                <a class="btn btn-outline-warning" asp-area="" asp-controller="Article" asp-action="Index">Makale Oluştur</a>
+                                <a class="btn btn-outline-warning" asp-area="" asp-controller="Article" asp-action="Index">Makaleler</a>
                             </li>
 
                         }
