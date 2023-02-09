@@ -20,7 +20,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

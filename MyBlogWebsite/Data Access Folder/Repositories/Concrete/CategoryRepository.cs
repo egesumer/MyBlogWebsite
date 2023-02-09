@@ -12,5 +12,10 @@ namespace MyBlogWebsite.Data_Access_Folder.Repositories.Concrete
         {
             this.db = db;
         }
+
+        public List<Category> GetCategories()
+        {
+          return db.Categories.ToList();
+        }
     }
 }
