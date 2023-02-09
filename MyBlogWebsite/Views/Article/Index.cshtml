@@ -2,6 +2,13 @@
 
 @model IEnumerable<Article>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
 <style>
     .card {
         background-color: ivory;
@@ -48,16 +55,15 @@
         color: gold
     }
 </style>
-@if (Model == null)
+@if (Model == null || !Model.Any())
 {
     <h2>Bir makalen yok gibi görünüyor, sorun değil. Hemen oluşturabilirsin..</h2>
     <div class="col-md-12 text-right">
-        <a asp-action="Create" asp-controller="Article" class="btn btn-outline-warning form-control-color">İlk Makaleni Oluştur</a>
+        <a asp-action="Create" asp-controller="Article" class="btn btn-outline-warning">İlk Makaleni Oluştur</a>
     </div>
 }
 else
 {
-
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">

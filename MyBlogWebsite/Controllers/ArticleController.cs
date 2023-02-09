@@ -74,7 +74,8 @@ namespace MyBlogWebsite.Controllers
             article.RequiredMinuteToReadEntireArticle = 1;
             article.TotalReadCount = 1;
             articleRepository.Add(article);
-            return View(nameof(Index));
+            TempData["Message"] = "Makaleniz başarıyla paylaşıldı.";
+            return RedirectToAction("Index", "Article");
         }
 
     }
