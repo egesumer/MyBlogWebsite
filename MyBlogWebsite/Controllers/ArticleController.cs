@@ -8,75 +8,107 @@ using MyBlogWebsite.Models.ViewModels;
 
 namespace MyBlogWebsite.Controllers
 {
-    public class ArticleController : Controller
-    {
-        private readonly IAuthorRepository authorRepository;
+	public class ArticleController : Controller
+	{
+		private readonly IAuthorRepository authorRepository;
 
-        private readonly IRepository<Article> articleRepository;
-        private readonly UserManager<IdentityUser> userManager;
+		private readonly IRepository<Article> articleRepository;
+		private readonly UserManager<IdentityUser> userManager;
 
-        public ArticleController(IRepository<Article> articleRepository, UserManager<IdentityUser> userManager, IAuthorRepository authorRepository)
-        {
-            this.articleRepository = articleRepository;
-            this.userManager = userManager;
-            this.authorRepository= authorRepository;
-        }
+		public ArticleController(IRepository<Article> articleRepository, UserManager<IdentityUser> userManager, IAuthorRepository authorRepository)
+		{
+			this.articleRepository = articleRepository;
+			this.userManager = userManager;
+			this.authorRepository = authorRepository;
+		}
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var user = await userManager.GetUserAsync(User);
-        //    var articles = articleRepository.GetAll(); //düzenle ve sadece ilgili kullanıcının makalelerini getir.
-        //    return View(articles);
+		//public async Task<IActionResult> Index()
+		//{
+		//    var user = await userManager.GetUserAsync(User);
+		//    var articles = articleRepository.GetAll(); //düzenle ve sadece ilgili kullanıcının makalelerini getir.
+		//    return View(articles);
 
-        //    // Selectlist ile başka bir sayfaya veri göndermek ve makaleleri göstermek?
-        //}
+		//    // Selectlist ile başka bir sayfaya veri göndermek ve makaleleri göstermek?
+		//}
 
-        public async Task<IActionResult> Index()
-        {
+		public async Task<IActionResult> Index()
+		{
 
-            try
-            {
-                var user = await userManager.GetUserAsync(User);
-                var author = authorRepository.AuthorGetByStringId(user.Id);
-                var articles = articleRepository.GetAll().Where(x => x.AuthorId == author.Id);
-                return View(articles);
-            }
-            catch 
-            {
-
-                return View();
-            }
-        
-        }
+			var user = await userManager.GetUserAsync(User);
+			var author = authorRepository.AuthorGetByStringId(user.Id);
+			var articles = articleRepository.GetAll().Where(x => x.AuthorId == author.Id);
+			return View(articles);
 
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            ArticleVM vm = new ArticleVM();
-            return View();
-        }
+		}
 
-        [HttpPost]
-        public async Task<IActionResult> Create(ArticleVM model) 
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            var user = await userManager.GetUserAsync(User);
-            Author author = authorRepository.AuthorGetByStringId(user.Id);
-            Article article = new Article();
-            article.AuthorId = author.Id;
-            article.ArticleTitle = model.ArticleTitle;
-            article.Content = model.Content;
-            article.PublishDate= DateTime.Now;
-            article.RequiredMinuteToReadEntireArticle = 1;
-            article.TotalReadCount = 1;
-            articleRepository.Add(article);
-            TempData["Message"] = "Makaleniz başarıyla paylaşıldı.";
-            return RedirectToAction("Index", "Article");
-        }
 
-    }
+		[HttpGet]
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Create(ArticleVM model)
+		{
+
+			if (!ModelState.IsValid)
+			{
+				return View();
+			}
+			var user = await userManager.GetUserAsync(User);
+			Author author = authorRepository.AuthorGetByStringId(user.Id);
+			Article article = new Article();
+			article.AuthorId = author.Id;
+			article.ArticleTitle = model.ArticleTitle;
+			article.Content = model.Content;
+			article.PublishDate = DateTime.Now;
+			article.RequiredMinuteToReadEntireArticle = RequiredMinsToRead(model.Content);
+			article.TotalReadCount = 1;
+			article.CategoryId = 2;				//		Yazar tarafından belirlenecek.
+			articleRepository.Add(article);
+			TempData["Message"] = "Makaleniz başarıyla paylaşıldı.";
+			return RedirectToAction("Index", "Article");
+		}
+
+		public int RequiredMinsToRead(string content)
+		{
+			int calculatedMinute;
+			if (content.Length <= 100)
+			{
+				return calculatedMinute = 1;
+			}
+			if (content.Length > 100 && content.Length <= 300)
+			{
+				return calculatedMinute = 2;
+			}
+			if (content.Length > 300 && content.Length >= 500)
+			{
+				return calculatedMinute = 3;
+			}
+			if (content.Length > 500 && content.Length >= 700)
+			{
+				return calculatedMinute = 4;
+			}
+			if (content.Length > 700 && content.Length >= 900)
+			{
+				return calculatedMinute = 5;
+			}
+			if (content.Length > 900 && content.Length >= 1100)
+			{
+				return calculatedMinute = 6;
+			}
+			if (content.Length > 1100 && content.Length >= 1300)
+			{
+				return calculatedMinute = 7;
+			}
+			else
+			{
+				return calculatedMinute = 10;
+			}
+		}
+
+
+	}
 }
