@@ -20,7 +20,6 @@
 			background: #f1f1f1;
 			height: 100%;
 			overflow: scroll;
-
 		}
 
 		.header {
@@ -86,12 +85,32 @@
 			color: #001f3f;
 		}
 
-		#trends{
+		#trends {
 			text-align: center;
-			
 			color: red;
 		}
-		
+
+
+		.kart-title {
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.kart-content {
+			font-size: 18px;
+			margin-top: 20px;
+			text-align: center;
+		}
+
+		.kart-details-button {
+			margin-top: 20px;
+			display: flex;
+			justify-content: flex-end;
+			text-align: right;
+		}
+
 	</style>
 </head>
 <body>
@@ -107,14 +126,20 @@
 			@foreach (var article in Model.Articles)
 			{
 				<div class="leftcolumn">
-					<div class="card">
-						<div class="title">
-							<h2 class="text-center" id="renk">@article.ArticleTitle</h2>
+
+
+					<div class="card mb-3" style="width: 45rem;">
+						<div class="card-body">
+							<h5 class="kart-title">@article.ArticleTitle</h5>
+							<hr style="width: 50%; margin: 0 auto 20px;">
+							<p class="kart-content">@(article.Content.Length > 250 ? article.Content.Substring(0, 250) + "..." : article.Content)</p>
+							<br >
+							<div class="kart-details-button">
+								<a asp-action="Inspect" asp-controller="Article" asp-route-id="@article.Id" class="btn btn-outline-warning"><i>Makalenin Detayını Gör</i></a>
+							</div>
 						</div>
-
-						<p>@article.Content</p>
-
 					</div>
+					
 				</div>
 
 			}
@@ -153,13 +178,13 @@
 			</div>
 
 			<div class="card">
-				
+
 				<h3 class="text-center">Trend Konular</h3>
 				<br />
 
 				@foreach (var topic in Model.Categories)
 				{
-					<div id="trends"> <a id="trends" class="text-center btn btn-outline-warning"asp-route-id="@topic.Id" asp-controller="Category" asp-action="Index">@topic.CategoryName</a></div>
+					<div id="trends"> <a id="trends" class="text-center btn btn-outline-warning" asp-route-id="@topic.Id" asp-controller="Category" asp-action="Index">@topic.CategoryName</a></div>
 					<br>
 				}
 			</div>

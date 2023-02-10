@@ -1,0 +1,35 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model ArticleVM
+
+
+<style>
+    .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .card-title-line {
+        border-bottom: 2px solid #000;
+        width: 50px;
+        margin: 0 auto 20px;
+    }
+    .card-content {
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    </style>
+<div class="card mb-3" style="width: 38rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.ArticleTitle</h5>
+        <div class="card-title-line"></div>
+        <p class="card-content">@Model.Content</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>@Model.AuthorName</strong> tarafından yazılmıştır.</li>
+        <li class="list-group-item">Toplam <strong>@Model.TotalReadCount</strong> kez okunmuştur.</li>
+        <li class="list-group-item"><strong>@Model.PublishDate.ToString("dd-MM-yyyy")</strong> tarihinde yayınlanmıştır.</li>
+        <li class="list-group-item">Makaleyi yaklaşık <strong>@Model.RequiredMinsToRead</strong> dakika içinde okuyabilirsiniz.</li>
+    </ul>
+</div>

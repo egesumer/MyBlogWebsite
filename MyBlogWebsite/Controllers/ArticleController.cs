@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MyBlogWebsite.Data_Access_Folder.Repositories.Abstract;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete;
@@ -11,15 +13,16 @@ namespace MyBlogWebsite.Controllers
 	public class ArticleController : Controller
 	{
 		private readonly IAuthorRepository authorRepository;
-
+		private readonly ICategoryRepository categoryRepository;
 		private readonly IRepository<Article> articleRepository;
 		private readonly UserManager<IdentityUser> userManager;
 
-		public ArticleController(IRepository<Article> articleRepository, UserManager<IdentityUser> userManager, IAuthorRepository authorRepository)
+		public ArticleController(IRepository<Article> articleRepository, UserManager<IdentityUser> userManager, IAuthorRepository authorRepository, ICategoryRepository categoryRepository)
 		{
 			this.articleRepository = articleRepository;
 			this.userManager = userManager;
 			this.authorRepository = authorRepository;
+			this.categoryRepository = categoryRepository;
 		}
 
 		//public async Task<IActionResult> Index()
@@ -31,6 +34,7 @@ namespace MyBlogWebsite.Controllers
 		//    // Selectlist ile başka bir sayfaya veri göndermek ve makaleleri göstermek?
 		//}
 
+		[Authorize]
 		public async Task<IActionResult> Index()
 		{
 
@@ -46,11 +50,14 @@ namespace MyBlogWebsite.Controllers
 		[HttpGet]
 		public IActionResult Create()
 		{
-			return View();
+			ArticleCreateVM vm = new ArticleCreateVM();
+			vm.Categories = categoryRepository.GetAll();
+
+			return View(vm);
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create(ArticleVM model)
+		public async Task<IActionResult> Create(ArticleCreateVM model)
 		{
 
 			if (!ModelState.IsValid)
@@ -64,15 +71,47 @@ namespace MyBlogWebsite.Controllers
 			article.ArticleTitle = model.ArticleTitle;
 			article.Content = model.Content;
 			article.PublishDate = DateTime.Now;
-			article.RequiredMinuteToReadEntireArticle = RequiredMinsToRead(model.Content);
+			article.RequiredMinuteToReadEntireArticle = CalculateRequiredMinsToReadArticle(model.Content);
 			article.TotalReadCount = 1;
-			article.CategoryId = 2;				//		Yazar tarafından belirlenecek.
+			article.CategoryId = model.SelectedCategoryId;				//		Yazar tarafından belirlenecek.
 			articleRepository.Add(article);
 			TempData["Message"] = "Makaleniz başarıyla paylaşıldı.";
 			return RedirectToAction("Index", "Article");
 		}
 
-		public int RequiredMinsToRead(string content)
+		public IActionResult Inspect(int id)
+		{
+			Article article = articleRepository.GetByID(id);
+			ArticleVM vm = new ArticleVM();
+
+
+			vm.ArticleTitle = article.ArticleTitle;
+			vm.Content = article.Content;
+			vm.PublishDate = (DateTime)article.PublishDate;
+			vm.AuthorName = "DenemeYazar";
+			vm.TotalReadCount = (int)article.TotalReadCount;
+			vm.RequiredMinsToRead = (int)article.RequiredMinuteToReadEntireArticle;
+
+			article.TotalReadCount++;
+			articleRepository.Update(article);
+			return View(vm);
+		}
+
+		public IActionResult Delete(int id)
+		{
+			Article article = articleRepository.GetByID(id);
+			articleRepository.Delete(article);
+			TempData["DeleteMessage"] = "Makaleniz silindi.";
+			return RedirectToAction("Index", "Article");
+		}
+
+
+		/// <summary>
+		/// Makalenin uzunluğuna göre ortalama tahmini bir okunma süresi belirler.
+		/// </summary>
+		/// <param name="content"></param>
+		/// <returns></returns>
+		public int CalculateRequiredMinsToReadArticle(string content)
 		{
 			int calculatedMinute;
 			if (content.Length <= 100)

@@ -6,31 +6,26 @@
 
 @if (Model.Any(x => x.Content != null))
 {
-	<table>
-		<thead>
-			<tr>
-				<th>Başlık</th>
-				<th>İçerik</th>
-				<th>Yazar</th>
-				<th>Oluşturulma Tarihi</th>
-				<th>Görüntülenme Sayısı</th>
-				<th>Ortalama Okunma Süresi</th>
-			</tr>
-		</thead>
-		<tbody>
+	<div class="row">
 			@foreach (var article in Model)
 			{
-				<tr>
-					<td>@article.ArticleTitle</td>
-					<td>@article.Content</td>
-					<td>@article.Author</td>
-					<td>@article.PublishDate</td>
-					<td>@article.TotalReadCount</td>
-					<td>@article.RequiredMinuteToReadEntireArticle</td>
-				</tr>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">@article.ArticleTitle</h4>
+						</div>
+						<div class="card-body">
+							<p class="kart-content">@(article.Content.Length > 250 ? article.Content.Substring(0, 250) + "..." : article.Content)</p>
+							<p class="card-info">
+								Görüntülenme Sayısı: @article.TotalReadCount<br>Ortalama Okuma Süresi: @article.RequiredMinuteToReadEntireArticle
+							</p>
+
+							<a asp-action="Inspect" asp-controller="Article" asp-route-id="@article.Id" class="btn btn-outline-dark read-more-btn">İlgili Makaleye Git</a>
+						</div>
+					</div>
+				</div>
 			}
-		</tbody>
-	</table>
+		</div>
 }
 else
 {

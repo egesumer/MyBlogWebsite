@@ -4,90 +4,102 @@
 
 @if (TempData["Message"] != null)
 {
-    <div class="alert alert-success">
-        @TempData["Message"]
-    </div>
+	<div class="alert alert-success">
+		@TempData["Message"]
+	</div>
+}
+
+@if (TempData["DeleteMessage"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["DeleteMessage"]
+	</div>
 }
 
 <style>
-    .card {
-        background-color: ivory;
-        padding: 20px;
-        margin-top: 20px;
-        width: 100%;
-        text-align: center;
-    }
+	.card {
+		background-color: ivory;
+		padding: 20px;
+		margin-top: 20px;
+		width: 100%;
+		text-align: center;
+	}
 
-    .card-header {
-        background-color: palegoldenrod;
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
-    }
+	.card-header {
+		background-color: palegoldenrod;
+		padding: 10px;
+		border-radius: 10px 10px 0 0;
+	}
 
-    .card-body {
-        padding: 10px;
-    }
+	.card-body {
+		padding: 10px;
+	}
 
-    .card-title {
-        font-weight: bold;
-        font-size: large;
-        margin-bottom: 10px;
-    }
+	.card-title {
+		font-weight: bold;
+		font-size: large;
+		margin-bottom: 10px;
+	}
 
-    .card-text {
-        text-align: justify;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 5; /* number of lines to show */
-        -webkit-box-orient: vertical;
-    }
+	.card-text {
+		text-align: justify;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 5; 
+		-webkit-box-orient: vertical;
+	}
 
-    .card-info {
-        font-size: small;
-        color: gray;
-        margin-top: 10px;
-    }
+	.card-info {
+		font-size: small;
+		color: gray;
+		margin-top: 10px;
+	}
 
-    .read-more-btn {
-        margin-top: 10px;
-        margin-right: 190px;
-        color: gold
-    }
+	.read-more-btn {
+		margin-top: 10px;
+		margin-right: 190px;
+		color: gold
+	}
 </style>
 @if (Model == null || !Model.Any())
 {
-    <h2>Bir makalen yok gibi görünüyor, sorun değil. Hemen oluşturabilirsin..</h2>
-    <div class="col-md-12 text-right">
-        <a asp-action="Create" asp-controller="Article" class="btn btn-outline-warning">İlk Makaleni Oluştur</a>
-    </div>
+	<br />
+	<h2><i>Bir makalen yok gibi görünüyor, sorun değil. Hemen oluşturabilirsin.</i></h2>
+	<br />
+	<div class="col-md-12 text-right">
+		<a asp-action="Create" asp-controller="Article" class="btn btn-outline-warning">İlk Makaleni Oluştur</a>
+	</div>
 }
 else
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <a asp-action="Create" asp-controller="Article" class="btn btn-outline-dark">Yeni Makale Oluştur</a>
-            </div>
-        </div>
-        <div class="row">
-            @foreach (var article in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">@article.ArticleTitle</h4>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">@article.Content</p>
-                            <p class="card-info">
-                                Görüntülenme Sayısı: @article.TotalReadCount<br >Ortalama Okuma Süresi: @article.RequiredMinuteToReadEntireArticle
-                            </p>
-                            <a asp-action="Details" asp-controller="Article" asp-route-id="@article.Id" class="btn btn-outline-dark read-more-btn">İlgili Makaleye Git</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<a asp-action="Create" asp-controller="Article" class="btn btn-outline-dark">Yeni Makale Oluştur</a>
+			</div>
+		</div>
+		<div class="row">
+			@foreach (var article in Model)
+			{
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">@article.ArticleTitle</h4>
+						</div>
+						<div class="card-body">
+							<p class="card-text">@article.Content</p>
+							<p class="card-info">
+								Görüntülenme Sayısı: @article.TotalReadCount<br>Ortalama Okuma Süresi: @article.RequiredMinuteToReadEntireArticle
+							</p>
+
+							<a asp-action="Inspect" asp-controller="Article" asp-route-id="@article.Id" class="btn btn-outline-dark read-more-btn">İlgili Makaleye Git</a>
+							<a asp-action="Delete" asp-controller="Article" asp-route-id="@article.Id" class="btn btn btn-outline-danger">Sil</a>
+
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
 }
