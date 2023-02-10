@@ -3,6 +3,7 @@
 @{
 	ViewData["Title"] = "Makale Oluştur";
 }
+
 <br />
 <h2>Burası sizin yeni makale oluşturma sayfanız.</h2>
 <hr />
@@ -16,22 +17,20 @@
 		<input type="text" class="form-control" name="ArticleTitle">
 		<span asp-validation-for="ArticleTitle"></span>
 	</div>
+
 	<div class="form-group">
-		<label asp-for="Content">İçerik</label>
-		<textarea class="form-control" name="Content"></textarea>
+		<label asp-for="Content" class="control-text">İçerik</label>
+		<input type="text" class="form-control" name="Content">
 		<span asp-validation-for="Content"></span>
 	</div>
-	<br />
 
 
 	<div class="form-group">
-		<label asp-for="SelectedCategoryId" class="control-label">Kategori Seçin</label>
-		<select asp-for="SelectedCategoryId" class="form-control">
-			<option value="">-- Kategori Seçin --</option>
-		</select>
-		<span asp-validation-for="SelectedCategoryId"></span>
+		<label asp-for="@Model.SelectedCategoryId" class="control-label">Kategori Seçin</label>
+		<select class="form-control" asp-for="@Model.SelectedCategoryId" asp-items="ViewBag.Category"></select>
+		<span asp-validation-for="@Model.SelectedCategoryId"></span>
 	</div>
-
+	<br />
 
 	<div class="form-group">
 		<input type="submit" value="Oluştur" class="btn btn-outline-success">

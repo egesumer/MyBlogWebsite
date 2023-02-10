@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlogWebsite.Data_Access_Folder.Repositories.Abstract;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract;
@@ -52,7 +53,7 @@ namespace MyBlogWebsite.Controllers
 		{
 			ArticleCreateVM vm = new ArticleCreateVM();
 			vm.Categories = categoryRepository.GetAll();
-
+			ViewData["Category"] = new SelectList(categoryRepository.GetAll(), "Id", "CategoryName");
 			return View(vm);
 		}
 
