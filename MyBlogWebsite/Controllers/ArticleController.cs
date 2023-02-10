@@ -96,11 +96,14 @@ namespace MyBlogWebsite.Controllers
 			Article article = articleRepository.GetByID(id);
 			ArticleVM vm = new ArticleVM();
 
+			int authorIdOfArticle = article.AuthorId;
+			Author author = authorRepository.GetByID(authorIdOfArticle);
+
 
 			vm.ArticleTitle = article.ArticleTitle;
 			vm.Content = article.Content;
 			vm.PublishDate = (DateTime)article.PublishDate;
-			vm.AuthorName = "DenemeYazar";
+			vm.AuthorName = author.AuthorName;
 			vm.TotalReadCount = (int)article.TotalReadCount;
 			vm.RequiredMinsToRead = (int)article.RequiredMinuteToReadEntireArticle;
 
@@ -126,33 +129,29 @@ namespace MyBlogWebsite.Controllers
 		public int CalculateRequiredMinsToReadArticle(string content)
 		{
 			int calculatedMinute;
-			if (content.Length <= 100)
+			if (content.Length <= 1500)
 			{
 				return calculatedMinute = 1;
 			}
-			if (content.Length > 100 && content.Length <= 500)
+			if (content.Length > 1500 && content.Length >= 3000)
 			{
 				return calculatedMinute = 2;
 			}
-			if (content.Length > 500 && content.Length >= 900)
+			if (content.Length > 3000 && content.Length >= 4500)
 			{
 				return calculatedMinute = 3;
 			}
-			if (content.Length > 900 && content.Length >= 1300)
+			if (content.Length > 4500 && content.Length >= 6000)
 			{
 				return calculatedMinute = 4;
 			}
-			if (content.Length > 1300 && content.Length >= 1700)
+			if (content.Length > 6000 && content.Length >= 7500)
 			{
 				return calculatedMinute = 5;
 			}
-			if (content.Length > 1700 && content.Length >= 2100)
+			if (content.Length > 7500 && content.Length >= 9000)
 			{
 				return calculatedMinute = 6;
-			}
-			if (content.Length > 2100 && content.Length >= 2500)
-			{
-				return calculatedMinute = 7;
 			}
 			else
 			{

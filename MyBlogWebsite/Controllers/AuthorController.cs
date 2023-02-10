@@ -31,9 +31,9 @@ namespace MyBlogWebsite.Controllers
 		// [Authorize(Policy = "AuthorConfirmation")]
 
 		[HttpPost]
-		public IActionResult AuthorActivation(AuthorVM model)
+		public async Task<IActionResult> AuthorActivation(AuthorVM model)
 		{
-            var user = userManager.GetUserAsync(User).Result;
+            var user = await userManager.GetUserAsync(User);
 			Author author = new Author();
 			author.AuthorName= model.AuthorName;
 			author.AuthorConfirmed = true;

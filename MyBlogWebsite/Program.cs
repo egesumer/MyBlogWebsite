@@ -54,14 +54,14 @@ builder.Services.AddAuthorization(options =>
 });
 
 
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("IsAdmin", policy => policy.RequireClaim("IsAdmin", "true"));  //claim veya Rol üzerinden oluþturduðumuz þartlardan hangisi saðlanýrsa authentice olmasýný belirleme.
-//                                                                                     // options.AddPolicy("AdminRequired", policy => policy.RequireClaim("Admin"));
+////builder.Services.AddAuthorization(options =>
+////{
+////	options.AddPolicy("IsAdmin", policy => policy.RequireClaim("IsAdmin", "true"));  //claim veya Rol üzerinden oluþturduðumuz þartlardan hangisi saðlanýrsa authentice olmasýný belirleme.
+////	options.AddPolicy("AdminRequired", policy => policy.RequireClaim("Admin"));
 
-//    //BURASI ADMIN TARAFINDAN GÖRÜLMESÝ ÝSTENEN SAYFALAR ÝÇÝN GEREKLÝ OLAN KISIM.
+////	//BURASI ADMIN TARAFINDAN GÖRÜLMESÝ ÝSTENEN SAYFALAR ÝÇÝN GEREKLÝ OLAN KISIM.
 
-//});
+////});
 
 
 

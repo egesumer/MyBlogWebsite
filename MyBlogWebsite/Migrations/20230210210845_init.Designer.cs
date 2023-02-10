@@ -12,7 +12,7 @@ using MyBlogWebsite.Areas.Identity.Data;
 namespace MyBlogWebsite.Migrations
 {
     [DbContext(typeof(BlogWebsiteDbContext))]
-    [Migration("20230209221307_init")]
+    [Migration("20230210210845_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,15 +53,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e7209cf8-2023-44e0-928b-bc21ca8c573d",
-                            ConcurrencyStamp = "c42df8a1-0e79-403e-8a5d-0ed251463a0b",
+                            Id = "7c6eecba-555a-4684-89c4-a3e7018eccfd",
+                            ConcurrencyStamp = "ea299b74-8623-4473-83e3-6c17730ce6e5",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "9e75537c-7c00-4a8f-943f-91a6f301c831",
-                            ConcurrencyStamp = "422f0335-631d-4b69-a357-1782bcb4a5ee",
+                            Id = "09720f74-ca0b-4b05-8545-68ed9ae5b01a",
+                            ConcurrencyStamp = "b5d30993-d14e-47a0-bfec-f774d789bfbd",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -193,7 +193,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "bdaf1788-587c-419b-9532-5b6adad993b1"
+                            UserId = "3220b5a7-4af2-4540-92cc-cb94ac97c3ac"
                         });
                 });
 
@@ -238,13 +238,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "bdaf1788-587c-419b-9532-5b6adad993b1",
-                            RoleId = "e7209cf8-2023-44e0-928b-bc21ca8c573d"
+                            UserId = "3220b5a7-4af2-4540-92cc-cb94ac97c3ac",
+                            RoleId = "7c6eecba-555a-4684-89c4-a3e7018eccfd"
                         },
                         new
                         {
-                            UserId = "301eead4-7b50-4aec-b40a-eb2aa4741d34",
-                            RoleId = "9e75537c-7c00-4a8f-943f-91a6f301c831"
+                            UserId = "9b126dea-077e-4819-8ae4-1c8da8274b06",
+                            RoleId = "09720f74-ca0b-4b05-8545-68ed9ae5b01a"
                         });
                 });
 
@@ -316,7 +316,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 4,
                             Content = "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.",
-                            PublishDate = new DateTime(2023, 2, 10, 1, 13, 7, 42, DateTimeKind.Local).AddTicks(7697),
+                            PublishDate = new DateTime(2023, 2, 11, 0, 8, 45, 633, DateTimeKind.Local).AddTicks(3530),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -327,7 +327,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 5,
                             Content = "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.",
-                            PublishDate = new DateTime(2023, 2, 10, 1, 13, 7, 42, DateTimeKind.Local).AddTicks(7700),
+                            PublishDate = new DateTime(2023, 2, 11, 0, 8, 45, 633, DateTimeKind.Local).AddTicks(3533),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -338,7 +338,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 3,
                             Content = "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.",
-                            PublishDate = new DateTime(2023, 2, 10, 1, 13, 7, 42, DateTimeKind.Local).AddTicks(7702),
+                            PublishDate = new DateTime(2023, 2, 11, 0, 8, 45, 633, DateTimeKind.Local).AddTicks(3535),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         });
@@ -375,7 +375,7 @@ namespace MyBlogWebsite.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "bdaf1788-587c-419b-9532-5b6adad993b1",
+                            ApplicationUserId = "3220b5a7-4af2-4540-92cc-cb94ac97c3ac",
                             AuthorConfirmed = true,
                             AuthorName = "Anasayfa Yazarı"
                         });
@@ -490,17 +490,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bdaf1788-587c-419b-9532-5b6adad993b1",
+                            Id = "3220b5a7-4af2-4540-92cc-cb94ac97c3ac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5c4f47f2-22dd-4ca9-9b99-b4a43a7f706e",
+                            ConcurrencyStamp = "8301f57e-d4a1-42f9-b125-c83260442ee7",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBhiUM8J0/25b0P0rz1Ow/8/lUy8pGQoRgPjt00wQpxY2laFQm5oudMpz6szyhUT7A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPrEFHzetm8BNo+OiyPqjIKPP3vFSoI7W8sW1EBKPiWwgo0Tb6GkM/LWCf8PB0RIkA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "48bb9e6c-4472-4227-a384-cb8b0030b94f",
+                            SecurityStamp = "07f07bec-97b3-4dd0-aa95-f61d7ce3257c",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -508,17 +508,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "301eead4-7b50-4aec-b40a-eb2aa4741d34",
+                            Id = "9b126dea-077e-4819-8ae4-1c8da8274b06",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "43451e8a-0bfe-4dd8-94bc-799b716e7b6c",
+                            ConcurrencyStamp = "5393d9e0-7680-4346-a997-bef2bcadafd4",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGDSjHrXLQhn0fDiQS3dPQt7vIsL52rLrVMcr1A/ahhSoRBL90AQkNOS7gJ/0GPg2w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO5Pg22M39VcR7J5Qh64ZrrvXES2GFevshLZxicjnfnxxUaIxsp23cW87ifXAUzwOA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8e4935c6-8341-4557-bace-9010b85d4f27",
+                            SecurityStamp = "1ad36e42-5895-4210-84e1-6ec4a9ecfb57",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",
