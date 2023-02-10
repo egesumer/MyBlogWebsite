@@ -12,7 +12,13 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete
 			this.db = db;
 		}
 
-        public List<Article> MostPopularArticles()
+		public List<Article> GetArticlesWithDesiredCategory(int id)
+		{
+			return db.Articles.Where(x=>x.CategoryId== id).ToList();
+		}
+
+
+		public List<Article> MostPopularArticles()
         {
 			return db.Articles.OrderByDescending(x => x.TotalReadCount).Take(3).ToList();
         }

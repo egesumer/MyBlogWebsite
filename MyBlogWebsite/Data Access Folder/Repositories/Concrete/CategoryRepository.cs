@@ -1,6 +1,7 @@
 ﻿using MyBlogWebsite.Areas.Identity.Data;
 using MyBlogWebsite.Data_Access_Folder.Repositories.Abstract;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete;
+using MyBlogWebsite.Models.Concrete;
 using MyBlogWebsite.Models.Entities;
 
 namespace MyBlogWebsite.Data_Access_Folder.Repositories.Concrete
@@ -13,7 +14,8 @@ namespace MyBlogWebsite.Data_Access_Folder.Repositories.Concrete
             this.db = db;
         }
 
-        public List<Category> GetCategories()
+
+		public List<Category> GetCategories()
         {
           return db.Categories.ToList();
         }

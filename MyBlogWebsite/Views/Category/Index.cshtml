@@ -1,1 +1,38 @@
-﻿<h1>BURAYA ILGILI MAKALEYI GÖNDERECEĞİM INDEXE GELEN ID DEN ILGILI MAKALELERIN CATEGORY ID SINI YAKALAYIP BURADA GOSTERECEĞIM</h1>
+﻿@using MyBlogWebsite.Models.Concrete;
+@model IEnumerable<Article>
+
+
+<h2>İlgili Makaleleriniz</h2>
+
+@if (Model.Any(x => x.Content != null))
+{
+	<table>
+		<thead>
+			<tr>
+				<th>Başlık</th>
+				<th>İçerik</th>
+				<th>Yazar</th>
+				<th>Oluşturulma Tarihi</th>
+				<th>Görüntülenme Sayısı</th>
+				<th>Ortalama Okunma Süresi</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var article in Model)
+			{
+				<tr>
+					<td>@article.ArticleTitle</td>
+					<td>@article.Content</td>
+					<td>@article.Author</td>
+					<td>@article.PublishDate</td>
+					<td>@article.TotalReadCount</td>
+					<td>@article.RequiredMinuteToReadEntireArticle</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<h4><i>Bu konuda bir makale eklenmemiş görünüyor.</i></h4>
+}
