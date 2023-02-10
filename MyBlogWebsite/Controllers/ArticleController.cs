@@ -112,6 +112,33 @@ namespace MyBlogWebsite.Controllers
 			return View(vm);
 		}
 
+		[HttpGet]
+		public IActionResult Update(int id)
+		{
+			ArticleUpdateVM vm = new ArticleUpdateVM();
+			var article = articleRepository.GetByID(id);
+			vm.ArticleTitle=article.ArticleTitle;
+			vm.Content = article.Content;
+			vm.Id= id;
+			//var categories = categoryRepository.GetCategories();
+			
+			return View(vm);
+		}
+		[HttpPost]
+		public IActionResult Update(ArticleUpdateVM vm)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View();
+			}
+			Article article = articleRepository.GetByID(vm.Id);
+			article.ArticleTitle = vm.ArticleTitle;
+			article.Content = vm.Content;
+			articleRepository.Update(article);
+			TempData["UpdateMessage"] = "Makaleniz güncellendi.";
+			return RedirectToAction("Index", "Article");
+		}
+
 		public IActionResult Delete(int id)
 		{
 			Article article = articleRepository.GetByID(id);

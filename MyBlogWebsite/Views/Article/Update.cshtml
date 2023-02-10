@@ -1,0 +1,32 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model ArticleUpdateVM
+@{
+	ViewData["Title"] = "Makaleni Güncelle";
+}
+
+
+
+
+<form asp-action="Update">
+	<div class="form-group">
+		<label asp-for="ArticleTitle" class="control-label">Başlık</label>
+		<input type="text" class="form-control" name="ArticleTitle">
+		<span asp-validation-for="ArticleTitle"></span>
+	</div>
+
+	<div class="form-group ">
+		<label asp-for="Content" class="control-text">İçerik</label>
+		<input type="text" class="form-control" name="Content">
+		<span asp-validation-for="Content"></span>
+	</div>
+
+	<div class="form-group">
+
+	</div>
+	<br />
+
+	<div class="form-group">
+		<input type="submit" value="Güncelle" class="btn btn-outline-success">
+	</div>
+	<br />
+</form>
