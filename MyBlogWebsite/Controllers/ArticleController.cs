@@ -7,6 +7,7 @@ using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract;
 using MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete;
 using MyBlogWebsite.Models.Concrete;
+using MyBlogWebsite.Models.Entities;
 using MyBlogWebsite.Models.ViewModels;
 
 namespace MyBlogWebsite.Controllers
@@ -51,9 +52,19 @@ namespace MyBlogWebsite.Controllers
 		[HttpGet]
 		public IActionResult Create()
 		{
+			//ArticleCreateVM vm = new ArticleCreateVM();
+			var categories = categoryRepository.GetCategories();
+
 			ArticleCreateVM vm = new ArticleCreateVM();
-			vm.Categories = categoryRepository.GetAll();
-			ViewData["Category"] = new SelectList(categoryRepository.GetAll(), "Id", "CategoryName");
+			vm.Categories = categories;
+			
+			//ViewBag.Categories = new SelectList(categories, "Id", "CategoryName");
+
+			//vm.Categories= categories;
+
+			//vm.Categories = categoryRepository.GetAll();
+			//ViewBag["Category"] = new SelectList(categoryRepository.GetAll(), "Id", "CategoryName");
+			
 			return View(vm);
 		}
 
@@ -71,10 +82,10 @@ namespace MyBlogWebsite.Controllers
 			article.AuthorId = author.Id;
 			article.ArticleTitle = model.ArticleTitle;
 			article.Content = model.Content;
+			article.CategoryId = model.SelectedCategoryId;              //		Yazar tarafından belirlenecek.
 			article.PublishDate = DateTime.Now;
 			article.RequiredMinuteToReadEntireArticle = CalculateRequiredMinsToReadArticle(model.Content);
-			article.TotalReadCount = 1;
-			article.CategoryId = model.SelectedCategoryId;				//		Yazar tarafından belirlenecek.
+			article.TotalReadCount = 0;
 			articleRepository.Add(article);
 			TempData["Message"] = "Makaleniz başarıyla paylaşıldı.";
 			return RedirectToAction("Index", "Article");
@@ -119,27 +130,27 @@ namespace MyBlogWebsite.Controllers
 			{
 				return calculatedMinute = 1;
 			}
-			if (content.Length > 100 && content.Length <= 300)
+			if (content.Length > 100 && content.Length <= 500)
 			{
 				return calculatedMinute = 2;
 			}
-			if (content.Length > 300 && content.Length >= 500)
+			if (content.Length > 500 && content.Length >= 900)
 			{
 				return calculatedMinute = 3;
 			}
-			if (content.Length > 500 && content.Length >= 700)
+			if (content.Length > 900 && content.Length >= 1300)
 			{
 				return calculatedMinute = 4;
 			}
-			if (content.Length > 700 && content.Length >= 900)
+			if (content.Length > 1300 && content.Length >= 1700)
 			{
 				return calculatedMinute = 5;
 			}
-			if (content.Length > 900 && content.Length >= 1100)
+			if (content.Length > 1700 && content.Length >= 2100)
 			{
 				return calculatedMinute = 6;
 			}
-			if (content.Length > 1100 && content.Length >= 1300)
+			if (content.Length > 2100 && content.Length >= 2500)
 			{
 				return calculatedMinute = 7;
 			}
