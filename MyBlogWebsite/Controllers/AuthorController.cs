@@ -22,6 +22,7 @@ namespace MyBlogWebsite.Controllers
 			this.articleRepository=articleRepository;
 			this.authorRepositorySecond=authorRepositorySecond;
 		}
+		[Authorize]
 		public async Task<IActionResult> Index()
 		{
 			try
@@ -56,11 +57,20 @@ namespace MyBlogWebsite.Controllers
 			return View(vm);
 
 		}
-		public IActionResult AuthorActivation()
+		[Authorize]
+		public async Task<IActionResult> AuthorActivation()
 		{
-			
-
-			return View();
+			try
+			{
+				var user = await userManager.GetUserAsync(User);
+				Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+			}
+			catch (Exception)
+			{
+				return View();
+			}
+			TempData["AuthorIdAlreadyActivated"] = "Yazar kimliğiniz halihazırda oluşturulmuş durumda.";
+			return RedirectToAction("Index", "Article");
 		}
 		// [Authorize(Policy = "AuthorConfirmation")]
 

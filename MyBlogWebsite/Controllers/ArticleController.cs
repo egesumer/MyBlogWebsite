@@ -66,7 +66,7 @@ namespace MyBlogWebsite.Controllers
 
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -85,7 +85,7 @@ namespace MyBlogWebsite.Controllers
 
             return View(vm);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(ArticleCreateVM model)
         {
