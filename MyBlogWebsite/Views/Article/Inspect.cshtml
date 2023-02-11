@@ -24,10 +24,29 @@
     <div class="card-body">
         <h5 class="card-title">@Model.ArticleTitle</h5>
         <div class="card-title-line"></div>
-        <p class="card-content">@Model.Content</p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p class="card-content">@Model.Content</p>
+
+        }
+        else
+        {
+            <p class="card-content"><i>Makaleyi görmek için lütfen <strong><a href="/Identity/Account/Login">giriş</a></strong> yapınız.</i></p>
+
+        }
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>@Model.AuthorName</strong> tarafından yazılmıştır.</li>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li class="list-group-item"> <a href="/Author/AuthorProfile?id=@Model.ArticleId"><strong>@Model.AuthorName</strong></a> tarafından yazılmıştır.</li>
+
+        }
+        else
+        {
+                <li class="list-group-item"><strong>@Model.AuthorName</strong> tarafından yazılmıştır.</li>
+
+        }
         <li class="list-group-item">Toplam <strong>@Model.TotalReadCount</strong> kez okunmuştur.</li>
         <li class="list-group-item"><strong>@Model.PublishDate.ToString("dd-MM-yyyy")</strong> tarihinde yayınlanmıştır.</li>
         <li class="list-group-item">Makaleyi yaklaşık <strong>@Model.RequiredMinsToRead</strong> dakika içinde okuyabilirsiniz.</li>

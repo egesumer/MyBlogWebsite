@@ -14,13 +14,13 @@
 <form asp-action="Create">
 	<div class="form-group">
 		<label asp-for="ArticleTitle" class="control-label">Başlık</label>
-		<input type="text" class="form-control" name="ArticleTitle">
+		<input type="text" class="form-control" name="ArticleTitle" required>
 		<span asp-validation-for="ArticleTitle"></span>
 	</div>
 
 	<div class="form-group">
 		<label asp-for="Content" class="control-text">İçerik</label>
-		<input type="text" class="form-control" name="Content">
+		<input type="text" class="form-control" name="Content" required>
 		<span asp-validation-for="Content"></span>
 	</div>
 

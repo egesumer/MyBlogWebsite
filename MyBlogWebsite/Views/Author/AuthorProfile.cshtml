@@ -1,0 +1,62 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model AuthorProfileVM
+
+
+<style>
+    .card {
+        height: 350px;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+        .card h5 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+</style>
+
+
+<h3>@Model.AuthorName Yazar Profili</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+
+@*            <img src="@Model.ProfilePicture" alt="Profile Picture" class="img-fluid rounded-circle mx-auto d-block">
+*@
+
+            <h3 class="text-center mt-3">@Model.AuthorName</h3>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>@article.ArticleTitle</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>@article.Content</p>
+                                <a asp-action="Inspect" asp-controller="Article" asp-route-id="@article.Id" class="btn btn-outline-dark">İncele</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
