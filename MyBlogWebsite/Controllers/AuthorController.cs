@@ -14,15 +14,34 @@ namespace MyBlogWebsite.Controllers
 		private readonly UserManager<IdentityUser> userManager;
 		private readonly IRepository<Author> authorRepository;
 		private readonly IRepository<Article> articleRepository;
-		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository)
+		private readonly IAuthorRepository authorRepositorySecond;
+		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository, IAuthorRepository authorRepositorySecond)
 		{
 		userManager= _userManager;
 			authorRepository = _authorRepository;
 			this.articleRepository=articleRepository;
+			this.authorRepositorySecond=authorRepositorySecond;
 		}
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
+			try
+			{
+				var user = await userManager.GetUserAsync(User);
+				Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+				if (author == null)
+				{
+					return View();
+
+				}
+			}
+			catch (Exception)
+			{
+
+				return View();
+			};
+
+			TempData["AuthorIdAlreadyActivated"] = "Yazar kimliğiniz halihazırda oluşturulmuş durumda.";
+			return RedirectToAction("Index", "Article");
 		}
 
 		[HttpGet]
@@ -39,6 +58,8 @@ namespace MyBlogWebsite.Controllers
 		}
 		public IActionResult AuthorActivation()
 		{
+			
+
 			return View();
 		}
 		// [Authorize(Policy = "AuthorConfirmation")]

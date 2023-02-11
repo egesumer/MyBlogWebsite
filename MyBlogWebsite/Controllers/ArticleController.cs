@@ -47,7 +47,9 @@ namespace MyBlogWebsite.Controllers
                 Author onlineAuthor = authorRepository.AuthorGetByStringId(onlineUser.Id);
                 if (onlineAuthor==null)
                 {
-                    return RedirectToAction("Index", "Home");
+					TempData["Error"] = "Lütfen önce yazar kimliğinizi oluşturun.";
+
+					return RedirectToAction("Index", "Home");
                 }
                 else
                 {
