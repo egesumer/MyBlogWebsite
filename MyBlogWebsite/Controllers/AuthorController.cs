@@ -75,7 +75,7 @@ namespace MyBlogWebsite.Controllers
 			authorRepository.Add(author);
 
 			TempData["Message"] = "Yazar kimliğiniz başarıyla oluşturuldu.";
-			return View(nameof(Index));
+			return RedirectToAction("Index", "Article");
 
 		}
 

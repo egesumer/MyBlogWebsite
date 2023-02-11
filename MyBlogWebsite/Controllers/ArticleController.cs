@@ -155,6 +155,7 @@ namespace MyBlogWebsite.Controllers
             Article article = articleRepository.GetByID(vm.Id);
             article.ArticleTitle = vm.ArticleTitle;
             article.Content = vm.Content;
+            article.RequiredMinuteToReadEntireArticle = CalculateRequiredMinsToReadArticle(article.Content);
             articleRepository.Update(article);
             TempData["UpdateMessage"] = "Makaleniz güncellendi.";
             return RedirectToAction("Index", "Article");
@@ -181,23 +182,23 @@ namespace MyBlogWebsite.Controllers
             {
                 return calculatedMinute = 1;
             }
-            if (content.Length > 1500 && content.Length >= 3000)
+            if (content.Length > 1500 && content.Length <= 3000)
             {
                 return calculatedMinute = 2;
             }
-            if (content.Length > 3000 && content.Length >= 4500)
+            if (content.Length > 3000 && content.Length <= 4500)
             {
                 return calculatedMinute = 3;
             }
-            if (content.Length > 4500 && content.Length >= 6000)
+            if (content.Length > 4500 && content.Length <= 6000)
             {
                 return calculatedMinute = 4;
             }
-            if (content.Length > 6000 && content.Length >= 7500)
+            if (content.Length > 6000 && content.Length <= 7500)
             {
                 return calculatedMinute = 5;
             }
-            if (content.Length > 7500 && content.Length >= 9000)
+            if (content.Length > 7500 && content.Length <= 9000)
             {
                 return calculatedMinute = 6;
             }
