@@ -165,19 +165,35 @@ namespace MyBlogWebsite.Controllers
 
 		[Authorize]
 		[HttpPost]
-		public async Task<IActionResult> EditCategory(AuthorEditVM vm)
+		public async Task<IActionResult> EditCategory(AuthorEditVM vm, IFormCollection form)
 		{
 			var user = await userManager.GetUserAsync(User);
 			Category category = categoryRepository.GetByID(vm.FavCategoryId);
 			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+			
+			
+			//int x = author.Id;
+			//Author authorNeeded = authorRepositorySecond.GetByIdIncludeFavorites(x);
 
-			author.FavoryCategories.Add(category);
 
+			if (form["submitButton"].Equals("Favorilere Ekle"))
+			{
+				author.FavoryCategories.Add(category);
+				authorRepository.Update(author);
+				TempData["UpdateAuthor"] = "Favorileriniz güncellendi.";
+				return RedirectToAction("EditProfile", "Author");
+			}
+			else
+			{
+				authorRepositorySecond.RemoveCategory(author.Id,category.Id);
 
-			authorRepository.Update(author);
-			TempData["UpdateAuthor"] = "Bilgileriniz güncellendi.";
-			return RedirectToAction("EditProfile", "Author");
+				TempData["UpdateAuthor"] = "Seçtiğiniz kategori silindi.";
+				return RedirectToAction("EditProfile", "Author");
+
+			}
+		
 		}
+
 
 	}
 }

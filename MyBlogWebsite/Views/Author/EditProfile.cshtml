@@ -38,11 +38,17 @@
 	<div class="form-group">
 		<label id="selectedCategory">@Model.FavCategories.FirstOrDefault(x => x.Id == Model.FavCategoryId)?.CategoryName</label>
 	</div>*@
-
+	
 
 
 	<br />
+
+
+
+
 	<button type="submit" class="btn btn-outline-secondary">Kaydet</button>
+
+
 </form>
 
 <br />
@@ -60,5 +66,12 @@
 		</select>
 	</div>
 	<br />
-	<button type="submit" class="btn btn-outline-secondary">Favorilere Ekle</button>
+
+	<input type="submit" name="submitButton" class="btn btn-outline-warning" value="Favorilere Ekle" />
+
+	<input type="submit" name="submitButton" class="btn btn-outline-dark" value="Sil" />
+
+	@*<button type="submit" class="btn btn-outline-secondary">Favorilere Ekle</button>*@
+
+
 </form>
