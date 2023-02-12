@@ -51,7 +51,7 @@
 
 
 	<div class="form-group">
-		<label>Favori Kategoriler</label>
+		<label>Kategoriler</label>
 		<select asp-for="FavCategoryId" multiple class="form-control">
 			@foreach (var category in Model.FavCategories)
 			{
@@ -59,20 +59,24 @@
 				@if (Model.FavCategories.Any())
 				{
 					<option value="@Model.FavCategories.First().Id" selected>@Model.FavCategories.First().CategoryName</option>
+
+
 					foreach (var categorys in Model.FavCategories.Skip(1))
 					{
 						<option value="@categorys.Id">@categorys.CategoryName</option>
 					}
+
 				}
+
 
 			}
 		</select>
 	</div>
 	<br />
 
-	<input type="submit" name="submitButton" class="btn btn-outline-warning" value="Favorilere Ekle" />
+	<input type="submit" name="submitButton" class="btn btn-outline-success" value="Favorilere Ekle" />
 
-	<input type="submit" name="submitButton" class="btn btn-outline-dark" value="Sil" />
+	<input type="submit" name="submitButton" class="btn btn-outline-danger" value="Favorilerden Sil" />
 
 
 </form>

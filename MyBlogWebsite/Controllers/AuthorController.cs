@@ -60,9 +60,52 @@ namespace MyBlogWebsite.Controllers
 			Author desiredAuthor = authorRepository.GetByID(desiredAuthorId);
 			vm.Articles = articleRepository.GetWhere(x => x.AuthorId == desiredAuthor.Id);
 			vm.AuthorName = desiredAuthor.AuthorName;
+			vm.AboutMe = desiredAuthor.AboutMe;
 			return View(vm);
 
 		}
+
+
+
+		[Authorize]
+		public async Task<IActionResult> YourProfile()
+		{
+			var user = await userManager.GetUserAsync(User);
+
+			try
+			{
+				Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+				if (author != null)
+				{
+					AuthorProfileVM vm = new AuthorProfileVM();
+					author.FavoryCategories = categoryRepository.GetFavouriteCategories(author.Id);
+					vm.AuthorName = author.AuthorName;
+					vm.AboutMe = author.AboutMe;
+					vm.FavouriteCategories = categoryRepository.GetFavouriteCategories(author.Id);
+					vm.Articles = articleRepository.GetWhere(x => x.AuthorId == author.Id).ToList();
+					return View(vm);
+
+				}
+				else
+				{
+					TempData["AuthorNotActivated"] = "Yazar hesabınıza erişmek için kendinize yazar kimliği oluşturmalısınız.";
+					return RedirectToAction("Index", "Home");
+
+				}
+
+			}
+			catch (Exception)
+			{
+				TempData["AuthorNotActivated"] = "Yazar hesabınıza erişmek için kendinize yazar kimliği oluşturmalısınız.";
+				return RedirectToAction("Index", "Home");
+
+			}
+
+
+
+		}
+
+
 
 		[Authorize]
 		[HttpGet]
@@ -110,22 +153,49 @@ namespace MyBlogWebsite.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public IActionResult EditProfile()
+		public async Task<IActionResult> EditProfile()
 		{
-			var categories = categoryRepository.GetAll();
-			AuthorEditVM vm = new AuthorEditVM();
+			var user = await userManager.GetUserAsync(User);
+			try
+			{
+				Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+				if (author != null)
+				{
+					var categories = categoryRepository.GetAll();
+					AuthorEditVM vm = new AuthorEditVM();
 
-			vm.FavCategories = categories;
-			return View(vm);
+					vm.FavCategories = categories;
+					return View(vm);
+				}
+				else
+				{
+					TempData["AuthorNotActivated"] = "Yazar kimliğiniz aktif değil.";
+					return RedirectToAction("Index", "Home");
+				}
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+
+
+
 		}
 
 		[Authorize]
 		[HttpPost]
 		public async Task<IActionResult> EditProfile(AuthorEditVM vm)
 		{
-			//TRY CATCH GEREKEBILIR
+
 			var user = await userManager.GetUserAsync(User);
+
+
+
 			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+
+
+
 
 
 			if (string.IsNullOrEmpty(vm.AuthorName) && (!string.IsNullOrEmpty(vm.AboutMe)))
@@ -155,6 +225,8 @@ namespace MyBlogWebsite.Controllers
 			authorRepository.Update(author);
 			TempData["UpdateAuthor"] = "Bilgileriniz güncellendi.";
 			return RedirectToAction("EditProfile", "Author");
+
+
 		}
 
 
@@ -162,7 +234,7 @@ namespace MyBlogWebsite.Controllers
 		[HttpPost]
 		public async Task<IActionResult> EditCategory(AuthorEditVM vm, IFormCollection form)
 		{
-			
+
 			try
 			{
 				var user = await userManager.GetUserAsync(User);
@@ -184,7 +256,7 @@ namespace MyBlogWebsite.Controllers
 						TempData["UpdateFavouriteWarning"] = "Bu kategoriyi daha önce eklediniz.";
 						return RedirectToAction("EditProfile", "Author");
 					}
-				
+
 
 				}
 				else
@@ -200,7 +272,7 @@ namespace MyBlogWebsite.Controllers
 						TempData["UpdateFavouriteWarning"] = "Böyle bir kategori favorilerinizde bulunmuyor.";
 						return RedirectToAction("EditProfile", "Author");
 					}
-			
+
 
 				}
 

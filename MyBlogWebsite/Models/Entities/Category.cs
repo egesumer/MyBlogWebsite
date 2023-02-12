@@ -14,5 +14,10 @@ namespace MyBlogWebsite.Models.Entities
         // Navigation
         public ICollection<Article> Articles { get; set; }
         public ICollection<Author> Authors { get; set; }
+
+        public static implicit operator List<object>(Category? v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

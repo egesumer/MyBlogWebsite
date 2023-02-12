@@ -5,10 +5,11 @@
 	ViewData["Title"] = "Anasayfa";
 }
 
-@if (TempData["Error"] != null)
+
+@if (TempData["AuthorNotActivated"] != null)
 {
-	<div class="alert alert-danger">
-		@TempData["Error"]
+	<div class="alert alert-warning">
+		@TempData["AuthorNotActivated"]
 	</div>
 }
 
@@ -177,6 +178,18 @@
 	}
 	<section>
 		<div class="rightcolumn">
+			<br />
+			@if (User.Identity.IsAuthenticated)
+			{
+				<div class="card">
+					<h3 class="text-center">Yazar Ayarları</h3>
+					<br />
+					<a href="/Author/EditProfile" class="btn btn-outline-dark">Düzenle</a>
+					<br>
+				</div>
+			}
+			<br />
+
 			<div class="card">
 				<h2 class="text-center">Amacımız</h2>
 				<br />
@@ -197,15 +210,6 @@
 			<br />
 			<br />
 			<br />
-			@if (User.Identity.IsAuthenticated)
-			{
-				<div class="card">
-					<h3 class="text-center">Yazar Profiliniz</h3>
-					<br />
-					<a href="#" class="text-center btn-outline-secondary">Profilime Git</a>
-					<br>
-				</div>
-			}
 
 		</div>
 		</div>

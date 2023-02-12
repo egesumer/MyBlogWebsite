@@ -45,7 +45,7 @@ namespace MyBlogWebsite.Controllers
                 }
                 else
                 {
-                    TempData["Error"] = "Lütfen önce yazar kimliğinizi oluşturun.";
+                    TempData["AuthorNotActivated"] = "Makalelerim sekmesine yalnızca yazar kimliğini oluşturmuş kullanıcılar erişebilir.";
 
                     return RedirectToAction("Index", "Home");
                 }

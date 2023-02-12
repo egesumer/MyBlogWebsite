@@ -1,0 +1,53 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model AuthorProfileVM
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-left">Yazar Adınız</h2>
+            <br />
+            <h2 class="text-left"><strong><i>@Model.AuthorName</i></strong></h2>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <p class="text-center"><strong>Hakkınızda</strong></p>
+            <p class="text-left"><i>@Model.AboutMe</i></p>
+        </div>
+        <br />
+        <br />
+        <div class="col-md-9">
+            <h3 class="my-4 text-right text-center"><strong><i>Takip ettiğiniz kategoriler</i></strong></h3>
+            <ul class="list-group float-right">
+                @foreach (var category in Model.FavouriteCategories)
+                {
+                    <li class="list-group-item text-center">@category.CategoryName</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <hr />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="mb-4 text-center"><strong>Makaleleriniz</strong></h3>
+            <div class="card-deck">
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="card mb-4">
+                        <div class="card-header text-center">
+                            <strong>@article.ArticleTitle</strong>
+                        </div>
+                        <div class="card-body">
+                            @article.Content
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
