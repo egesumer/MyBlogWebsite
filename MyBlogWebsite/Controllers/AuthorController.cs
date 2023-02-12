@@ -133,13 +133,13 @@ namespace MyBlogWebsite.Controllers
 			
 
 
-			if (string.IsNullOrEmpty(vm.AuthorName))
+			if (string.IsNullOrEmpty(vm.AuthorName) && (!string.IsNullOrEmpty(vm.AboutMe)))
 			{
 				vm.AuthorName = author.AuthorName;
 				author.AboutMe = vm.AboutMe;
 				author.AuthorName = vm.AuthorName;
 			}
-			else if (string.IsNullOrEmpty(vm.AboutMe))
+			else if (string.IsNullOrEmpty(vm.AboutMe) && (!string.IsNullOrEmpty(vm.AuthorName)))
 			{
 				vm.AboutMe = author.AboutMe;
 				author.AuthorName = vm.AuthorName;
@@ -147,10 +147,14 @@ namespace MyBlogWebsite.Controllers
 			}
 			else if (string.IsNullOrEmpty(vm.AuthorName) && string.IsNullOrEmpty(vm.AboutMe))
 			{
-				vm.AboutMe = author.AboutMe;
-				vm.AuthorName = author.AuthorName;
-				author.AboutMe = vm.AboutMe;
-				author.AuthorName = vm.AuthorName;
+				//vm.AboutMe = author.AboutMe;
+				//vm.AuthorName = author.AuthorName;
+				//author.AboutMe = vm.AboutMe;
+				//author.AuthorName = vm.AuthorName;
+
+				TempData["UpdateAuthorWarning"] = "Lütfen ilgili alanları doldurun.";
+				return RedirectToAction("EditProfile", "Author");
+
 			}
 			else
 			{

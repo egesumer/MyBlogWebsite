@@ -9,6 +9,15 @@
 	</div>
 }
 
+@if (TempData["UpdateAuthorWarning"] != null)
+{
+	<div class="alert alert-warning">
+		@TempData["UpdateAuthorWarning"]
+	</div>
+}
+
+
+
 <br />
 
 <h3>Profilini düzenle</h3>
