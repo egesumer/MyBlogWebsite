@@ -2,7 +2,7 @@
 @model AuthorVM
 
 
-<form asp-action="AuthorActivation" asp-controller="Author">
+<form asp-action="AuthorActivation" asp-controller="Author" method="post">
     <div class="form-group">
         <label asp-for="AuthorName"><strong>Yazar Adı:</strong></label>
         <input asp-for="AuthorName" class="form-control" />

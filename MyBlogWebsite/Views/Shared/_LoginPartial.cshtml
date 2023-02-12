@@ -3,30 +3,47 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+<style>
+	.ortala {
+		position: absolute;
+		top: 50%;
+		left: 80%;
+		transform: translate(-50%, -50%);
+	}
+</style>
+
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hoşgeldin @UserManager.GetUserName(User)!</a>
-    </li>
-    <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button id="logout" type="submit" class="btn btn-outline-danger">Çıkış Yap</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-            <a class="btn btn-outline-warning" id="register" asp-area="Identity" asp-page="/Account/Register">Aramıza Katıl</a>
-    </li>
+	@if (SignInManager.IsSignedIn(User))
+	{
+		<li>
+			<a class="ortala btn btn-outline-dark" asp-area="" asp-controller="Author" asp-action="EditProfile">Profilim</a>
+		</li>
 
-        <li class="nav-item">
-            <a class="btn btn-outline-light"></a>
-        </li>
+		<li class="nav-item">
+			<a class="btn btn-outline-light"></a>
+		</li>
 
-    <li class="nav-item">
-            <a class="btn btn-outline-warning" id="login" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
-    </li>
-}
+		<li class="nav-item">
+			<a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hoşgeldin @UserManager.GetUserName(User)</a>
+		</li>
+		<li class="nav-item">
+			<form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+				<button id="logout" type="submit" class="btn btn-outline-danger">Çıkış Yap</button>
+			</form>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item">
+			<a class="btn btn-outline-warning" id="register" asp-area="Identity" asp-page="/Account/Register">Aramıza Katıl</a>
+		</li>
+
+		<li class="nav-item">
+			<a class="btn btn-outline-light"></a>
+		</li>
+
+		<li class="nav-item">
+			<a class="btn btn-outline-warning" id="login" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
+		</li>
+	}
 </ul>

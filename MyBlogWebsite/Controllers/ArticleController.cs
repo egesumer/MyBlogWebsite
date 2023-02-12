@@ -27,15 +27,6 @@ namespace MyBlogWebsite.Controllers
             this.categoryRepository = categoryRepository;
         }
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var user = await userManager.GetUserAsync(User);
-        //    var articles = articleRepository.GetAll(); //düzenle ve sadece ilgili kullanıcının makalelerini getir.
-        //    return View(articles);
-
-        //    // Selectlist ile başka bir sayfaya veri göndermek ve makaleleri göstermek?
-        //}
-
         [Authorize]
         public async Task<IActionResult> Index()
         {
@@ -45,18 +36,20 @@ namespace MyBlogWebsite.Controllers
             {
                 var onlineUser = await userManager.GetUserAsync(User);
                 Author onlineAuthor = authorRepository.AuthorGetByStringId(onlineUser.Id);
-                if (onlineAuthor==null)
+                if (onlineAuthor!=null)
                 {
-					TempData["Error"] = "Lütfen önce yazar kimliğinizi oluşturun.";
 
-					return RedirectToAction("Index", "Home");
-                }
-                else
-                {
                     var user = await userManager.GetUserAsync(User);
                     var author = authorRepository.AuthorGetByStringId(user.Id);
                     var articles = articleRepository.GetAll().Where(x => x.AuthorId == author.Id);
                     return View(articles);
+                  
+                }
+                else
+                {
+                    TempData["Error"] = "Lütfen önce yazar kimliğinizi oluşturun.";
+
+                    return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception)
@@ -70,21 +63,14 @@ namespace MyBlogWebsite.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //ArticleCreateVM vm = new ArticleCreateVM();
             var categories = categoryRepository.GetCategories();
 
             ArticleCreateVM vm = new ArticleCreateVM();
             vm.Categories = categories;
 
-            //ViewBag.Categories = new SelectList(categories, "Id", "CategoryName");
-
-            //vm.Categories= categories;
-
-            //vm.Categories = categoryRepository.GetAll();
-            //ViewBag["Category"] = new SelectList(categoryRepository.GetAll(), "Id", "CategoryName");
-
             return View(vm);
         }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(ArticleCreateVM model)
@@ -100,7 +86,7 @@ namespace MyBlogWebsite.Controllers
             article.AuthorId = author.Id;
             article.ArticleTitle = model.ArticleTitle;
             article.Content = model.Content;
-            article.CategoryId = model.SelectedCategoryId;              //		Yazar tarafından belirlenecek.
+            article.CategoryId = model.SelectedCategoryId;              
             article.PublishDate = DateTime.Now;
             article.RequiredMinuteToReadEntireArticle = CalculateRequiredMinsToReadArticle(model.Content);
             article.TotalReadCount = 0;
@@ -133,9 +119,12 @@ namespace MyBlogWebsite.Controllers
 
         //[Route("/Author/AuthorProfile/{id}")]
 
+        [Authorize]
         [HttpGet]
         public IActionResult Update(int id)
         {
+
+            // TRY CATCH
             ArticleUpdateVM vm = new ArticleUpdateVM();
             var article = articleRepository.GetByID(id);
             vm.ArticleTitle = article.ArticleTitle;
@@ -160,7 +149,7 @@ namespace MyBlogWebsite.Controllers
             TempData["UpdateMessage"] = "Makaleniz güncellendi.";
             return RedirectToAction("Index", "Article");
         }
-
+        [Authorize]
         public IActionResult Delete(int id)
         {
             Article article = articleRepository.GetByID(id);

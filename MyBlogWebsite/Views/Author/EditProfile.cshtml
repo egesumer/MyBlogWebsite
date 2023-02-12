@@ -1,0 +1,31 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+@model AuthorEditVM
+
+<br />
+
+<h3>Profilini düzenle</h3>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="AuthorName"></label>
+        <input asp-for="AuthorName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AboutMe"></label>
+        <textarea asp-for="AboutMe" class="form-control"></textarea>
+    </div>
+
+
+ @*   <div class="form-group">
+        <label>Favori Kategoriler</label>
+        <select asp-for="FavouriteCategoriesId" multiple class="form-control">
+            @foreach (var category in Model.FavouriteCategory)
+            {
+                    <option value="@category.Id">@category.CategoryName</option>
+            }
+        </select>
+    </div>*@
+
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

@@ -11,6 +11,8 @@ namespace MyBlogWebsite.Models.Entities
         public string CategoryName { get; set; }
 
         // Navigation
+        //public int AuthorId { get; set; }
+        //public Author Author { get; set; }
         public ICollection<Article> Articles { get; set; }
     }
 }

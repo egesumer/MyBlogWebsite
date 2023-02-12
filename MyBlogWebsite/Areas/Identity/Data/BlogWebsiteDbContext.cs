@@ -23,6 +23,8 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<Category> Categories { get; set; }
 
+    public DbSet<FavCategory> FavCategories { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -36,19 +38,16 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
 
         string adminRoleId = Guid.NewGuid().ToString();
         string standardRoleId = Guid.NewGuid().ToString();
-     //   string mainpagerRoleId = Guid.NewGuid().ToString();
 
         IdentityRole adminRole = new IdentityRole() { Id = adminRoleId, Name = "admin", NormalizedName = "ADMIN" };
         IdentityRole standardRole = new IdentityRole() { Id = standardRoleId, Name = "standard", NormalizedName = "STANDARD" };
-       // IdentityRole mainpageRole = new IdentityRole() { Id = mainpagerRoleId, Name = "mainpage", NormalizedName = "MAINPAGE" };
 
         builder.Entity<IdentityRole>().HasData(adminRole);
         builder.Entity<IdentityRole>().HasData(standardRole);
-        //builder.Entity<IdentityRole>().HasData(mainpageRole);
 
         string adminUserId = Guid.NewGuid().ToString();
         string standardUserId = Guid.NewGuid().ToString();
-       // string mainpageUserId = Guid.NewGuid().ToString();
+
         var passwordHasher = new PasswordHasher<IdentityUser>();
 
 
@@ -79,32 +78,12 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
             EmailConfirmed = true,
         };
         standardUser.PasswordHash = passwordHasher.HashPassword(standardUser, "sifre");    // kullanıcı adı "test" - şifren "sifre". Db'de Hashli
-        //standardUser.Author = new Author { ApplicationUserId = standardUser.Id, AuthorName = "standardYazar"};
-
-
-        //ApplicationUser mainpageUser = new ApplicationUser()
-        //{
-        //    Id = mainpageUserId,
-        //    FirstName = "mainpage",
-        //    LastName = "mainpage",
-        //    Email = "main@page.com",
-        //    NormalizedEmail = "MAIN@PAGE.COM",
-        //    UserName = "maintest",
-        //    NormalizedUserName="MAINTEST",
-        //    EmailConfirmed = true,
-        //};
-        //mainpageUser.PasswordHash = passwordHasher.HashPassword(mainpageUser, "sifre");
+        
 
 
         builder.Entity<ApplicationUser>().HasData(adminUser);
         builder.Entity<ApplicationUser>().HasData(standardUser);
-       // builder.Entity<ApplicationUser>().HasData(mainpageUser);
-
-
-        //  builder.Entity<ApplicationUser>().HasData(standardUser);
-        //builder.Entity<ApplicationUser>().HasData(author, author2);
-        // builder.Entity<ApplicationUser>().HasData(author2);
-
+      
 
 
         IdentityUserRole<string> adminUserRole = new IdentityUserRole<string>
@@ -119,12 +98,7 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
             UserId = standardUserId,
         };
 
-        //IdentityUserRole<string> mainpageUserRole = new IdentityUserRole<string>
-        //{
-        //    RoleId = mainpagerRoleId,
-        //    UserId = mainpageUserId,
-        //};
-       // builder.Entity<IdentityUserRole<string>>().HasData(mainpageUserRole);
+
         builder.Entity<IdentityUserRole<string>>().HasData(adminUserRole);
         builder.Entity<IdentityUserRole<string>>().HasData(standardUserRole);
 
