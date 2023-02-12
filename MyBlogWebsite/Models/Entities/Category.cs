@@ -7,12 +7,12 @@ namespace MyBlogWebsite.Models.Entities
         public Category()
         {
             Articles = new HashSet<Article>();
+            Authors= new HashSet<Author>();
         }
         public string CategoryName { get; set; }
 
         // Navigation
-        //public int AuthorId { get; set; }
-        //public Author Author { get; set; }
         public ICollection<Article> Articles { get; set; }
+        public ICollection<Author> Authors { get; set; }
     }
 }

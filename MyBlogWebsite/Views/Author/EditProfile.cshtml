@@ -1,31 +1,64 @@
 ﻿@using MyBlogWebsite.Models.ViewModels;
 @model AuthorEditVM
 
+
+@if (TempData["UpdateAuthor"] != null)
+{
+	<div class="alert alert-success">
+		@TempData["UpdateAuthor"]
+	</div>
+}
+
 <br />
 
 <h3>Profilini düzenle</h3>
 
 <form method="post">
-    <div class="form-group">
-        <label asp-for="AuthorName">Yeni Yazar Adınız</label>
-        <input asp-for="AuthorName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="AboutMe">Hakkınızda:</label>
-        <textarea asp-for="AboutMe" class="form-control"></textarea>
-    </div>
+	<div class="form-group">
+		<label asp-for="AuthorName">Yeni Yazar Adınız</label>
+		<input asp-for="AuthorName" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="AboutMe">Hakkınızda:</label>
+		<textarea asp-for="AboutMe" class="form-control"></textarea>
+	</div>
+
+	
+
+@*	<div class="form-group">
+		<label for="category">Favori Makale Konularına Ekle</label>
+		<select id="category" asp-for="FavCategoryId" class="form-control">
+			<option value=""></option>
+			@foreach (var category in Model.FavCategories)
+			{
+				<option value="@category.Id">@category.CategoryName</option>
+			}
+		</select>
+	</div>
+	<div class="form-group">
+		<label id="selectedCategory">@Model.FavCategories.FirstOrDefault(x => x.Id == Model.FavCategoryId)?.CategoryName</label>
+	</div>*@
 
 
- @*   <div class="form-group">
-        <label>Favori Kategoriler</label>
-        <select asp-for="FavouriteCategoriesId" multiple class="form-control">
-            @foreach (var category in Model.FavouriteCategory)
-            {
-                    <option value="@category.Id">@category.CategoryName</option>
-            }
-        </select>
-    </div>*@
 
-    <br />
-    <button type="submit" class="btn btn-outline-secondary">Kaydet</button>
+	<br />
+	<button type="submit" class="btn btn-outline-secondary">Kaydet</button>
+</form>
+
+<br />
+
+<form asp-controller="Author" asp-action="EditCategory" method="post">
+
+
+	<div class="form-group">
+		<label>Favori Kategoriler</label>
+		<select asp-for="FavCategoryId" multiple class="form-control">
+			@foreach (var category in Model.FavCategories)
+			{
+				<option value="@category.Id">@category.CategoryName</option>
+			}
+		</select>
+	</div>
+	<br />
+	<button type="submit" class="btn btn-outline-secondary">Favorilere Ekle</button>
 </form>

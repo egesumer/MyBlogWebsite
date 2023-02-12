@@ -11,8 +11,9 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.EntityConfigurations
             //builder.HasIndex(x => x.ApplicationUserId).HasName("AlternateKey_ApplicationUserId").IsUnique(false); // UniqueKey zorunluluğunu kaldırma.
 
             builder.Property(x => x.AuthorName).IsRequired().HasMaxLength(50);
-			builder.HasMany(x => x.FavouriteCategories).WithOne(x => x.Author).HasForeignKey(x => x.AuthorId);
 			builder.Property(x => x.AboutMe).HasDefaultValue("");
+
+			builder.HasMany(x => x.FavoryCategories).WithMany(x => x.Authors);
 		}
 	}
 }

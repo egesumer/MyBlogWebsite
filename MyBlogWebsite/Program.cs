@@ -16,7 +16,7 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>)
 builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
 builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
-builder.Services.AddTransient<IFavCategoryRepository, FavCategoryRepository>();
+//builder.Services.AddTransient<IFavCategoryRepository, FavCategoryRepository>();
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(connectionString));

@@ -19,15 +19,13 @@ namespace MyBlogWebsite.Controllers
 		private readonly IRepository<Article> articleRepository;
 		private readonly IAuthorRepository authorRepositorySecond;
 		private readonly ICategoryRepository categoryRepository;
-		private readonly IFavCategoryRepository favCategoryRepository;
-		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository, IAuthorRepository authorRepositorySecond, ICategoryRepository categoryRepository, IFavCategoryRepository favCategoryRepository)
+		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository, IAuthorRepository authorRepositorySecond, ICategoryRepository categoryRepository)
         {
             userManager = _userManager;
             authorRepository = _authorRepository;
             this.articleRepository = articleRepository;
             this.authorRepositorySecond = authorRepositorySecond;
             this.categoryRepository = categoryRepository;
-            this.favCategoryRepository = favCategoryRepository;
         }
 
         [Authorize]
@@ -114,8 +112,10 @@ namespace MyBlogWebsite.Controllers
 		[HttpGet]
 		public IActionResult EditProfile()
 		{
-            AuthorEditVM vm = new AuthorEditVM();
+            var categories = categoryRepository.GetAll();
+			AuthorEditVM vm = new AuthorEditVM();
 
+			vm.FavCategories= categories;
 			return View(vm);
 		}
 
@@ -124,9 +124,14 @@ namespace MyBlogWebsite.Controllers
 		public async Task<IActionResult> EditProfile(AuthorEditVM vm)
 		{
 			//TRY CATCH GEREKEBILIR
-
 			var user = await userManager.GetUserAsync(User);
+
+			//Category category = categoryRepository.GetByID(vm.FavCategoryId);
 			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+
+			//author.FavoryCategories.Add(category);
+			
+
 
 			if (string.IsNullOrEmpty(vm.AuthorName))
 			{
@@ -155,7 +160,23 @@ namespace MyBlogWebsite.Controllers
 
 			authorRepository.Update(author);
 			TempData["UpdateAuthor"] = "Bilgileriniz güncellendi.";
-			return RedirectToAction("Index", "Article");
+			return RedirectToAction("EditProfile", "Author");
+		}
+
+		[Authorize]
+		[HttpPost]
+		public async Task<IActionResult> EditCategory(AuthorEditVM vm)
+		{
+			var user = await userManager.GetUserAsync(User);
+			Category category = categoryRepository.GetByID(vm.FavCategoryId);
+			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+
+			author.FavoryCategories.Add(category);
+
+
+			authorRepository.Update(author);
+			TempData["UpdateAuthor"] = "Bilgileriniz güncellendi.";
+			return RedirectToAction("EditProfile", "Author");
 		}
 
 	}

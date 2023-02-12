@@ -12,7 +12,7 @@ using MyBlogWebsite.Areas.Identity.Data;
 namespace MyBlogWebsite.Migrations
 {
     [DbContext(typeof(BlogWebsiteDbContext))]
-    [Migration("20230212013049_init")]
+    [Migration("20230212135329_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,21 @@ namespace MyBlogWebsite.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("AuthorCategory", b =>
+                {
+                    b.Property<int>("AuthorsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FavoryCategoriesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorsId", "FavoryCategoriesId");
+
+                    b.HasIndex("FavoryCategoriesId");
+
+                    b.ToTable("AuthorCategory");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -53,15 +68,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "13a15714-a07c-441d-b4c5-c995397af47e",
-                            ConcurrencyStamp = "a857f825-5895-48e4-88b6-44427ea8f15e",
+                            Id = "9cede53f-0e37-4013-81e5-92057bede6b2",
+                            ConcurrencyStamp = "5e23814c-08e7-40ec-bba2-901c5fa2226f",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4c015455-e0e8-4009-b0cd-662a5979a1e8",
-                            ConcurrencyStamp = "0303a64d-eacb-499d-85c1-f0e7e5d8246b",
+                            Id = "4320b19a-b43d-4905-b2ef-fa3b7b6830f4",
+                            ConcurrencyStamp = "c0a196bc-69fc-4914-a238-d33ea2f6ff24",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -193,7 +208,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "b50c2492-91df-490b-a0ef-6a92c4c2a1e6"
+                            UserId = "b0defaf2-03f0-489a-9eae-d71cbadf9d97"
                         });
                 });
 
@@ -238,13 +253,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "b50c2492-91df-490b-a0ef-6a92c4c2a1e6",
-                            RoleId = "13a15714-a07c-441d-b4c5-c995397af47e"
+                            UserId = "b0defaf2-03f0-489a-9eae-d71cbadf9d97",
+                            RoleId = "9cede53f-0e37-4013-81e5-92057bede6b2"
                         },
                         new
                         {
-                            UserId = "64b3110a-01fa-45fb-a93e-1b265dbd5cdf",
-                            RoleId = "4c015455-e0e8-4009-b0cd-662a5979a1e8"
+                            UserId = "079fdb55-73ba-47fe-b547-a04941b6ffa8",
+                            RoleId = "4320b19a-b43d-4905-b2ef-fa3b7b6830f4"
                         });
                 });
 
@@ -316,7 +331,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 4,
                             Content = "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.",
-                            PublishDate = new DateTime(2023, 2, 12, 4, 30, 49, 242, DateTimeKind.Local).AddTicks(4760),
+                            PublishDate = new DateTime(2023, 2, 12, 16, 53, 29, 182, DateTimeKind.Local).AddTicks(9093),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -327,7 +342,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 5,
                             Content = "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.",
-                            PublishDate = new DateTime(2023, 2, 12, 4, 30, 49, 242, DateTimeKind.Local).AddTicks(4762),
+                            PublishDate = new DateTime(2023, 2, 12, 16, 53, 29, 182, DateTimeKind.Local).AddTicks(9096),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -338,7 +353,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 3,
                             Content = "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.",
-                            PublishDate = new DateTime(2023, 2, 12, 4, 30, 49, 242, DateTimeKind.Local).AddTicks(4764),
+                            PublishDate = new DateTime(2023, 2, 12, 16, 53, 29, 182, DateTimeKind.Local).AddTicks(9098),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         });
@@ -380,7 +395,7 @@ namespace MyBlogWebsite.Migrations
                         new
                         {
                             Id = 1,
-                            ApplicationUserId = "b50c2492-91df-490b-a0ef-6a92c4c2a1e6",
+                            ApplicationUserId = "b0defaf2-03f0-489a-9eae-d71cbadf9d97",
                             AuthorConfirmed = true,
                             AuthorName = "Anasayfa Yazarı"
                         });
@@ -476,24 +491,6 @@ namespace MyBlogWebsite.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyBlogWebsite.Models.Entities.FavCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.ToTable("FavCategories");
-                });
-
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -513,17 +510,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b50c2492-91df-490b-a0ef-6a92c4c2a1e6",
+                            Id = "b0defaf2-03f0-489a-9eae-d71cbadf9d97",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "73343915-fb95-416c-852b-98dbe4302502",
+                            ConcurrencyStamp = "e4444754-3b2d-42b3-aaa6-cbd54e2e1001",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMU7DehhMywEqzWacVu5zihxXM7JsUmsurDGGvSiXIRxyNpadSkwWLjqUaWO54RsQg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPteiDX7m8cSga1g+efQ0/M0V5p0NBpDc/3p/yA3E1HMsv4Hqr/zrxSJx2EubGtoZw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2835dcff-c31a-4090-bfa6-b4dfac11021b",
+                            SecurityStamp = "4d828d25-528b-446c-b853-d197ea66bf2d",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -531,22 +528,37 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "64b3110a-01fa-45fb-a93e-1b265dbd5cdf",
+                            Id = "079fdb55-73ba-47fe-b547-a04941b6ffa8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "774eb35b-ad26-4a8c-93da-644eb66122b0",
+                            ConcurrencyStamp = "9e0f8380-d8fb-45c4-a683-eaafc9ea9463",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFAmsDpMqiWZWWjb5DEJcw1cseEUiiOWR8pstkhVBDUt7bUpTINHnPTlLAmUaEV1FA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKBZzhDc+WwRYs6ZGab4R6ZI27gUpq7dxe7C2n++Juc1T62koomEUP57OTxbiL98Fg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bbeb29b0-b1ce-4bf0-ae98-3866c8e39c05",
+                            SecurityStamp = "e7351f93-c140-4209-a86b-d8341a32306d",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",
                             LastName = "testLastName"
                         });
+                });
+
+            modelBuilder.Entity("AuthorCategory", b =>
+                {
+                    b.HasOne("MyBlogWebsite.Models.Concrete.Author", null)
+                        .WithMany()
+                        .HasForeignKey("AuthorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyBlogWebsite.Models.Entities.Category", null)
+                        .WithMany()
+                        .HasForeignKey("FavoryCategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -630,22 +642,9 @@ namespace MyBlogWebsite.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("MyBlogWebsite.Models.Entities.FavCategory", b =>
-                {
-                    b.HasOne("MyBlogWebsite.Models.Concrete.Author", "Author")
-                        .WithMany("FavouriteCategories")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-                });
-
             modelBuilder.Entity("MyBlogWebsite.Models.Concrete.Author", b =>
                 {
                     b.Navigation("Articles");
-
-                    b.Navigation("FavouriteCategories");
                 });
 
             modelBuilder.Entity("MyBlogWebsite.Models.Entities.Category", b =>

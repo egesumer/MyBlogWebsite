@@ -23,7 +23,6 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<Category> Categories { get; set; }
 
-    public DbSet<FavCategory> FavCategories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -33,7 +32,6 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
         builder.ApplyConfiguration(new ArticleEntityConfiguration());
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
         builder.ApplyConfiguration(new CategoryEntityConfiguration());
-
 
 
         string adminRoleId = Guid.NewGuid().ToString();

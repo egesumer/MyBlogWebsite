@@ -15,7 +15,7 @@ namespace MyBlogWebsite.Models.Concrete
         public Author()
         {
             Articles = new HashSet<Article>();
-            FavouriteCategories = new HashSet<FavCategory>();
+           FavoryCategories = new HashSet<Category>();
         }
 
         // Navigations
@@ -23,7 +23,6 @@ namespace MyBlogWebsite.Models.Concrete
 		public ApplicationUser ApplicationUser { get; set; }
 
 		public ICollection<Article> Articles { get; set; }
-        public ICollection<FavCategory> FavouriteCategories { get; set; }
-
+        public ICollection<Category> FavoryCategories { get; set; }
     }
 }
