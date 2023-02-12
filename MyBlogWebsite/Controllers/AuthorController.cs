@@ -110,36 +110,53 @@ namespace MyBlogWebsite.Controllers
 		}
 
 
-		//[Authorize]
-		//[HttpGet]
-		//public async Task<IActionResult> EditProfile()
-		//{
-		//	AuthorEditVM vm = new AuthorEditVM();
-		//	//var categories = categoryRepository.GetAll();
-		//	var user = userManager.GetUserAsync(User);
-		//	Author editAuthor = authorRepository.GetByID(user.Id);
-		//	vm.Id = editAuthor.Id;
-		//	//vm.FavouriteCategory= categories;
-		//	return View(vm);
-		//}
+		[Authorize]
+		[HttpGet]
+		public IActionResult EditProfile()
+		{
+            AuthorEditVM vm = new AuthorEditVM();
 
-		//[HttpPost]
-		//public IActionResult EditProfile(AuthorEditVM vm)
-		//{
-		//	//var favCat = categoryRepository.GetByID(vm.FavouriteCategoriesId);
-		//	//favCategoryRepository.Add(favCat.CategoryName);
+			return View(vm);
+		}
 
+		[Authorize]
+		[HttpPost]
+		public async Task<IActionResult> EditProfile(AuthorEditVM vm)
+		{
+			//TRY CATCH GEREKEBILIR
 
-		//	Author author = authorRepository.GetByID(vm.Id);
-		//	//FavCategory favCategory = new FavCategory();
-		//	//favCategory.Id= vm.Id;
-		//	author.AuthorName = vm.AuthorName;
-		//	author.AboutMe = vm.AboutMe;
-		//	//author.FavCategoryId = 
+			var user = await userManager.GetUserAsync(User);
+			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
 
-		//	TempData["UpdateAuthor"] = "Bilgileriniz güncellendi.";
-		//	return RedirectToAction("Index", "Article");
-		//}
+			if (string.IsNullOrEmpty(vm.AuthorName))
+			{
+				vm.AuthorName = author.AuthorName;
+				author.AboutMe = vm.AboutMe;
+				author.AuthorName = vm.AuthorName;
+			}
+			else if (string.IsNullOrEmpty(vm.AboutMe))
+			{
+				vm.AboutMe = author.AboutMe;
+				author.AuthorName = vm.AuthorName;
+				author.AboutMe = vm.AboutMe;
+			}
+			else if (string.IsNullOrEmpty(vm.AuthorName) && string.IsNullOrEmpty(vm.AboutMe))
+			{
+				vm.AboutMe = author.AboutMe;
+				vm.AuthorName = author.AuthorName;
+				author.AboutMe = vm.AboutMe;
+				author.AuthorName = vm.AuthorName;
+			}
+			else
+			{
+				author.AboutMe = vm.AboutMe;
+				author.AuthorName = vm.AuthorName;
+			}
+
+			authorRepository.Update(author);
+			TempData["UpdateAuthor"] = "Bilgileriniz güncellendi.";
+			return RedirectToAction("Index", "Article");
+		}
 
 	}
 }

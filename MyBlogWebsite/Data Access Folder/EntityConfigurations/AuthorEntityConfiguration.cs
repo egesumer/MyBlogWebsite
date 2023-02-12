@@ -12,6 +12,7 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.EntityConfigurations
 
             builder.Property(x => x.AuthorName).IsRequired().HasMaxLength(50);
 			builder.HasMany(x => x.FavouriteCategories).WithOne(x => x.Author).HasForeignKey(x => x.AuthorId);
+			builder.Property(x => x.AboutMe).HasDefaultValue("");
 		}
 	}
 }

@@ -178,7 +178,7 @@ namespace MyBlogWebsite.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AuthorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     AuthorConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AboutMe = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: ""),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -247,8 +247,8 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3631a200-632a-43e6-a8c6-a74ac807339c", "d86df57c-ea70-4f9a-9386-9ec279b34db0", "admin", "ADMIN" },
-                    { "97b73272-6973-4181-bb26-7b3e3f5f4019", "fc7368da-5d4f-4705-814a-d3d3db160ccf", "standard", "STANDARD" }
+                    { "13a15714-a07c-441d-b4c5-c995397af47e", "a857f825-5895-48e4-88b6-44427ea8f15e", "admin", "ADMIN" },
+                    { "4c015455-e0e8-4009-b0cd-662a5979a1e8", "0303a64d-eacb-499d-85c1-f0e7e5d8246b", "standard", "STANDARD" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,8 +256,8 @@ namespace MyBlogWebsite.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "fae13bb9-5089-4be0-ae70-fcd594287de4", 0, "469e4cbd-e187-4165-9553-5e7a000859bf", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEJJluItXAZEOShEsuhtaSxO2aBCzqPiEdJSnQZGP0IZHT/rJ60I2aVF0ZID50ypofA==", null, false, "b17a8e1e-cbc0-49ad-8a4e-62d575f5c951", false, "admin" },
-                    { "fd2142ba-fdda-41f4-8ac7-b5668f934dfc", 0, "507c18ab-bb74-4038-a2f6-9fa0e103b563", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAEP19J8rlg1bLluwjCuvP2AqQFws49vb16P/79IZucYD9zAPiOmvv1OGYgydzQqaqFw==", null, false, "1858c0c2-58cd-404e-8f6b-207493a3fc1a", false, "test" }
+                    { "64b3110a-01fa-45fb-a93e-1b265dbd5cdf", 0, "774eb35b-ad26-4a8c-93da-644eb66122b0", "ApplicationUser", "test@test.com", true, "testName", "testLastName", false, null, "TEST@TEST.COM", "TEST", "AQAAAAEAACcQAAAAEFAmsDpMqiWZWWjb5DEJcw1cseEUiiOWR8pstkhVBDUt7bUpTINHnPTlLAmUaEV1FA==", null, false, "bbeb29b0-b1ce-4bf0-ae98-3866c8e39c05", false, "test" },
+                    { "b50c2492-91df-490b-a0ef-6a92c4c2a1e6", 0, "73343915-fb95-416c-852b-98dbe4302502", "ApplicationUser", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN", "AQAAAAEAACcQAAAAEMU7DehhMywEqzWacVu5zihxXM7JsUmsurDGGvSiXIRxyNpadSkwWLjqUaWO54RsQg==", null, false, "2835dcff-c31a-4090-bfa6-b4dfac11021b", false, "admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -284,36 +284,36 @@ namespace MyBlogWebsite.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "UserId" },
-                values: new object[] { 1, "IsAdmin", "true", "fae13bb9-5089-4be0-ae70-fcd594287de4" });
+                values: new object[] { 1, "IsAdmin", "true", "b50c2492-91df-490b-a0ef-6a92c4c2a1e6" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "3631a200-632a-43e6-a8c6-a74ac807339c", "fae13bb9-5089-4be0-ae70-fcd594287de4" },
-                    { "97b73272-6973-4181-bb26-7b3e3f5f4019", "fd2142ba-fdda-41f4-8ac7-b5668f934dfc" }
+                    { "4c015455-e0e8-4009-b0cd-662a5979a1e8", "64b3110a-01fa-45fb-a93e-1b265dbd5cdf" },
+                    { "13a15714-a07c-441d-b4c5-c995397af47e", "b50c2492-91df-490b-a0ef-6a92c4c2a1e6" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Authors",
-                columns: new[] { "Id", "AboutMe", "ApplicationUserId", "AuthorConfirmed", "AuthorName" },
-                values: new object[] { 1, null, "fae13bb9-5089-4be0-ae70-fcd594287de4", true, "Anasayfa Yazarı" });
+                columns: new[] { "Id", "ApplicationUserId", "AuthorConfirmed", "AuthorName" },
+                values: new object[] { 1, "b50c2492-91df-490b-a0ef-6a92c4c2a1e6", true, "Anasayfa Yazarı" });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleTitle", "AuthorId", "CategoryId", "Content", "PublishDate", "RequiredMinuteToReadEntireArticle", "TotalReadCount" },
-                values: new object[] { 1, "Küresel Isınma - Nedenler ve Sonuçları", 1, 4, "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.", new DateTime(2023, 2, 12, 2, 41, 18, 561, DateTimeKind.Local).AddTicks(202), 2, 5 });
+                values: new object[] { 1, "Küresel Isınma - Nedenler ve Sonuçları", 1, 4, "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.", new DateTime(2023, 2, 12, 4, 30, 49, 242, DateTimeKind.Local).AddTicks(4760), 2, 5 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleTitle", "AuthorId", "CategoryId", "Content", "PublishDate", "RequiredMinuteToReadEntireArticle", "TotalReadCount" },
-                values: new object[] { 2, "İstanbul Sanayi - Türkiye ve Dünya Ekonomisi İçin Önemli Bir Merkez", 1, 5, "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.", new DateTime(2023, 2, 12, 2, 41, 18, 561, DateTimeKind.Local).AddTicks(205), 2, 5 });
+                values: new object[] { 2, "İstanbul Sanayi - Türkiye ve Dünya Ekonomisi İçin Önemli Bir Merkez", 1, 5, "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.", new DateTime(2023, 2, 12, 4, 30, 49, 242, DateTimeKind.Local).AddTicks(4762), 2, 5 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleTitle", "AuthorId", "CategoryId", "Content", "PublishDate", "RequiredMinuteToReadEntireArticle", "TotalReadCount" },
-                values: new object[] { 3, "Geridönüşüm - Hayatımız ve Dünyamız İçin Önemli Bir Adım", 1, 3, "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.", new DateTime(2023, 2, 12, 2, 41, 18, 561, DateTimeKind.Local).AddTicks(208), 2, 5 });
+                values: new object[] { 3, "Geridönüşüm - Hayatımız ve Dünyamız İçin Önemli Bir Adım", 1, 3, "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.", new DateTime(2023, 2, 12, 4, 30, 49, 242, DateTimeKind.Local).AddTicks(4764), 2, 5 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_AuthorId",
