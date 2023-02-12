@@ -30,8 +30,6 @@ namespace MyBlogWebsite.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-
-         
             try
             {
                 var onlineUser = await userManager.GetUserAsync(User);
@@ -117,8 +115,6 @@ namespace MyBlogWebsite.Controllers
         }
 
 
-        //[Route("/Author/AuthorProfile/{id}")]
-
         [Authorize]
         [HttpGet]
         public IActionResult Update(int id)
@@ -130,7 +126,6 @@ namespace MyBlogWebsite.Controllers
             vm.ArticleTitle = article.ArticleTitle;
             vm.Content = article.Content;
             vm.Id = id;
-            //var categories = categoryRepository.GetCategories();
 
             return View(vm);
         }
