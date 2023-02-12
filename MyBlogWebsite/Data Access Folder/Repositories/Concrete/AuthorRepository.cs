@@ -18,7 +18,7 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete
 			return db.Authors.Where(x => x.ApplicationUserId == id).FirstOrDefault();
 		}
 
-		public void RemoveCategory(int authorId, int categoryId)
+		public bool RemoveCategory(int authorId, int categoryId)
 		{
 				var author = db.Authors.Include(a => a.FavoryCategories).FirstOrDefault(x => x.Id == authorId);
 
@@ -29,10 +29,11 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Concrete
 				if (favouriteCategoryToRemove != null)
 				{
 					author.FavoryCategories.Remove(favouriteCategoryToRemove);
-					db.SaveChanges();
+					
 				}
 			}
 
+			return db.SaveChanges() > 0;
 
 
 		}

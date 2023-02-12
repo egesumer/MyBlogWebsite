@@ -6,6 +6,7 @@ namespace MyBlogWebsite.Data_Access_Layer_Folder_.Repositories.Abstract
 	{
 		Author AuthorGetByStringId(string id);
 
-		void RemoveCategory(int authorId, int categoryId);
+		bool RemoveCategory(int authorId, int categoryId);
+
     }
 }

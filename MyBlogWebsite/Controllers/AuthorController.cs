@@ -20,15 +20,15 @@ namespace MyBlogWebsite.Controllers
 		private readonly IAuthorRepository authorRepositorySecond;
 		private readonly ICategoryRepository categoryRepository;
 		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository, IAuthorRepository authorRepositorySecond, ICategoryRepository categoryRepository)
-        {
-            userManager = _userManager;
-            authorRepository = _authorRepository;
-            this.articleRepository = articleRepository;
-            this.authorRepositorySecond = authorRepositorySecond;
-            this.categoryRepository = categoryRepository;
-        }
+		{
+			userManager = _userManager;
+			authorRepository = _authorRepository;
+			this.articleRepository = articleRepository;
+			this.authorRepositorySecond = authorRepositorySecond;
+			this.categoryRepository = categoryRepository;
+		}
 
-        [Authorize]
+		[Authorize]
 		public async Task<IActionResult> Index()
 		{
 			try
@@ -44,8 +44,8 @@ namespace MyBlogWebsite.Controllers
 			catch (Exception)
 			{
 
-                return RedirectToAction("Index", "Home");
-            };
+				return RedirectToAction("Index", "Home");
+			};
 
 			TempData["AuthorIdAlreadyActivated"] = "Yazar kimliğiniz halihazırda oluşturulmuş durumda.";
 			return RedirectToAction("Index", "Article");
@@ -84,22 +84,22 @@ namespace MyBlogWebsite.Controllers
 				Author authors = authorRepositorySecond.AuthorGetByStringId(user.Id);
 				if (authors != null)
 				{
-                    TempData["AuthorIdAlreadyActivated"] = "Yazar kimliğiniz halihazırda oluşturulmuş durumda.";
-                    return RedirectToAction("Index", "Article");
-                }
+					TempData["AuthorIdAlreadyActivated"] = "Yazar kimliğiniz halihazırda oluşturulmuş durumda.";
+					return RedirectToAction("Index", "Article");
+				}
 				else
 				{
-                    Author author = new Author();
-                    author.AuthorName = model.AuthorName;
-                    author.AuthorConfirmed = true;
-                    author.ApplicationUserId = user.Id;
-                    authorRepository.Add(author);
+					Author author = new Author();
+					author.AuthorName = model.AuthorName;
+					author.AuthorConfirmed = true;
+					author.ApplicationUserId = user.Id;
+					authorRepository.Add(author);
 
-                    TempData["Message"] = "Yazar kimliğiniz başarıyla oluşturuldu.";
-                    return RedirectToAction("Index", "Article");
-                }
+					TempData["Message"] = "Yazar kimliğiniz başarıyla oluşturuldu.";
+					return RedirectToAction("Index", "Article");
+				}
 
-            }
+			}
 			catch (Exception)
 			{
 
@@ -112,10 +112,10 @@ namespace MyBlogWebsite.Controllers
 		[HttpGet]
 		public IActionResult EditProfile()
 		{
-            var categories = categoryRepository.GetAll();
+			var categories = categoryRepository.GetAll();
 			AuthorEditVM vm = new AuthorEditVM();
 
-			vm.FavCategories= categories;
+			vm.FavCategories = categories;
 			return View(vm);
 		}
 
@@ -125,12 +125,7 @@ namespace MyBlogWebsite.Controllers
 		{
 			//TRY CATCH GEREKEBILIR
 			var user = await userManager.GetUserAsync(User);
-
-			//Category category = categoryRepository.GetByID(vm.FavCategoryId);
 			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
-
-			//author.FavoryCategories.Add(category);
-			
 
 
 			if (string.IsNullOrEmpty(vm.AuthorName) && (!string.IsNullOrEmpty(vm.AboutMe)))
@@ -147,14 +142,9 @@ namespace MyBlogWebsite.Controllers
 			}
 			else if (string.IsNullOrEmpty(vm.AuthorName) && string.IsNullOrEmpty(vm.AboutMe))
 			{
-				//vm.AboutMe = author.AboutMe;
-				//vm.AuthorName = author.AuthorName;
-				//author.AboutMe = vm.AboutMe;
-				//author.AuthorName = vm.AuthorName;
 
 				TempData["UpdateAuthorWarning"] = "Lütfen ilgili alanları doldurun.";
 				return RedirectToAction("EditProfile", "Author");
-
 			}
 			else
 			{
@@ -167,35 +157,66 @@ namespace MyBlogWebsite.Controllers
 			return RedirectToAction("EditProfile", "Author");
 		}
 
+
 		[Authorize]
 		[HttpPost]
 		public async Task<IActionResult> EditCategory(AuthorEditVM vm, IFormCollection form)
 		{
-			var user = await userManager.GetUserAsync(User);
-			Category category = categoryRepository.GetByID(vm.FavCategoryId);
-			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
 			
+			try
+			{
+				var user = await userManager.GetUserAsync(User);
+				Category category = categoryRepository.GetByID(vm.FavCategoryId);
+				Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+
+				if (form["submitButton"].Equals("Favorilere Ekle"))
+				{
+
+					author.FavoryCategories.Add(category);
+					bool check = authorRepository.Update(author);
+					if (check)
+					{
+						TempData["UpdateAuthor"] = "Favorilerinize başarıyla eklendi.";
+						return RedirectToAction("EditProfile", "Author");
+					}
+					else
+					{
+						TempData["UpdateFavouriteWarning"] = "Bu kategoriyi daha önce eklediniz.";
+						return RedirectToAction("EditProfile", "Author");
+					}
+				
+
+				}
+				else
+				{
+					bool check = authorRepositorySecond.RemoveCategory(author.Id, category.Id);
+					if (check)
+					{
+						TempData["UpdateAuthor"] = "Seçtiğiniz kategori silindi.";
+						return RedirectToAction("EditProfile", "Author");
+					}
+					else
+					{
+						TempData["UpdateFavouriteWarning"] = "Böyle bir kategori favorilerinizde bulunmuyor.";
+						return RedirectToAction("EditProfile", "Author");
+					}
 			
-			//int x = author.Id;
-			//Author authorNeeded = authorRepositorySecond.GetByIdIncludeFavorites(x);
+
+				}
 
 
-			if (form["submitButton"].Equals("Favorilere Ekle"))
-			{
-				author.FavoryCategories.Add(category);
-				authorRepository.Update(author);
-				TempData["UpdateAuthor"] = "Favorileriniz güncellendi.";
-				return RedirectToAction("EditProfile", "Author");
 			}
-			else
+			catch (Exception)
 			{
-				authorRepositorySecond.RemoveCategory(author.Id,category.Id);
-
-				TempData["UpdateAuthor"] = "Seçtiğiniz kategori silindi.";
+				TempData["UpdateAuthorWarning"] = "Lütfen ilgili alanları doldurun.";
 				return RedirectToAction("EditProfile", "Author");
 
 			}
-		
+
+
+
+
+
 		}
 
 
