@@ -134,14 +134,24 @@ namespace MyBlogWebsite.Controllers
 				}
 				else
 				{
-					Author author = new Author();
-					author.AuthorName = model.AuthorName;
-					author.AuthorConfirmed = true;
-					author.ApplicationUserId = user.Id;
-					authorRepository.Add(author);
+					if (ModelState.IsValid)
+					{
+                        Author author = new Author();
+                        author.AuthorName = model.AuthorName;
+                        author.AuthorConfirmed = true;
+                        author.ApplicationUserId = user.Id;
+                        authorRepository.Add(author);
 
-					TempData["Message"] = "Yazar kimliğiniz başarıyla oluşturuldu.";
-					return RedirectToAction("Index", "Article");
+                        TempData["Message"] = "Yazar kimliğiniz başarıyla oluşturuldu.";
+                        return RedirectToAction("Index", "Article");
+                    }
+					else
+					{
+                        TempData["WarningMessage"] = "Lütfen ilgili alanı doldurunuz.";
+                        return RedirectToAction("AuthorActivation", "Author");
+                    }
+
+				
 				}
 
 			}

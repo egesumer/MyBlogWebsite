@@ -2,6 +2,14 @@
 @model AuthorVM
 
 
+@if (TempData["WarningMessage"] != null)
+{
+        <div class="alert alert-warning">
+        @TempData["WarningMessage"]
+        </div>
+}
+
+
 <form asp-action="AuthorActivation" asp-controller="Author" method="post">
     <div class="form-group">
         <label asp-for="AuthorName"><strong>Yazar Adı:</strong></label>
