@@ -31,13 +31,17 @@
 
 
 <div class="jumbotron jumbotron-fluid text-left">
-    <h1 class="display-4">@Model.AuthorName</h1>
-    <p class="lead">@Model.AboutMe</p>
+	<h1 class="display-6"><strong>Yazar</strong></h1>
+	<h1 class="display-4"><strong><i>@Model.AuthorName</i></strong></h1>
+	<br />
+	<br />
+	<p><strong>Biyografi</strong></p>
+	<p class="lead"><i>@Model.AboutMe</i></p>
 </div>
 <div class="container my-5">
     <h2 class="text-center">Makaleler</h2>
     <div class="card-deck">
-        @foreach (var article in Model.Articles)
+        @foreach (var article in Model.FavoryCategoryArticles)
         {
             <div class="card mb-4">
                 <div class="card-header">

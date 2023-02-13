@@ -19,13 +19,15 @@ namespace MyBlogWebsite.Controllers
 		private readonly IRepository<Article> articleRepository;
 		private readonly IAuthorRepository authorRepositorySecond;
 		private readonly ICategoryRepository categoryRepository;
-		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository, IAuthorRepository authorRepositorySecond, ICategoryRepository categoryRepository)
+		private readonly IArticleRepository articleRepositorySecond;
+		public AuthorController(UserManager<IdentityUser> _userManager, IRepository<Author> _authorRepository, IRepository<Article> articleRepository, IAuthorRepository authorRepositorySecond, ICategoryRepository categoryRepository, IArticleRepository articleRepositorySecond)
 		{
 			userManager = _userManager;
 			authorRepository = _authorRepository;
 			this.articleRepository = articleRepository;
 			this.authorRepositorySecond = authorRepositorySecond;
 			this.categoryRepository = categoryRepository;
+			this.articleRepositorySecond = articleRepositorySecond;
 		}
 
 		[Authorize]
@@ -58,7 +60,7 @@ namespace MyBlogWebsite.Controllers
 			Article article = articleRepository.GetByID(id);
 			int desiredAuthorId = article.AuthorId;
 			Author desiredAuthor = authorRepository.GetByID(desiredAuthorId);
-			vm.Articles = articleRepository.GetWhere(x => x.AuthorId == desiredAuthor.Id);
+			vm.FavoryCategoryArticles = articleRepository.GetWhere(x => x.AuthorId == desiredAuthor.Id);
 			vm.AuthorName = desiredAuthor.AuthorName;
 			vm.AboutMe = desiredAuthor.AboutMe;
 			return View(vm);
@@ -82,7 +84,7 @@ namespace MyBlogWebsite.Controllers
 					vm.AuthorName = author.AuthorName;
 					vm.AboutMe = author.AboutMe;
 					vm.FavouriteCategories = categoryRepository.GetFavouriteCategories(author.Id);
-					vm.Articles = articleRepository.GetWhere(x => x.AuthorId == author.Id).ToList();
+					vm.FavoryCategoryArticles = articleRepositorySecond.GetUsersFavouriteArticles(author.Id);
 					return View(vm);
 
 				}

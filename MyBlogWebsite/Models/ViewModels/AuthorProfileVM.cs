@@ -8,7 +8,7 @@ namespace MyBlogWebsite.Models.ViewModels
 		//public IFormFile Photo { get; set; } veya byte[] 
 		public string AboutMe { get; set; }
 		public string AuthorName { get; set; }
-		public IEnumerable<Article> Articles { get; set; }
+		public IEnumerable<Article> FavoryCategoryArticles { get; set; }
 
 		public IEnumerable<Category> FavouriteCategories { get; set; }
 	}

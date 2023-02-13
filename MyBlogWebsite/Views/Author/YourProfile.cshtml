@@ -34,9 +34,9 @@
     <br />
     <div class="row">
         <div class="col-md-12">
-            <h3 class="mb-4 text-center"><strong>Makaleleriniz</strong></h3>
+            <h3 class="mb-4 text-center"><strong>Takip Ettiğiniz Kategorilere Göre Makaleler</strong></h3>
             <div class="card-deck">
-                @foreach (var article in Model.Articles)
+                @foreach (var article in Model.FavoryCategoryArticles)
                 {
                     <div class="card mb-4">
                         <div class="card-header text-center">
