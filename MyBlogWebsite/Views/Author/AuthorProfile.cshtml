@@ -29,33 +29,83 @@
 </style>
 
 
-<div class="image-container">
-	<img src="@Url.Content(Model.Path)" alt="Author Photo" class="author-photo" style="max-width: 10%; max-height: 10%; object-fit: cover; float:right;" />
-</div>
-<div class="jumbotron jumbotron-fluid text-left">
-	<h1 class="display-6"><strong>Yazar</strong></h1>
-	<h1 class="display-4"><strong><i>@Model.AuthorName</i></strong></h1>
-	<br />
-	<br />
-	<p><strong>Biyografi</strong></p>
-	<p class="lead"><i>@Model.AboutMe</i></p>
-</div>
-<div class="container my-5">
-    <h2 class="text-center">Makaleler</h2>
-    <div class="card-deck">
-        @foreach (var article in Model.FavoryCategoryArticles)
-        {
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h5 class="font-weight-bold text-black-50">@article.ArticleTitle</h5>
-                </div>
-                <div class="card-body">
-                    @article.Content
-                </div>
-                <div class="card-footer">
-                    <a><i>@Model.AuthorName</i></a>
-                </div>
-            </div>
-        }
-    </div>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+
+	<div class="image-container">
+		<img src="@Url.Content(Model.Path)" alt="Author Photo" class="author-photo" style="max-width: 10%; max-height: 10%; object-fit: cover; float:right;" />
+	</div>
+	<div class="jumbotron jumbotron-fluid text-left">
+		<h1 class="display-6"><strong>Yazar</strong></h1>
+		<h1 class="display-4"><strong><i>@Model.AuthorName</i></strong></h1>
+		<br />
+		<br />
+		<p><strong>Biyografi</strong></p>
+		<p class="lead"><i>@Model.AboutMe</i></p>
+	</div>
+	<div class="container my-5">
+		<h2 class="text-center">Makaleler</h2>
+		<div class="card-deck">
+			@foreach (var article in Model.FavoryCategoryArticles)
+			{
+				<div class="card mb-4">
+					<div class="card-header">
+						<h5 class="font-weight-bold text-black-50">@article.ArticleTitle</h5>
+					</div>
+					<div class="card-body">
+						@article.Content
+					</div>
+					<div class="card-footer">
+						<a><i>@Model.AuthorName</i></a>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+
+
+}
+else
+{
+
+	<div class="image-container">
+		<img src="@Url.Content(Model.Path)" alt="Author Photo" class="author-photo" style="max-width: 10%; max-height: 10%; object-fit: cover; float:right;" />
+	</div>
+	<div class="jumbotron jumbotron-fluid text-left">
+		<h1 class="display-6"><strong>Yazar</strong></h1>
+		<h1 class="display-4"><strong><i>@Model.AuthorName</i></strong></h1>
+		<br />
+		<br />
+		<p><strong>Biyografi</strong></p>
+		<p class="lead"><i>@Model.AboutMe</i></p>
+	</div>
+	<div class="container my-5">
+		<h2 class="text-center">Makaleler</h2>
+		<div class="card-deck">
+			@foreach (var article in Model.FavoryCategoryArticles)
+			{
+				<div class="card mb-4">
+					<div class="card-header">
+						<h5 class="font-weight-bold text-black-50">@article.ArticleTitle</h5>
+					</div>
+					<div class="card-body">
+						<p>
+
+							<i>
+								Yazarlarımızın paylaşımlarını ciddiye alıyoruz. İlgilendiğiniz makaleyi okumak istiyorsanız lütfen giriş yapınız.<br />
+							</i>
+
+						</p>
+					</div>
+					<div class="card-footer">
+						<a><i>@Model.AuthorName</i></a>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+
+
+}
+
+
