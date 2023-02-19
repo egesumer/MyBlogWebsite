@@ -210,10 +210,10 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
         {
             Id = 4,
             AuthorId = 1,
-            CategoryId = 3,
+            CategoryId = 7,
             PublishDate = DateTime.Now,
             RequiredMinuteToReadEntireArticle = 2,
-            TotalReadCount = 7,
+            TotalReadCount = 5,
             ArticleTitle = "Türkiye Ekonomisi",
             Content = "Türkiye’nin küresel dalgalanmalardan en çok etkilenen ülkelerden biri olması nedeniyle en önemli gündemini ekonomi oluşturmaktadır. 2000’li yıllarda yaşanan küresel krizlerin etkisiyle daralan Türkiye ekonomisi, takip eden yıllarda iyileşme sürecine girse de genel olarak olası dış şoklara karşı kırılgan yapısını sürdürmektedir. Türkiye ekonomisinin bu kırılgan yapısının temel nedenini aslında 24 Ocak 1980 kararlarıyla birlikte uygulamaya geçirilen yapısal uyum politikaları oluşturmaktadır. Yapısal uyum politikaları ile Türkiye ekonomisinde dışa dönük ve ihracata dayalı sanayileşme stratejileri uygulanmış böylece ithal ikameci politikalarla dış ticaret baskı altına alınmıştır.",
 
