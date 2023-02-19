@@ -1,0 +1,13 @@
+﻿@using MyBlogWebsite.Models.ViewModels;
+
+
+<h4>Fotoğrafınızı ekleyin veya düzenleyin.</h4>
+
+<br />
+
+
+
+<form asp-controller="Author" asp-action="UploadPhoto" method="post" enctype="multipart/form-data">
+    <input type="file" name="Photo" accept="image/*">
+    <input type="submit" value="Kaydet">
+</form>

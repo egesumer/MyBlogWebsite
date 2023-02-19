@@ -56,6 +56,9 @@ namespace MyBlogWebsite.Controllers
 		[HttpGet]
 		public IActionResult AuthorProfile(int id)
 		{
+
+
+
 			AuthorProfileVM vm = new AuthorProfileVM();
 			Article article = articleRepository.GetByID(id);
 			int desiredAuthorId = article.AuthorId;
@@ -63,7 +66,15 @@ namespace MyBlogWebsite.Controllers
 			vm.FavoryCategoryArticles = articleRepository.GetWhere(x => x.AuthorId == desiredAuthor.Id);
 			vm.AuthorName = desiredAuthor.AuthorName;
 			vm.AboutMe = desiredAuthor.AboutMe;
-			return View(vm);
+
+			if (desiredAuthor.Photo!=null)
+			{
+                string imageData = Convert.ToBase64String(desiredAuthor.Photo);
+                string imageBase64Data = string.Format("data:image/png;base64,{0}", imageData);
+                vm.Path = imageBase64Data;
+            }
+
+            return View(vm);
 
 		}
 
@@ -73,15 +84,23 @@ namespace MyBlogWebsite.Controllers
 		public async Task<IActionResult> YourProfile()
 		{
 			var user = await userManager.GetUserAsync(User);
-
-			try
+            try
 			{
 				Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
 				if (author != null)
 				{
-					AuthorProfileVM vm = new AuthorProfileVM();
+                    AuthorProfileVM vm = new AuthorProfileVM();
+
+                    if (author.Photo!=null)
+					{
+                        string imageData = Convert.ToBase64String(author.Photo);
+                        string imageBase64Data = string.Format("data:image/png;base64,{0}", imageData);
+                        vm.Path = imageBase64Data;
+
+                    }
+
 					author.FavoryCategories = categoryRepository.GetFavouriteCategories(author.Id);
-					vm.AuthorName = author.AuthorName;
+                    vm.AuthorName = author.AuthorName;
 					vm.AboutMe = author.AboutMe;
 					vm.FavouriteCategories = categoryRepository.GetFavouriteCategories(author.Id);
 					vm.FavoryCategoryArticles = articleRepositorySecond.GetUsersFavouriteArticles(author.Id);
@@ -207,9 +226,6 @@ namespace MyBlogWebsite.Controllers
 			Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
 
 
-
-
-
 			if (string.IsNullOrEmpty(vm.AuthorName) && (!string.IsNullOrEmpty(vm.AboutMe)))
 			{
 				vm.AuthorName = author.AuthorName;
@@ -240,6 +256,42 @@ namespace MyBlogWebsite.Controllers
 
 
 		}
+		[HttpGet]
+		public IActionResult UploadPhoto()
+		{
+			//PhotoVM vm = new PhotoVM();
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> UploadPhoto(PhotoVM model)
+		{
+            var user = await userManager.GetUserAsync(User);
+            Author author = authorRepositorySecond.AuthorGetByStringId(user.Id);
+
+			byte[] imageData;
+
+
+
+            if (model.Photo != null && model.Photo.Length > 0)
+            {
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Photo.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    model.Photo.CopyTo(stream);
+                }
+                using (var binaryReader = new BinaryReader(model.Photo.OpenReadStream()))
+                {
+                    author.Photo = binaryReader.ReadBytes((int)model.Photo.Length);
+                    authorRepository.Update(author);
+                }
+                model.Path = fileName;
+            }
+
+
+            return RedirectToAction("YourProfile", "Author");
+        }
 
 
 		[Authorize]

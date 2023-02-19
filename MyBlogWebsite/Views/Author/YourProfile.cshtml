@@ -1,6 +1,14 @@
 ﻿@using MyBlogWebsite.Models.ViewModels;
 @model AuthorProfileVM
 
+
+
+
+<div class="image-container">
+    <img src="@Url.Content(Model.Path)" alt="Author Photo" class="author-photo" style="max-width: 10%; max-height: 10%; object-fit: cover; float:right;" />
+</div>
+ 
+
 <div class="container my-5">
     <div class="row">
         <div class="col-md-3">

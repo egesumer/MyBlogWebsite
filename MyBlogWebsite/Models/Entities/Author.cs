@@ -12,6 +12,8 @@ namespace MyBlogWebsite.Models.Concrete
 
 
         public string? AboutMe { get; set; }
+
+        public byte[]? Photo { get; set; }
         public Author()
         {
             Articles = new HashSet<Article>();

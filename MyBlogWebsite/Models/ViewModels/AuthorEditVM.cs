@@ -9,5 +9,6 @@ namespace MyBlogWebsite.Models.ViewModels
 
 		public int FavCategoryId { get; set; }
 		public IEnumerable<Category>? FavCategories { get; set; }
+
 	}
 }

@@ -1,13 +1,13 @@
 ﻿@using MyBlogWebsite.Models.ViewModels;
-@model AuthorEditVM
+	@model AuthorEditVM
 
 
-@if (TempData["UpdateAuthor"] != null)
-{
-	<div class="alert alert-success">
-		@TempData["UpdateAuthor"]
-	</div>
-}
+	@if (TempData["UpdateAuthor"] != null)
+	{
+		<div class="alert alert-success">
+			@TempData["UpdateAuthor"]
+		</div>
+	}
 
 @if (TempData["UpdateAuthorWarning"] != null)
 {
@@ -38,6 +38,7 @@
 		<label asp-for="AboutMe">Hakkınızda:</label>
 		<textarea asp-for="AboutMe" class="form-control"></textarea>
 	</div>
+
 	<br />
 
 	<button type="submit" class="btn btn-outline-secondary">Kaydet</button>
@@ -78,5 +79,12 @@
 
 	<input type="submit" name="submitButton" class="btn btn-outline-danger" value="Favorilerden Sil" />
 
+
+</form>
+<br />
+<br />
+
+<form asp-controller="Author" asp-action="UploadPhoto" method="get">
+		<input type="submit" name="submitButton" class="btn btn-outline-warning" value="Fotoğraf Ayarları" />
 
 </form>
