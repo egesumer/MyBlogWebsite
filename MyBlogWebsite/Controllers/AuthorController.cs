@@ -63,7 +63,7 @@ namespace MyBlogWebsite.Controllers
 			Article article = articleRepository.GetByID(id);
 			int desiredAuthorId = article.AuthorId;
 			Author desiredAuthor = authorRepository.GetByID(desiredAuthorId);
-			vm.FavoryCategoryArticles = articleRepository.GetWhere(x => x.AuthorId == desiredAuthor.Id);
+			vm.FavoryCategoryArticles = articleRepository.GetWhere(x => x.AuthorId == desiredAuthor.Id).OrderByDescending(x=>x.PublishDate);
 			vm.AuthorName = desiredAuthor.AuthorName;
 			vm.AboutMe = desiredAuthor.AboutMe;
 
