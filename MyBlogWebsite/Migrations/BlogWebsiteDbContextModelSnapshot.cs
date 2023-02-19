@@ -66,15 +66,15 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cb957cd6-0022-4332-83e3-8d91fd5d4990",
-                            ConcurrencyStamp = "907ae2aa-b2fa-4657-99d5-c7e52c0775cc",
+                            Id = "c5732985-5b81-412f-80cd-1ce99d2d260a",
+                            ConcurrencyStamp = "e0cf652e-850e-472e-9902-de7af2ad2ccd",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "51005909-6d79-45a9-a16f-8808be4c0213",
-                            ConcurrencyStamp = "a5e24b64-a30d-45a7-b201-80c281d7991c",
+                            Id = "c9d5502b-cafb-43bb-93dd-e1824daadc66",
+                            ConcurrencyStamp = "e11fb80c-8a7c-4dc8-9986-9abad5944f2b",
                             Name = "standard",
                             NormalizedName = "STANDARD"
                         });
@@ -206,7 +206,7 @@ namespace MyBlogWebsite.Migrations
                             Id = 1,
                             ClaimType = "IsAdmin",
                             ClaimValue = "true",
-                            UserId = "dea11798-f61f-44c5-bc5f-324a314e12d1"
+                            UserId = "aa4d3a9a-10c5-4baf-ad97-69663b0d0274"
                         });
                 });
 
@@ -251,13 +251,13 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "dea11798-f61f-44c5-bc5f-324a314e12d1",
-                            RoleId = "cb957cd6-0022-4332-83e3-8d91fd5d4990"
+                            UserId = "aa4d3a9a-10c5-4baf-ad97-69663b0d0274",
+                            RoleId = "c5732985-5b81-412f-80cd-1ce99d2d260a"
                         },
                         new
                         {
-                            UserId = "6ddc7555-5116-45a6-ae6f-fc2291f2d00c",
-                            RoleId = "51005909-6d79-45a9-a16f-8808be4c0213"
+                            UserId = "ea5f5766-fd3c-4d20-aac4-b8cc9753d2ef",
+                            RoleId = "c9d5502b-cafb-43bb-93dd-e1824daadc66"
                         });
                 });
 
@@ -329,7 +329,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 4,
                             Content = "Küresel ısınma, Dünya'nın sürekli olarak artan ortalama sıcaklığıdır. Bu sıcaklık artışı, insan aktiviteleri tarafından salınan sera gazlarının atmosferdeki miktarının artmasına bağlıdır.\r\n\r\nSera gazları, güneş ışığının Dünya'ya ulaşmasına izin verirken, aynı zamanda bu ışığın tekrar atmosfer tarafından emilmesini engeller. Böylece, atmosferdeki sera gazları, Dünya'nın sıcaklığını yükseltir.\r\n\r\nİnsan aktiviteleri, sera gazı salınmasını artıran en büyük nedenlerden biridir. Endüstriyel faaliyetler, ulaşım, tarım ve enerji üretimi gibi faaliyetler, CO2 ve diğer sera gazlarının atmosfere salınmasına neden olur.\r\n\r\nKüresel ısınmanın sonuçları ciddi ve uzun vadelidir. Bu sonuçlar arasında; deniz seviyesinin yükselmesi, buzulların erimesi, iklim değişikliği, biyolojik çeşitlilikte azalma ve su kaynaklarının azalması gibi faktörler bulunur.\r\n\r\nDünya çapında, küresel ısınma konusunda acil bir müdahale gerekmektedir. İnsanlar, sera gazı salınmasını azaltmak için sürdürülebilir enerji kaynaklarına yönelmeli ve enerji verimliliğini artırmalıdır. Ayrıca, ülkeler arasında küresel ısınmaya karşı ortak bir mücadele başlatılması gerekmektedir.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3627),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7743),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -340,7 +340,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 5,
                             Content = "İstanbul, Türkiye'nin en büyük ve en kalabalık şehridir ve sanayi açısından da oldukça önemlidir. İstanbul sanayi, Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlar.\r\n\r\nİstanbul'da bulunan sanayi tesisleri, çeşitli sektörlerde üretim yapmaktadır. Bunlar arasında metalürji, tekstil, gıda, elektronik, petrokimya gibi sektörler bulunmaktadır. Bu sektörler, Türkiye ekonomisi için hayati önem taşır ve İstanbul sanayi, bu sektörlerin önemli bir merkezidir.\r\n\r\nİstanbul sanayi, aynı zamanda Türkiye'nin dış ticaretini de destekler. İstanbul limanı, Türkiye'nin en büyük ve en önemli limanıdır ve bu liman, İstanbul sanayi için de önemlidir. İstanbul sanayi ürünleri, dünya çapında ihracat yapılmasını mümkün kılar.\r\n\r\nSonuç olarak, İstanbul sanayi, Türkiye ve dünya ekonomisi için önemli bir merkezdir. İstanbul sanayi, Türkiye ekonomisi için hayati önem taşır ve dünya çapında üretim ve ihracat yapılmasını mümkün kılar. İstanbul sanayi, gelecekte de Türkiye'nin ekonomik büyümesine ve gelişmesine katkı sağlamaya devam edecektir.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3630),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7745),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -351,7 +351,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 3,
                             Content = "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3632),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7747),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -360,11 +360,11 @@ namespace MyBlogWebsite.Migrations
                             Id = 4,
                             ArticleTitle = "Türkiye Ekonomisi",
                             AuthorId = 1,
-                            CategoryId = 3,
+                            CategoryId = 7,
                             Content = "Türkiye’nin küresel dalgalanmalardan en çok etkilenen ülkelerden biri olması nedeniyle en önemli gündemini ekonomi oluşturmaktadır. 2000’li yıllarda yaşanan küresel krizlerin etkisiyle daralan Türkiye ekonomisi, takip eden yıllarda iyileşme sürecine girse de genel olarak olası dış şoklara karşı kırılgan yapısını sürdürmektedir. Türkiye ekonomisinin bu kırılgan yapısının temel nedenini aslında 24 Ocak 1980 kararlarıyla birlikte uygulamaya geçirilen yapısal uyum politikaları oluşturmaktadır. Yapısal uyum politikaları ile Türkiye ekonomisinde dışa dönük ve ihracata dayalı sanayileşme stratejileri uygulanmış böylece ithal ikameci politikalarla dış ticaret baskı altına alınmıştır.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3633),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7749),
                             RequiredMinuteToReadEntireArticle = 2,
-                            TotalReadCount = 7
+                            TotalReadCount = 5
                         },
                         new
                         {
@@ -373,7 +373,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 1,
                             Content = "Öncelikle adalet, karşılıklı insan ilişkilerini düzenleyen toplumsal\r\ndüzenin mümkün, ama zorunlu olmayan bir niteliğidir. O, ancak tali\r\nolarak insanın bir erdemidir; çünkü insan, eğer davranışı adil olarak\r\nkabul edilen toplumsal bir düzenin normlarına uyuyorsa adildir. Peki,\r\ntoplumsal bir düzenin adil olduğunu söylemek gerçekte ne anlama gelir? O şu demektir: bu (toplumsal) düzen, insan davranışlarını herkesi\r\ntatmin edecek şekilde düzenlemiştir. Yani herkes, o düzende mutluluğu bulabilir. Adalet arzusu, insanın mutluluk için duyduğu ebedi\r\narzudur. O, insanın yalıtılmış bir şekilde, yani yalnız başına bulamayacağı, bu nedenle bir toplum içinde aradığı bir mutluluktur. Yani\r\nadalet, toplumsal mutluluktur. O, toplumsal düzen tarafından garanti\r\nedilmiş bir mutluluktur. Bu bağlamda, adaleti mutluluk olarak tanımlayan Eflatun, sadece adil insanın mutlu ve adil olmayanın da mutsuz\r\nolduğunu ileri sürer. (Ancak) adaletin mutluluk olduğu yönündeki\r\nifade, elbette ki nihai cevap değildir; o, sadece soruyu değiştirmektir.\r\nÇünkü şu halde sormamız gerekir: Mutluluk nedir?\r\n",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3635),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7750),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -384,7 +384,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 2,
                             Content = "Bilim, en küçük atomaltı parçacıklardan en büyük galaksi kümelerine kadar, fiziksel ve doğal dünyanın yapısını ve davranışlarını gözlem ve deney yoluyla, sistematik bir şekilde inceleyen, entelektüel ve pratik bir faaliyet olarak tanımlanabilir.Bilim, Evren'e, parçalarına ve varsa ötesine dair genel gerçekleri ve temel yasaları öğrenme yolunda çıkılan bir yolculuk; bir veri toplama, değerlendirme ve öngörü aracı olarak da düşünülebilir. Bir diğer deyişle bilim, doğal dünyada olan biteni ve bunların nasıl işlediğini öğrenmenin bir yoludur; bu bakımdan bilim, pul koleksiyonu yapmak gibi gerçekleri toplamaktan ibaret değildir; onları açıklayıp, anlamayı da hedefler",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3637),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7752),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -395,7 +395,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 6,
                             Content = "Küreselleşmeyle birlikte son zamanlarda sanayi alanında gelişmelerin yaşanması, teknolojinin ilerlemesi nüfusun artması gibi birçok sebep enerji kaynaklarının kullanımını hızla arttırmaktadır. Sınırlı olarak bulunan fosil yakıtlarının gelecek dönemlerde yetersiz olacağı bilinmektedir. Aynı zamanda dünya ülkelerinin bu yakıtları ele geçirme isteği gün geçtikçe artmaktadır. Bunun için Enerji geçmişten günümüze her toplumun önemli sorunlarından birini oluşturmaktadır. Ayrıca enerji kaynaklarının bilinçsizce kullanılması ve mevcut kaynakların hızla tükenmesi sonucu insanlar farklı enerji kaynağı arayışına girmektedir. Hali hazırda kullanılan fosil yakıtların ömrünün azalması aynı zamanda çevreye ve insan sağlığına olumsuz etkisi ülkelerin yenilenebilir enerji kaynaklarına yönelmesine sebep olmaktadır. Güneş, jeotermal, rüzgar, biyokütle, dalga enerjisi gibi yenilenebilir enerji kaynakları son dönemlerde ülkeler tarafından tercih edilen alternatif enerji kaynaklarıdır. Bu çalışmada hem dünyanın hem de Türkiye’ nin enerji kaynaklarını tüketme payları incelenmekte ve buna bağlı olarak alternatif enerji kaynaklarının gerekliliği üzerinde durulmaktadır. Aynı zamanda Türkiye’ de yenilenebilir enerji kaynaklarının mevcut kapasiteleri ve potansiyelleri üzerine bir değerlendirme yapılmaktadır.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3639),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7754),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -406,7 +406,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 8,
                             Content = "Genetik ya da kalıtım bilimi, biyolojinin organizmalardaki kalıtım ve genetik varyasyonu inceleyen bir dalıdır.Türkçeye Almancadan geçen genetik sözcüğü 1831 yılında Yunanca γενετικός - genetikos (\"genitif\") sözcüğünden türetildi. Bu sözcüğün kökeni ise γένεσις - genesis (\"köken\") sözcüğüne dayanmaktadır.\r\n\r\nCanlıların özelliklerinin kalıtsal olduğunun bilinci ile tarih öncesi çağlardan beri bitki ve hayvanlar ıslah edilmiştir. Bununla birlikte, kalıtımsal aktarım mekanizmalarını anlamaya çalışan modern genetik bilimi ancak 19. yüzyılın ortalarında, Gregor Mendel’in çalışmasıyla başlamıştır. Mendel, kalıtımın fiziksel temelini bilemediyse de, bu özelliklerin ayrık (kesikli) bir tarzda aktarıldığını gözlemlemiştir; günümüzde bu kalıtım birimlerine \"gen\" adı verilmektedir.\r\n\r\nGenler DNA'da belli bölgelere karşılık gelir. DNA dört tip nükleotitten oluşan bir zincir moleküldür. Bu zincir üzerinde nükleotitlerin dizisi, organizmaların kalıt aldığı genetik bilgidir (enformasyon). Doğada DNA, iki zincirli bir yapıya sahiptir. DNA'daki her \"iplikçik\"teki nükleotitler birbirini tamamlar, yani her iplikçik, kendine eş yeni bir iplikçik oluşturmak için bir kalıp olabilme özelliğine sahiptir. Bu, genetik bilginin kopyalanması ve kalıtımı için işleyen fiziksel mekanizmadır.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3640),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7755),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -417,7 +417,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 10,
                             Content = "İnsanlık tarihi, insanlığın geçmişinin tasviridir. Arkeoloji, antropoloji, genetik, dilbilim, epigrafi, filoloji, paleografi ve diğer disiplinler ile yazının icadından bu yana, kayıtlı tarih, ikincil kaynaklar ve araştırmalar yoluyla incelenir.\r\n\r\nİnsanlık tarihi, Paleolitik Çağ'dan (Eski Taş Devri) başlayıp, ardından Neolitik Çağ'ın (Cilalı Taş Devri) takip ettiği tarih öncesine dayanıyordu. Neolitik Çağ, Yakın Doğu'nun Bereketli Hilal'inde, tarım devriminin MÖ 10.000 ila 5.000 yılları arasında başladığına tanık oldu. Bu dönemde insanlar sistematik bitki ve hayvan yetiştiriciliğine başladı.[1] Tarım ilerledikçe çoğu insan, göçebelikten yerleşik bir yaşam tarzına geçiş yaptı ve genellikle çiftçi olarak kalıcı yerleşkelerde yaşamaya başladı. Çiftçiliğin sağladığı göreceli güvenlik ve artan üretkenlik, insan toplulukların ulaşımdaki gelişmelerle birlikte giderek daha büyük birimlere genişlemesini sağladı.",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3642),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7757),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         },
@@ -428,7 +428,7 @@ namespace MyBlogWebsite.Migrations
                             AuthorId = 1,
                             CategoryId = 9,
                             Content = "Bluetooth, sabit veya taşınabilir cihazlar arasında kısa mesafelerde veri aktarımı yapmaya veya kişisel alan ağları (PAN) kurmaya yarayan kablosuz bağlantı standardı.2,02 GHz ile 2,48 GHz aralığındaki ISM bantlarında UHF radyo dalgalarını kullanır. Genellikle kablolu bağlantılara alternatif olarak, birbirine yakın taşınabilir cihazlar arasında dosya alışverişi yapmak ve müzikçalarlar ile kablosuz kulaklıkları birbirine bağlamak için kullanılır. En sık kullanılan modunda aktarım gücü 2,4 miliwatt ile sınırlı olduğu için kapsama alanı 10 metreyi geçemez.\r\n\r\nBluetooth standardı Bluetooth Special Interest Group (SIG) tarafından yönetilir. Telekomünikasyon, bilgi işlem, ağ ürünleri ve tüketici elektroniği alanlarında 35.000'den fazla şirket gruba üyedir. IEEE, Bluetooth'u IEEE 802.15.1 olarak standartlaştırmış olmasına rağmen artık bu standart üzerinde çalışmamaktadır. ",
-                            PublishDate = new DateTime(2023, 2, 20, 0, 11, 50, 671, DateTimeKind.Local).AddTicks(3644),
+                            PublishDate = new DateTime(2023, 2, 20, 0, 15, 39, 938, DateTimeKind.Local).AddTicks(7815),
                             RequiredMinuteToReadEntireArticle = 2,
                             TotalReadCount = 5
                         });
@@ -474,7 +474,7 @@ namespace MyBlogWebsite.Migrations
                         {
                             Id = 1,
                             AboutMe = "Merhaba, ben kurucu yazarım.",
-                            ApplicationUserId = "dea11798-f61f-44c5-bc5f-324a314e12d1",
+                            ApplicationUserId = "aa4d3a9a-10c5-4baf-ad97-69663b0d0274",
                             AuthorConfirmed = true,
                             AuthorName = "Anasayfa Yazarı"
                         });
@@ -589,17 +589,17 @@ namespace MyBlogWebsite.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dea11798-f61f-44c5-bc5f-324a314e12d1",
+                            Id = "aa4d3a9a-10c5-4baf-ad97-69663b0d0274",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "db22a102-c7ba-4f64-abe8-eccb408986e1",
+                            ConcurrencyStamp = "a1cc29ec-cad2-4668-b480-86ea023f0dfb",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBMjkwxQhu62PvaTXWkTqKv6EzzHql8ZMAR8cLqKuQrStoz2qX2aHCUWhqpBCrGK/w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC5L5R6mmyfXGBVz3/yIjbKGpsgzxb9FG6anJl3H+5clbHQTeA2HsQ37qjACr41TUQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4253bb30-abb6-44c6-8888-f955656e084e",
+                            SecurityStamp = "81f10150-e1d2-4a4f-9e6f-01ff4bd382b0",
                             TwoFactorEnabled = false,
                             UserName = "admin",
                             FirstName = "admin",
@@ -607,17 +607,17 @@ namespace MyBlogWebsite.Migrations
                         },
                         new
                         {
-                            Id = "6ddc7555-5116-45a6-ae6f-fc2291f2d00c",
+                            Id = "ea5f5766-fd3c-4d20-aac4-b8cc9753d2ef",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5aa0531b-50a2-49f2-9b01-e79925c16356",
+                            ConcurrencyStamp = "756c0aa2-16c7-48c2-bf5f-6eeca53fab83",
                             Email = "test@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@TEST.COM",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEbLJjPnAihzJmGUiBzX97uWI/KRA363zxAo0USRo8sdu5Kg00AqQ8QqsU/akq3mMw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBS8JHf5/8CytGF5f94G59+qM76cCg7Cz1VDXeVvEKXDfXWm/vrV3bQDQxG9rQ7ZOA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6636fea3-7e72-443a-9705-5d1e9fe597a5",
+                            SecurityStamp = "f049699e-87ec-4134-85c9-2ebec9a4c647",
                             TwoFactorEnabled = false,
                             UserName = "test",
                             FirstName = "testName",
