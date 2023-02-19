@@ -167,6 +167,8 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
             AuthorConfirmed= true,
           //  ApplicationUser= adminUser,
             ApplicationUserId= adminUser.Id,
+            AboutMe="Merhaba, ben kurucu yazarım.",
+            
         });
 
         builder.Entity<Article>().HasData(new Article
@@ -202,7 +204,98 @@ public class BlogWebsiteDbContext : IdentityDbContext<IdentityUser>
 			ArticleTitle = "Geridönüşüm - Hayatımız ve Dünyamız İçin Önemli Bir Adım",
 			Content = "Geridönüşüm, atık materyallerin tekrar kullanılması veya işlenerek farklı bir ürüne dönüştürülmesidir. Bu süreç, çevresel açıdan faydalıdır çünkü atıkların depolanması veya yok edilmesi yerine tekrar kullanılması sayesinde çevresel sorunları azaltır.\r\n\r\nAyrıca, geridönüşüm, ekonomik açıdan da avantajlıdır. Geridönüştürülen materyallerin üretimi, yeni materyal üretiminden daha düşük enerji ve kaynak gerektirir. Böylece, enerji tasarrufu sağlanır ve doğal kaynaklar korunur.\r\n\r\nHerkesin katkıda bulunabileceği bir konu olan geridönüşüm, evlerimizden başlayarak uygulanabilir. Atıkları sınıflandırarak, geri dönüştürülebilir materyalleri ayrı tutmak, çevresel ve ekonomik açıdan faydalıdır.\r\n\r\nSonuç olarak, geridönüşüm, hayatımız ve dünyamız için önemli bir adımdır. Herkesin katkıda bulunabileceği bu süreç, çevresel ve ekonomik açıdan faydalı olduğu kadar, gelecek nesillere daha temiz ve daha sağlıklı bir dünya bırakmak için de önemlidir. Üstelik, geridönüşüm yapmak kolaydır ve her yaşta herkes tarafından uygulanabilir. Bugünden başlayarak, atıklarımızı geridönüştürerek, dünyamızın geleceğine katkıda bulunabiliriz.",
             
-		});
+		}
+        ,
+        new Article
+        {
+            Id = 4,
+            AuthorId = 1,
+            CategoryId = 3,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 7,
+            ArticleTitle = "Türkiye Ekonomisi",
+            Content = "Türkiye’nin küresel dalgalanmalardan en çok etkilenen ülkelerden biri olması nedeniyle en önemli gündemini ekonomi oluşturmaktadır. 2000’li yıllarda yaşanan küresel krizlerin etkisiyle daralan Türkiye ekonomisi, takip eden yıllarda iyileşme sürecine girse de genel olarak olası dış şoklara karşı kırılgan yapısını sürdürmektedir. Türkiye ekonomisinin bu kırılgan yapısının temel nedenini aslında 24 Ocak 1980 kararlarıyla birlikte uygulamaya geçirilen yapısal uyum politikaları oluşturmaktadır. Yapısal uyum politikaları ile Türkiye ekonomisinde dışa dönük ve ihracata dayalı sanayileşme stratejileri uygulanmış böylece ithal ikameci politikalarla dış ticaret baskı altına alınmıştır.",
+
+        }
+        ,
+        new Article
+        {
+            Id = 5,
+            AuthorId = 1,
+            CategoryId = 1,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 5,
+            ArticleTitle = "Adalet Nedir?",
+            Content = "Öncelikle adalet, karşılıklı insan ilişkilerini düzenleyen toplumsal\r\ndüzenin mümkün, ama zorunlu olmayan bir niteliğidir. O, ancak tali\r\nolarak insanın bir erdemidir; çünkü insan, eğer davranışı adil olarak\r\nkabul edilen toplumsal bir düzenin normlarına uyuyorsa adildir. Peki,\r\ntoplumsal bir düzenin adil olduğunu söylemek gerçekte ne anlama gelir? O şu demektir: bu (toplumsal) düzen, insan davranışlarını herkesi\r\ntatmin edecek şekilde düzenlemiştir. Yani herkes, o düzende mutluluğu bulabilir. Adalet arzusu, insanın mutluluk için duyduğu ebedi\r\narzudur. O, insanın yalıtılmış bir şekilde, yani yalnız başına bulamayacağı, bu nedenle bir toplum içinde aradığı bir mutluluktur. Yani\r\nadalet, toplumsal mutluluktur. O, toplumsal düzen tarafından garanti\r\nedilmiş bir mutluluktur. Bu bağlamda, adaleti mutluluk olarak tanımlayan Eflatun, sadece adil insanın mutlu ve adil olmayanın da mutsuz\r\nolduğunu ileri sürer. (Ancak) adaletin mutluluk olduğu yönündeki\r\nifade, elbette ki nihai cevap değildir; o, sadece soruyu değiştirmektir.\r\nÇünkü şu halde sormamız gerekir: Mutluluk nedir?\r\n",
+
+        }
+        ,
+        new Article
+        {
+            Id = 6,
+            AuthorId = 1,
+            CategoryId = 2,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 5,
+            ArticleTitle = "Bilimin Esası",
+            Content = "Bilim, en küçük atomaltı parçacıklardan en büyük galaksi kümelerine kadar, fiziksel ve doğal dünyanın yapısını ve davranışlarını gözlem ve deney yoluyla, sistematik bir şekilde inceleyen, entelektüel ve pratik bir faaliyet olarak tanımlanabilir.Bilim, Evren'e, parçalarına ve varsa ötesine dair genel gerçekleri ve temel yasaları öğrenme yolunda çıkılan bir yolculuk; bir veri toplama, değerlendirme ve öngörü aracı olarak da düşünülebilir. Bir diğer deyişle bilim, doğal dünyada olan biteni ve bunların nasıl işlediğini öğrenmenin bir yoludur; bu bakımdan bilim, pul koleksiyonu yapmak gibi gerçekleri toplamaktan ibaret değildir; onları açıklayıp, anlamayı da hedefler",
+
+        }
+        ,
+        new Article
+        {
+            Id = 7,
+            AuthorId = 1,
+            CategoryId = 6,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 5,
+            ArticleTitle = "Küreselleşme ve Enerji Gidişatı",
+            Content = "Küreselleşmeyle birlikte son zamanlarda sanayi alanında gelişmelerin yaşanması, teknolojinin ilerlemesi nüfusun artması gibi birçok sebep enerji kaynaklarının kullanımını hızla arttırmaktadır. Sınırlı olarak bulunan fosil yakıtlarının gelecek dönemlerde yetersiz olacağı bilinmektedir. Aynı zamanda dünya ülkelerinin bu yakıtları ele geçirme isteği gün geçtikçe artmaktadır. Bunun için Enerji geçmişten günümüze her toplumun önemli sorunlarından birini oluşturmaktadır. Ayrıca enerji kaynaklarının bilinçsizce kullanılması ve mevcut kaynakların hızla tükenmesi sonucu insanlar farklı enerji kaynağı arayışına girmektedir. Hali hazırda kullanılan fosil yakıtların ömrünün azalması aynı zamanda çevreye ve insan sağlığına olumsuz etkisi ülkelerin yenilenebilir enerji kaynaklarına yönelmesine sebep olmaktadır. Güneş, jeotermal, rüzgar, biyokütle, dalga enerjisi gibi yenilenebilir enerji kaynakları son dönemlerde ülkeler tarafından tercih edilen alternatif enerji kaynaklarıdır. Bu çalışmada hem dünyanın hem de Türkiye’ nin enerji kaynaklarını tüketme payları incelenmekte ve buna bağlı olarak alternatif enerji kaynaklarının gerekliliği üzerinde durulmaktadır. Aynı zamanda Türkiye’ de yenilenebilir enerji kaynaklarının mevcut kapasiteleri ve potansiyelleri üzerine bir değerlendirme yapılmaktadır.",
+
+        }
+        ,
+        new Article
+        {
+            Id = 8,
+            AuthorId = 1,
+            CategoryId = 8,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 5,
+            ArticleTitle = "Genetiğin Tarihi ve Gelişimi",
+            Content = "Genetik ya da kalıtım bilimi, biyolojinin organizmalardaki kalıtım ve genetik varyasyonu inceleyen bir dalıdır.Türkçeye Almancadan geçen genetik sözcüğü 1831 yılında Yunanca γενετικός - genetikos (\"genitif\") sözcüğünden türetildi. Bu sözcüğün kökeni ise γένεσις - genesis (\"köken\") sözcüğüne dayanmaktadır.\r\n\r\nCanlıların özelliklerinin kalıtsal olduğunun bilinci ile tarih öncesi çağlardan beri bitki ve hayvanlar ıslah edilmiştir. Bununla birlikte, kalıtımsal aktarım mekanizmalarını anlamaya çalışan modern genetik bilimi ancak 19. yüzyılın ortalarında, Gregor Mendel’in çalışmasıyla başlamıştır. Mendel, kalıtımın fiziksel temelini bilemediyse de, bu özelliklerin ayrık (kesikli) bir tarzda aktarıldığını gözlemlemiştir; günümüzde bu kalıtım birimlerine \"gen\" adı verilmektedir.\r\n\r\nGenler DNA'da belli bölgelere karşılık gelir. DNA dört tip nükleotitten oluşan bir zincir moleküldür. Bu zincir üzerinde nükleotitlerin dizisi, organizmaların kalıt aldığı genetik bilgidir (enformasyon). Doğada DNA, iki zincirli bir yapıya sahiptir. DNA'daki her \"iplikçik\"teki nükleotitler birbirini tamamlar, yani her iplikçik, kendine eş yeni bir iplikçik oluşturmak için bir kalıp olabilme özelliğine sahiptir. Bu, genetik bilginin kopyalanması ve kalıtımı için işleyen fiziksel mekanizmadır.",
+
+        }
+        ,
+        new Article
+        {
+            Id = 9,
+            AuthorId = 1,
+            CategoryId = 10,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 5,
+            ArticleTitle = "İnsanlığın Gelişimi",
+            Content = "İnsanlık tarihi, insanlığın geçmişinin tasviridir. Arkeoloji, antropoloji, genetik, dilbilim, epigrafi, filoloji, paleografi ve diğer disiplinler ile yazının icadından bu yana, kayıtlı tarih, ikincil kaynaklar ve araştırmalar yoluyla incelenir.\r\n\r\nİnsanlık tarihi, Paleolitik Çağ'dan (Eski Taş Devri) başlayıp, ardından Neolitik Çağ'ın (Cilalı Taş Devri) takip ettiği tarih öncesine dayanıyordu. Neolitik Çağ, Yakın Doğu'nun Bereketli Hilal'inde, tarım devriminin MÖ 10.000 ila 5.000 yılları arasında başladığına tanık oldu. Bu dönemde insanlar sistematik bitki ve hayvan yetiştiriciliğine başladı.[1] Tarım ilerledikçe çoğu insan, göçebelikten yerleşik bir yaşam tarzına geçiş yaptı ve genellikle çiftçi olarak kalıcı yerleşkelerde yaşamaya başladı. Çiftçiliğin sağladığı göreceli güvenlik ve artan üretkenlik, insan toplulukların ulaşımdaki gelişmelerle birlikte giderek daha büyük birimlere genişlemesini sağladı.",
+
+        }
+        ,
+        new Article
+        {
+            Id = 10,
+            AuthorId = 1,
+            CategoryId = 9,
+            PublishDate = DateTime.Now,
+            RequiredMinuteToReadEntireArticle = 2,
+            TotalReadCount = 5,
+            ArticleTitle = "Bluetooth Nedir?",
+            Content = "Bluetooth, sabit veya taşınabilir cihazlar arasında kısa mesafelerde veri aktarımı yapmaya veya kişisel alan ağları (PAN) kurmaya yarayan kablosuz bağlantı standardı.2,02 GHz ile 2,48 GHz aralığındaki ISM bantlarında UHF radyo dalgalarını kullanır. Genellikle kablolu bağlantılara alternatif olarak, birbirine yakın taşınabilir cihazlar arasında dosya alışverişi yapmak ve müzikçalarlar ile kablosuz kulaklıkları birbirine bağlamak için kullanılır. En sık kullanılan modunda aktarım gücü 2,4 miliwatt ile sınırlı olduğu için kapsama alanı 10 metreyi geçemez.\r\n\r\nBluetooth standardı Bluetooth Special Interest Group (SIG) tarafından yönetilir. Telekomünikasyon, bilgi işlem, ağ ürünleri ve tüketici elektroniği alanlarında 35.000'den fazla şirket gruba üyedir. IEEE, Bluetooth'u IEEE 802.15.1 olarak standartlaştırmış olmasına rağmen artık bu standart üzerinde çalışmamaktadır. ",
+
+        });
 
 
     }
