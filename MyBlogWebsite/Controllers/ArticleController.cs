@@ -97,7 +97,7 @@ namespace MyBlogWebsite.Controllers
         {
             Article article = articleRepository.GetByID(id);
             ArticleVM vm = new ArticleVM();
-
+            var category = categoryRepository.GetByID(article.CategoryId);
             int authorIdOfArticle = article.AuthorId;
             Author author = authorRepository.GetByID(authorIdOfArticle);
 
@@ -108,7 +108,7 @@ namespace MyBlogWebsite.Controllers
             vm.AuthorName = author.AuthorName;
             vm.TotalReadCount = (int)article.TotalReadCount;
             vm.RequiredMinsToRead = (int)article.RequiredMinuteToReadEntireArticle;
-
+            vm.CategoryName = category.CategoryName;
             article.TotalReadCount++;
             articleRepository.Update(article);
             return View(vm);
@@ -185,6 +185,18 @@ namespace MyBlogWebsite.Controllers
             if (content.Length > 7500 && content.Length <= 9000)
             {
                 return calculatedMinute = 6;
+            }
+            if (content.Length > 9000 && content.Length <= 10500)
+            {
+                return calculatedMinute = 7;
+            }
+            if (content.Length > 10500 && content.Length <= 12000)
+            {
+                return calculatedMinute = 8;
+            }
+            if (content.Length > 12000 && content.Length <= 13500)
+            {
+                return calculatedMinute = 9;
             }
             else
             {

@@ -9,5 +9,6 @@ namespace MyBlogWebsite.Data_Access_Folder.Repositories.Abstract
         List<Category> GetCategories();
 
         List<Category> GetFavouriteCategories(int authorId);
+
     }
 }

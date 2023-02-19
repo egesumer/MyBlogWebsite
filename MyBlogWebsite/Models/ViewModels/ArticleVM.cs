@@ -11,8 +11,8 @@ namespace MyBlogWebsite.Models.ViewModels
         public int TotalReadCount { get; set; }
         public string AuthorName { get; set; }
         public int RequiredMinsToRead { get; set; }
-        public DateTime PublishDate { get; set; }
+        public string CategoryName { get; set; }
 
-        public IFormFile Image { get; set; }
+        public DateTime PublishDate { get; set; }
     }
 }

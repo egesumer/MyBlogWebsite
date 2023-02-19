@@ -21,7 +21,6 @@ namespace MyBlogWebsite.Data_Access_Folder.Repositories.Concrete
             return db.Categories.ToList();
         }
 
-     
 
         public List<Category> GetFavouriteCategories(int authorId)
         {
